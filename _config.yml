@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Eren's Spaceship
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
+author: Eren
 language: en
 timezone: ''
 
@@ -29,7 +29,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+skip_render: CNAME
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -41,7 +41,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -93,11 +93,11 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: fluid
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-    type: git
-    repository: https://github.com/erenlu/erenlu.github.io.git
-    branch: master
+  type: git
+  repo: https://github.com/erenlu/erenlu.github.io.git
+  branch: master
