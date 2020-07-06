@@ -99,12 +99,7 @@ theme: fluid
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:erenlu/erenlu.github.io.git
+  repo: https://github.com/erenlu/erenlu.github.io.git
   branch: master
 
-###------------------------------###
-# 自动生成sitemap，收录用的
-sitemap:
-  path: sitemap.xml
-baidusitemap:
-  path: baidusitemap.xml
+
