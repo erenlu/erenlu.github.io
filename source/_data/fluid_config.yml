@@ -160,7 +160,7 @@ scroll_top_arrow:  # 向顶部滚动的箭头
 # Index Page
 #---------------------------
 index:
-  banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_发现者号.jpg  # 首页 Banner 头图，以下相同
+  banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_发现者号（compressed）.jpg  # 首页 Banner 头图，以下相同
   banner_img_height: 100  # 头图高度，屏幕百分比，available: 0 - 100
   banner_mask_alpha: 0.3  # 头图黑色蒙版的透明度，available: 0 - 1.0， 0 是完全透明（无蒙版），1 是完全不透明
   post_default_img: '' # 默认的文章封面图，当没有指定 index_img 时会使用该图片，若都为空则不显示任何图片
@@ -323,7 +323,7 @@ livere:
 archive:
  # archive page title archive: 归档
   title: archive
-  banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_发现者号.jpg
+  banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_发现者号（compressed）.jpg
   banner_img_height: 60  # available: 0 - 100
   banner_mask_alpha: 0.3  # available: 0 - 1.0
   subtitle: Ashes to ashes, dust to dust # 打字机内容
@@ -346,7 +346,7 @@ archive:
 #---------------------------
 tag:
   title: tags
-  banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_发现者号.jpg
+  banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_发现者号（compressed）.jpg
   banner_img_height: 80  # available: 0 - 100
   banner_mask_alpha: 0.3  # available: 0 - 1.0
   subtitle:  Stay hungry, stay foolish # 打字机内容
@@ -364,7 +364,7 @@ tag:
 #---------------------------
 about:  # 关于页需要手动创建，具体请见：https://hexo.fluid-dev.com/docs/guide/#%E5%85%B3%E4%BA%8E%E9%A1%B5
   title: about
-  banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_自我介绍.jpg
+  banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_自我介绍（compressing）.jpg
   banner_img_height: 60  # available: 0 - 100
   banner_mask_alpha: 0.3  # available: 0 - 1.0
   subtitle:  Hey, this is Eren # 打字机内容
@@ -384,7 +384,7 @@ about:  # 关于页需要手动创建，具体请见：https://hexo.fluid-dev.co
 # 404 Page
 #---------------------------
 page404:
-  banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_404.jpg
+  banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_404（compressed）.jpg
   banner_img_height: 85  # available: 0 - 100
   banner_mask_alpha: 0.3  # available: 0 - 1.0
   subtitle: Oops! We lost in the universe...  # 打字机内容
@@ -395,7 +395,7 @@ page404:
 # Links Page
 #---------------------------
 links:
-  banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_moon.jpg
+  banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_moon （compresed）.jpg
   banner_img_height: 60  # available: 0 - 100
   banner_mask_alpha: 0.3  # available: 0 - 1.0
   subtitle:  Without friends the world is a wilderness # 打字机内容
