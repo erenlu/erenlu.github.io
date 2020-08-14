@@ -5,7 +5,7 @@ banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200813012440.jpg
 tags:
   - Hexo
   - 优化
-excerpt: 从 Vercel 托管到 jsDelivr CDN 加速...这里是加速 Hexo 博客站点不完全指南。
+excerpt: 从 Vercel 托管到 jsDelivr CDN 加速，以及其他优化推荐...这里是加速 Hexo 博客站点不完全指南。
 abbrlink: db37
 date: 2020-08-12 01:48:09
 ---
@@ -23,15 +23,17 @@ date: 2020-08-12 01:48:09
 
 所以，我们在此主要针对以上两个问题来进行优化。
 
-# 使用 Vercel 托管
-
-## Vercel 托管
+# Vercel 托管
 
 **Vercel** 是一家提供 JamStack（静态网站）托管的平台，支持自动从 GitHub 等仓库拉取代码, 按自定义构建方式进行构建，最后把生成的静态网站进行发布; 在这基础上同时也支持自定义域名，自动申请 SSL 证书等功能。
 
 由于国内访问 Vercel 的速度要比访问 GitHub pages快很多，所以我们只需要把站点交给 Vercel 进行托管就能大幅度提升博客的加载速度。
 
-**具体教程请参考 @vincentqin： [使用 Vercel 加速 Hexo 静态博客访问](https://vincentqin.tech/posts/speedup-gitpage/)** 
+{% note success %}
+
+参考教程： [使用 Vercel 加速 Hexo 静态博客访问](https://vincentqin.tech/posts/speedup-gitpage/) 
+
+{% endnote %}
 
 在使用 Vercel 托管之后，访客在访问博客网站时相当于是在访问 Vercel 的服务器（因为此时已经在域名服务商处处新增了对应 Vercel 站点的域名解析），而不是去访问最开始的 GitHub pages 网址。
 
@@ -47,7 +49,7 @@ date: 2020-08-12 01:48:09
 
 ![网站速度诊断](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812040604.png)
 
-# GitHub + jsDelivr + PicGo
+# jsDelivr 加速
 
 在博客的撰写中，我们一般是直接引用本地图库资源（使用 hexo-asset-image 插件）对文章进行配图。之后再`hexo g -d` 将文章和图片资源一同部署到 GitHub 。而我们在访问这些图片资源时又需要再从 GitHub 上进行提取，而 GitHub 上的访问速度本身已经很慢，再去加载大量图片更加会拖慢网页速度。虽然我们前面已经对博客进行了 Vercel 托管，但是我们有一种更简单高效的方式对图片进行上传，那就是**利用 GitHub 图库+ jsDelivr CDN 加速+ PicGo 客户端实现图库的高效使用**。
 
@@ -69,10 +71,14 @@ date: 2020-08-12 01:48:09
 
 > 一个用于快速上传图片并获取图片URL链接的工具。
 
-**具体教程请参考：**
+{% note success %}
 
-- **[Github+jsDelivr+PicGo 打造稳定快速、高效免费图床](https://www.itrhx.com/2019/08/01/A27-image-hosting/)**
-- **[Typora原生集成PicGo图床工具！](https://www.cnblogs.com/hoxis/p/12470044.html)** 
+参考教程：
+
+- [Github+jsDelivr+PicGo 打造稳定快速、高效免费图床](https://www.itrhx.com/2019/08/01/A27-image-hosting/)
+- [Typora原生集成PicGo图床工具！](https://www.cnblogs.com/hoxis/p/12470044.html) 
+
+{% endnote %}
 
 ****
 
@@ -99,6 +105,29 @@ npm remove  hexo-asset-image
 > 注：在使用 PicGo 客户端时会遇到一些问题，具体解决方法参考：[Typora原生集成PicGo图床工具！](https://www.cnblogs.com/hoxis/p/12470044.html) 
 
 在使用图床之后，我们所用的的图片就可以不放在本地。那么图片在每次编译部署也就不用上传到网上，这缩短了编译时间。
+
+# Valine 评论系统
+
+{% note success %}
+
+参考教程：
+
+- [LeanCloud-Valine 保姆及配置教程](https://lete114.now.sh/article/Valine-LeanCloud-Config.html#%E5%89%8D%E8%A8%80)
+- [LeanCloud 因控流原因的解决办法](https://lete114.now.sh/article/da1d5c8b.html)
+
+{% endnote %}
+
+# 其他优化教程
+
+{% note success %}
+
+参考教程：
+
+- [Hexo 基础教程(四)：功能添加与优化](https://indexmoon.com/articles/1153730074/)
+
+  包含：添加 RSS，代码压缩，文章链接唯一化，SEO（搜索引擎优化）等内容。
+
+{% endnote %}
 
 # 总结
 
