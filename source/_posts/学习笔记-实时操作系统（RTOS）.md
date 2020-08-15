@@ -1,7 +1,7 @@
 ---
 title: 实时操作系统（RTOS）
 index_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/2020081537.jpg
-banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/2020081537.jpg
+banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008151.jpg
 tags:
   - 学习笔记
   - 嵌入式
