@@ -243,11 +243,11 @@
           </div>
 
 <p>在使用 Vercel 托管之后，访客在访问博客网站时相当于是在访问 Vercel 的服务器（因为此时已经在域名服务商处处新增了对应 Vercel 站点的域名解析），而不是去访问最开始的 GitHub pages 网址。</p>
-<p>此外，按照上述教程进行操作之后，查看 Domain 一栏是否解析生效。此时可能会出现一会儿配置失败，一会儿配置成功的情况。若出现标红提示配置失败，点击查看错误提示。<strong>如果是提示更改为 Vercel 的 DNS 服务器，只需到你博客域名服务商，将 DNS 服务器地址更改为 Vercel 要求的地址即可。</strong>（例如我的域名服务商是阿里云，我到官网去把阿里云官方的 DNS 服务器地址改为 Vercel 的即可。DNS 服务器地址为两个，都需要进行更改）<img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812033929.png" alt="Snipaste_2020-08-12_02-35-18"></p>
+<p>此外，按照上述教程进行操作之后，查看 Domain 一栏是否解析生效。此时可能会出现一会儿配置失败，一会儿配置成功的情况。若出现标红提示配置失败，点击查看错误提示。<strong>如果是提示更改为 Vercel 的 DNS 服务器，只需到你博客域名服务商，将 DNS 服务器地址更改为 Vercel 要求的地址即可。</strong>（例如我的域名服务商是阿里云，我到官网去把阿里云官方的 DNS 服务器地址改为 Vercel 的即可。DNS 服务器地址为两个，都需要进行更改）<img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812033929.png" srcset="/img/loading.gif" alt="Snipaste_2020-08-12_02-35-18"></p>
 <h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p>对比站点 github.io 的原始域名，访问延迟明显减小：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200814001334.png" alt="对比"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200814001334.png" srcset="/img/loading.gif" alt="对比"></p>
 <p>使用百度站长对网站速度进行测试：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812040604.png" alt="网站速度诊断"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812040604.png" srcset="/img/loading.gif" alt="网站速度诊断"></p>
 <h1 id="jsDelivr-加速"><a href="#jsDelivr-加速" class="headerlink" title="jsDelivr 加速"></a>jsDelivr 加速</h1><p>在博客的撰写中，我们一般是直接引用本地图库资源（使用 hexo-asset-image 插件）对文章进行配图。之后再<code>hexo g -d</code> 将文章和图片资源一同部署到 GitHub 。而我们在访问这些图片资源时又需要再从 GitHub 上进行提取，而 GitHub 上的访问速度本身已经很慢，再去加载大量图片更加会拖慢网页速度。虽然我们前面已经对博客进行了 Vercel 托管，但是我们有一种更简单高效的方式对图片进行上传，那就是<strong>利用 GitHub 图库+ jsDelivr CDN 加速+ PicGo 客户端实现图库的高效使用</strong>。</p>
 <p>简单说明以上三个工具的使用情形：</p>
 <ul>
@@ -280,7 +280,7 @@
 <pre><code class="hljs yaml"><span class="hljs-attr">post_asset_folder:</span> <span class="hljs-literal">false</span></code></pre>
 
 <p>此时，在你每次<code>hexo n &quot;title&quot;</code> 的时候就不会在 _posts下面生成同名的文件夹放图片文件了，大可将需要使用的图片放在除博客文件的其他位置（所以你甚至可以把已经生成外链的图片删掉），因为照片放在专门的图片仓库，利用 jsDelivr 外链就可以直接访问，你不需要再将这些图片上传到博客的 GitHub 仓库里面去。下图红色地址就是我们直接可以访问到图片的 jsDelivr 外链地址。你可以点来试下，看看是不是我们下面这张图。 <a href="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812034534.png" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812034534.png</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812034534.png" alt="Snipaste_2020-08-12_03-45-17"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812034534.png" srcset="/img/loading.gif" alt="Snipaste_2020-08-12_03-45-17"></p>
 <blockquote>
 <p>注：在使用 PicGo 客户端时会遇到一些问题，具体解决方法参考：<a href="https://www.cnblogs.com/hoxis/p/12470044.html" target="_blank" rel="noopener">Typora原生集成PicGo图床工具！</a> </p>
 </blockquote>
@@ -407,7 +407,7 @@
 
   <div class="col-lg-7 mx-auto nopadding-md">
     <div class="container custom post-content mx-auto">
-      <img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812010911.png" class="rounded mx-auto d-block mt-5" style="width:120px; height:120px;"> <br> <div class="text-center py-1">    <div> * Keep Calm and Carry On *  </div> 
+      <img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812010911.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:120px; height:120px;"> <br> <div class="text-center py-1">    <div> * Keep Calm and Carry On *  </div> 
     </div>
   </div>
 
@@ -511,6 +511,10 @@
 
 <!-- Plugins -->
 
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 
