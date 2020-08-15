@@ -148,7 +148,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200813020009.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200815138.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -222,7 +222,7 @@
             
               <p class="note note-info">
                 
-                  Updated：August 13, 2020 pm
+                  Updated：August 15, 2020 pm
                 
               </p>
             
@@ -233,20 +233,20 @@
 <p><a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a> version：4.2.1</p>
 </blockquote>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>目前 Fluid 版本（v1.8.1）中文章末尾版权声明仅设置显示为：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008120027886.png" alt="Snipaste_2020-08-08_12-08-18"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008120027886.png" srcset="/img/loading.gif" alt="Snipaste_2020-08-08_12-08-18"></p>
 <p>而看到许多博客文章末尾都有完整的文章信息，例如“本文作者”，“本文地址”，“版权声明”等。</p>
 <p>在 Next 等主题中自带文章末尾可以添加“文章链接”，只需要在 <code>_config.yml</code> 中 <code>enable</code> 相应模块即可，效果如下图所示。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812000800.png" alt="Snipaste_2020-08-08_13-41-30"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812000800.png" srcset="/img/loading.gif" alt="Snipaste_2020-08-08_13-41-30"></p>
 <p>而在 Fluid 主题中则需要用户对相应配置文件进行修改。</p>
 <h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="搜寻方法"><a href="#搜寻方法" class="headerlink" title="搜寻方法"></a>搜寻方法</h2><p>在网上搜寻方法时发现 <a href="https://github.com/julydate" target="_blank" rel="noopener">七夏浅笑</a> 针对 Fluid 主题修改的版本实现了版权声明处的文章链接显示。因为都是使用 Fluid 主题，所以想着对方应该能够解答自己的疑惑所以通过邮件进行了联系。很快得到了大佬答复：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812002839.png" alt="Snipaste_2020-08-08_14-04-18"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812002839.png" srcset="/img/loading.gif" alt="Snipaste_2020-08-08_14-04-18"></p>
 <p>根据大佬的提示（还贴心地标出代码位置，小姐姐很 nice 了），并结合网上相应对版权声明修改的资料进行了操作。</p>
 <h2 id="修改步骤"><a href="#修改步骤" class="headerlink" title="修改步骤"></a>修改步骤</h2><ol>
 <li><p>打开 <code>themes\fluid\layout</code> 中的 <code>post.ejs</code> 文件；</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812002927.png" alt="Snipaste_2020-08-08_14-10-26"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812002927.png" srcset="/img/loading.gif" alt="Snipaste_2020-08-08_14-10-26"></p>
 </li>
 <li><p>找到以下内容进行修改；</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812003002.png" alt="Snipaste_2020-08-08_14-15-44"> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812003002.png" srcset="/img/loading.gif" alt="Snipaste_2020-08-08_14-15-44"> </p>
 <p>将红色部分替换为以下代码：</p>
 <pre><code class="hljs erb"><span class="xml">   <span class="hljs-tag">&lt;<span class="hljs-name">%</span></span></span><span class="ruby"> <span class="hljs-keyword">if</span>(theme.post.copyright.enable &amp;&amp; theme.post.copyright.content &amp;&amp; page.copyright !== <span class="hljs-literal">false</span>) &#123; </span><span class="xml"><span class="hljs-tag">%&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"note note-warning"</span>&gt;</span></span>
 <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>本文作者: <span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"&lt;%-</span></span></span><span class="ruby"> url_for() </span><span class="xml"><span class="hljs-tag"><span class="hljs-string">%&gt;"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%-</span></span></span><span class="ruby"> theme.about.name <span class="hljs-params">||</span> config.author <span class="hljs-params">||</span> config.title </span><span class="xml"><span class="hljs-tag">%&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span></span>
@@ -256,18 +256,18 @@
 <span class="xml">   <span class="hljs-tag">&lt;<span class="hljs-name">%</span></span></span><span class="ruby"> &#125; </span><span class="xml"><span class="hljs-tag">%&gt;</span></span></code></pre>
 
 <p>替换结果：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202003812003531.png" alt="Snipaste_2020-08-08_14-18-01"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202003812003531.png" srcset="/img/loading.gif" alt="Snipaste_2020-08-08_14-18-01"></p>
 </li>
 <li><p>保存文件，cmd  <code>hexo clean</code> <code>hexo s</code> 查看效果；</p>
 <p>实现目标：版权声明处添加“本文链接”并能自动生成文章链接。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008120403506.png" alt="Snipaste_2020-08-08_14-22-34"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008120403506.png" srcset="/img/loading.gif" alt="Snipaste_2020-08-08_14-22-34"></p>
 </li>
 <li><p>cmd  <code>hexo g -d</code>  部署博客。Bingo！</p>
 </li>
 </ol>
 <h2 id="修改-Tag-颜色"><a href="#修改-Tag-颜色" class="headerlink" title="修改 Tag 颜色"></a>修改 Tag 颜色</h2><ol>
 <li><p>根据 <a href="https://hexo.fluid-dev.com/docs/guide/#tag-%E6%8F%92%E4%BB%B6" target="_blank" rel="noopener">官方文档 </a>了解到 Tag 相应的语法；</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008120403517.png" alt="Snipaste_2020-08-08_14-48-24"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008120403517.png" srcset="/img/loading.gif" alt="Snipaste_2020-08-08_14-48-24"></p>
 </li>
 <li><p>如果要修改 Tag 颜色只需要修改 <code>&lt;p class=&quot;note note-warning&quot;&gt;</code> 即可。</p>
 </li>
@@ -275,11 +275,11 @@
 <h1 id="错误做法"><a href="#错误做法" class="headerlink" title="错误做法"></a>错误做法</h1><h2 id="修改主题配置文件-config-yml"><a href="#修改主题配置文件-config-yml" class="headerlink" title="修改主题配置文件 config.yml"></a>修改主题配置文件 <code>config.yml</code></h2><p>一开始笔者以为只需要简单的修改主题配置文件 <code>_config.yml</code> 里面版权声明处，但在“本文链接”无法正常生成链接。即使在“本文链接”后面加上代码仍然失败。</p>
 <pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"&lt;%- full_url_for(page.path) %&gt;"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">full_url_for</span>(<span class="hljs-attr">page.path</span>) %&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre>
 
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812003717.png" alt="微信图片_20200807203239"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812003717.png" srcset="/img/loading.gif" alt="微信图片_20200807203239"></p>
 <p><code>hexo s</code> <code>hexo g</code> 生成结果如下图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812003237.png" alt="Snipaste_2020-08-08_13-57-16"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812003237.png" srcset="/img/loading.gif" alt="Snipaste_2020-08-08_13-57-16"></p>
 <h2 id="单纯复制修改主题的代码"><a href="#单纯复制修改主题的代码" class="headerlink" title="单纯复制修改主题的代码"></a>单纯复制修改主题的代码</h2><p>前面谈到有位小姐姐修改的 <a href="">Fluid主题</a> 能实现我的目标，我寻思着直接找她改动的代码不就行了吗。于是直接就把相应位置的代码给 copy 了过来，结果造成了页面错误。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812003422.png" alt="Snipaste_2020-08-07_23-39-01"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812003422.png" srcset="/img/loading.gif" alt="Snipaste_2020-08-07_23-39-01"></p>
 <p>最后进行修改调试，才恢复正常。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>第一次尝试对 HTML 文件进行修改，因为之前没有接触过 HTML 的相关知识，所以初次看代码有些茫然。不过好在看英文单词 <code>copyright</code> 还是能看懂，以此作为切入点瞎搞竟然搞成功了。</p>
 <p>由于笔者能力有限，并没有对许多细节进行深究，文章难免有疏漏之处。欢迎大家与我交流沟通！</p>
@@ -396,7 +396,7 @@
 
   <div class="col-lg-7 mx-auto nopadding-md">
     <div class="container custom post-content mx-auto">
-      <img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812010911.png" class="rounded mx-auto d-block mt-5" style="width:120px; height:120px;"> <br> <div class="text-center py-1">    <div> * Keep Calm and Carry On *  </div> 
+      <img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812010911.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:120px; height:120px;"> <br> <div class="text-center py-1">    <div> * Keep Calm and Carry On *  </div> 
     </div>
   </div>
 
@@ -500,6 +500,10 @@
 
 <!-- Plugins -->
 
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 

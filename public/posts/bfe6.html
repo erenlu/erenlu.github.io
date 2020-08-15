@@ -244,7 +244,7 @@
 <pre><code class="hljs jboss-cli"><span class="hljs-string">./xxx</span></code></pre>
 
 <h1 id="pset1-Mario-（more-comfortable）"><a href="#pset1-Mario-（more-comfortable）" class="headerlink" title="pset1 Mario （more comfortable）"></a>pset1 Mario （more comfortable）</h1><h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>Toward the beginning of World 1-1 in Nintendo’s Super Mario Brothers, Mario must hop over adjacent pyramids of blocks, per the below.</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004352.png" alt="pyramids"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004352.png" srcset="/img/loading.gif" alt="pyramids"></p>
 <p>Let’s recreate those pyramids in C, albeit in text, using hashes (<code>#</code>) for bricks, a la the below. Each hash is a bit taller than it is wide, so the pyramids themselves are also be taller than they are wide.</p>
 <h2 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h2><p>The program we’ll write will be called <code>mario</code>. And let’s allow the user to decide just how tall the pyramids should be by first prompting them for a positive integer between, say, 1 and 8, inclusive.</p>
 <pre><code class="hljs clean">$ ./mario
@@ -258,7 +258,7 @@ Height: <span class="hljs-number">8</span>
  #######  #######
 ########  ########</code></pre>
 
-<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004406.png" alt="Snipaste_2020-07-09_23-09-55"></p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004406.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-09_23-09-55"></p>
 <p>首先是对左边金字塔进行完成，因为右边只需要行数个 #，而左边要对空格和 # 进行处理。</p>
 <p>最后使用判断的方式进行 <strong>i+j&lt;h-1</strong> ，因为刚好在第四行的时候 “空格” 和 “#” 的数量是一个分水岭。其中i是行数，j 是列数，他们都是从 0 开始计数。</p>
 <h2 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h2><pre><code class="hljs dart"><span class="hljs-comment"><span class="markdown">/<span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span>*</span></span>
@@ -318,7 +318,7 @@ Height: <span class="hljs-number">8</span>
 <span class="hljs-attr">Change owed:</span> <span class="hljs-number">0.41</span>
 <span class="hljs-number">4</span></code></pre>
 
-<h2 id="Method-1"><a href="#Method-1" class="headerlink" title="Method"></a>Method</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004424.png" alt="Snipaste_2020-07-10_11-34-13"></p>
+<h2 id="Method-1"><a href="#Method-1" class="headerlink" title="Method"></a>Method</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004424.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_11-34-13"></p>
 <p>需将 9 dollar 先转换为 900 cent。</p>
 <h2 id="The-Code-1"><a href="#The-Code-1" class="headerlink" title="The Code"></a>The Code</h2><pre><code class="hljs autoit"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cs50.h&gt;</span></span>
@@ -368,15 +368,15 @@ Height: <span class="hljs-number">8</span>
 <p>13 + 4 + 0 + 0 + 0 + 0 + 0 + 3 + 0 = 20</p>
 </li>
 <li><p>Yup, the last digit in that sum (20) is a 0, so David’s card is legit!</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008120027.png" alt="Snipaste_2020-07-10_12-27-47"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008120027.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-27-47"></p>
 </li>
 </ol>
 <h2 id="Target-2"><a href="#Target-2" class="headerlink" title="Target"></a>Target</h2><p>write a program that prompts the user for a credit card number and then reports (via <code>printf</code>) whether it is a valid American Express, MasterCard, or Visa card number, per the definitions of each’s format herein. So that we can automate some tests of your code, we ask that your program’s last line of output be <code>AMEX\n</code> or <code>MASTERCARD\n</code> or <code>VISA\n</code> or <code>INVALID\n</code>, nothing more, nothing less. </p>
-<h2 id="Method-2"><a href="#Method-2" class="headerlink" title="Method"></a>Method</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004740.png" alt="Snipaste_2020-07-10_12-26-16"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004804.png" alt="Snipaste_2020-07-10_12-27-07"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004836.png" alt="Snipaste_2020-07-10_12-49-45"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812005831.png" alt="Snipaste_2020-07-10_12-50-27"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004933.png" alt="Snipaste_2020-07-10_12-52-25"></p>
+<h2 id="Method-2"><a href="#Method-2" class="headerlink" title="Method"></a>Method</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004740.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-26-16"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004804.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-27-07"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004836.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-49-45"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812005831.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-50-27"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004933.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-52-25"></p>
 <p>重点在于对奇数和偶数部分的求和。奇数部分 for 循环使用 <code>i / 100</code> 来获得下一次奇数位(间隔两位)，使用 <code>oddsum % 10</code> 获得当前奇数位的数值。</p>
 <p>偶数部分 for 循环，先 <code>x2 = i / 10</code> 让卡号从偶数位开始。由于偶数位需要 ×2 再相加，并且如果乘机为十位还需要拆开分别数字相加（e.g. 2×6=12，相加时是 1+2。此时在 for 循环中嵌套if判断，若乘机两位数则进行分解相加，否则直接相加，再同理求得偶数位和。</p>
 <h2 id="The-Code-2"><a href="#The-Code-2" class="headerlink" title="The Code"></a>The Code</h2><pre><code class="hljs dart"><span class="hljs-comment"><span class="markdown">/<span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span>*</span></span>
@@ -553,7 +553,7 @@ Height: <span class="hljs-number">8</span>
 
   <div class="col-lg-7 mx-auto nopadding-md">
     <div class="container custom post-content mx-auto">
-      <img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812010911.png" class="rounded mx-auto d-block mt-5" style="width:120px; height:120px;"> <br> <div class="text-center py-1">    <div> * Keep Calm and Carry On *  </div> 
+      <img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812010911.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:120px; height:120px;"> <br> <div class="text-center py-1">    <div> * Keep Calm and Carry On *  </div> 
     </div>
   </div>
 
@@ -657,6 +657,10 @@ Height: <span class="hljs-number">8</span>
 
 <!-- Plugins -->
 
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 

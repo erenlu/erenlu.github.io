@@ -304,7 +304,7 @@
 <ul>
 <li>数组是连续储存的。在内存中，我们的数组现在是这样存储的，其中每个值占用的不是一个而是四个字节：</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004016.png" alt="memory_with_array"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004016.png" srcset="/img/loading.gif" alt="memory_with_array"></p>
 <ul>
 <li><p>你必须把数组长度告诉所有使用他的人，因为它没有 <code>length</code> 的属性。e.g. <code>int socres[N];</code></p>
 </li>
@@ -317,7 +317,7 @@
 <li><p>而事实证明，一个字符串的结尾有一个特殊的字符，’/0’，或者说是一个所有位都设置为0的字节，这个字符被称为空字符，或者说空终止字符。所以我们实际上需要四个字节来存储我们的字符串 “HI！”：</p>
 </li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004033.png" alt="memory_with_string"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004033.png" srcset="/img/loading.gif" alt="memory_with_string"></p>
 <ul>
 <li>现在让我们看看数组中的四个字符串可能是什么样子：</li>
 </ul>
@@ -335,7 +335,7 @@ printf("%c%c%c%c\n", names[<span class="hljs-string">0</span>][<span class="hljs
 <li>虽然我们知道第一个名字有四个字符，但 <code>printf</code> 可能使用了一个循环来查看字符串中的每一个字符，每次打印一个，直到到达标志着字符串结束的空字符。而事实上，我们可以将 <code>names[0][4]</code> 作为 <code>int</code> 与 <code>%i</code> 一起打印，看到的是一个 <code>0</code> 被打印出来。</li>
 <li>我们可以在记忆中直观地看到每个字符都有自己的标签:</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004046.png" alt="memory_with_string_array"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004046.png" srcset="/img/loading.gif" alt="memory_with_string_array"></p>
 <ul>
 <li><p>比较经典的小写字母变成大写字母的例子：</p>
 <pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cs50.h&gt;</span></span>
@@ -368,7 +368,7 @@ printf("%c%c%c%c\n", names[<span class="hljs-string">0</span>][<span class="hljs
 </li>
 </ul>
 <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p>时时刻刻我们都应该问算法是否高效。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004059.png" alt="Snipaste_2020-07-13_16-50-47"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004059.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-13_16-50-47"></p>
 <ul>
 <li><h2 id="冒泡排序（Bubble-sort）"><a href="#冒泡排序（Bubble-sort）" class="headerlink" title="冒泡排序（Bubble sort）"></a>冒泡排序（Bubble sort）</h2><ul>
 <li><p>是一种比较排序法。两两对比，将更小的交换到左边。每次解决一个小问题，但需要反反复复地去做。</p>
@@ -435,11 +435,11 @@ printf("%c%c%c%c\n", names[<span class="hljs-string">0</span>][<span class="hljs
 <li><h2 id="算法的时间复杂度"><a href="#算法的时间复杂度" class="headerlink" title="算法的时间复杂度"></a>算法的时间复杂度</h2><ul>
 <li><p>又最高次幂决定。</p>
 </li>
-<li><p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004124.png" alt="Snipaste_2020-07-14_18-50-49"></p>
+<li><p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004124.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-14_18-50-49"></p>
 <p>时间复杂度由最差 → 最优</p>
 </li>
 <li><p>由以下这张 gif 可以看出三种排序法明显的差别，以时间复杂度来说，Merge 优于 Bubble 优于 Selection：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004137.gif" alt="WPxq5w6"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004137.gif" srcset="/img/loading.gif" alt="WPxq5w6"></p>
 </li>
 <li><p>同时运行的具有大量输入的排序算法的 <a href="https://www.youtube.com/watch?v=ZZuD6iUe3Pc" target="_blank" rel="noopener">最终可视化</a> 视频。</p>
 </li>
@@ -562,7 +562,7 @@ printf("%c%c%c%c\n", names[<span class="hljs-string">0</span>][<span class="hljs
 
   <div class="col-lg-7 mx-auto nopadding-md">
     <div class="container custom post-content mx-auto">
-      <img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812010911.png" class="rounded mx-auto d-block mt-5" style="width:120px; height:120px;"> <br> <div class="text-center py-1">    <div> * Keep Calm and Carry On *  </div> 
+      <img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812010911.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:120px; height:120px;"> <br> <div class="text-center py-1">    <div> * Keep Calm and Carry On *  </div> 
     </div>
   </div>
 
@@ -666,6 +666,10 @@ printf("%c%c%c%c\n", names[<span class="hljs-string">0</span>][<span class="hljs
 
 <!-- Plugins -->
 
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 
