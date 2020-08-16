@@ -5,7 +5,7 @@ banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200813012440.jpg
 tags:
   - Hexo
   - 优化
-excerpt: 从 Vercel 托管到 jsDelivr CDN 加速，以及其他优化推荐...这里是加速 Hexo 博客站点不完全指南。
+excerpt: 从 Vercel 托管到 jsDelivr CDN 加速，以及添加 Valine 评论系统...这里是加速 Hexo 博客站点不完全指南。
 abbrlink: db37
 date: 2020-08-12 01:48:09
 ---
@@ -106,7 +106,7 @@ npm remove  hexo-asset-image
 
 在使用图床之后，我们所用的的图片就可以不放在本地。那么图片在每次编译部署也就不用上传到网上，这缩短了编译时间。
 
-# Valine 评论系统
+# Valine 评论系统 （邮件提醒）
 
 {% note success %}
 

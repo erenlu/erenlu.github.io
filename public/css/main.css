@@ -1,7 +1,7 @@
 html,
 body {
-  font-size: 16px;
-  font-family: Georgia, serif;
+  font-size: 18px;
+  font-family: Georgia, sans-serif;
 }
 html,
 body,
@@ -648,8 +648,8 @@ sup > a::before,
 .markdown-body {
   font-size: 1rem;
   margin-bottom: 2rem;
-  font-family: Georgia, serif;
-  color: #000000;
+  font-family: Georgia, sans-serif;
+  color: #2c3e50;
 }
 .markdown-body h1,
 .markdown-body h2,
