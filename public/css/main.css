@@ -1,6 +1,6 @@
 html,
 body {
-  font-size: 18px;
+  font-size: 16px;
   font-family: Georgia, sans-serif;
 }
 html,
@@ -682,7 +682,7 @@ sup > a::before,
   overflow: visible;
 }
 .markdown-body pre code {
-  font-size: 100%;
+  font-size: 95%;
   display: block;
   overflow-x: auto;
   padding: 0.5rem 0;
