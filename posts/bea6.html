@@ -170,7 +170,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      38
+      39
        min read
     </span>
   
@@ -395,6 +395,7 @@ Grade <span class="hljs-number">3</span></code></pre>
     <span class="hljs-keyword">if</span>(argc != <span class="hljs-number">2</span>)
     &#123;
         printf(<span class="hljs-string">"Usage: ./caesar key\n"</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>；
     &#125;
     
     <span class="hljs-built_in">int</span> k = atoi(argv[<span class="hljs-number">1</span>]);
@@ -402,6 +403,7 @@ Grade <span class="hljs-number">3</span></code></pre>
     <span class="hljs-keyword">if</span>(k &lt; <span class="hljs-number">0</span>)
     &#123;
         printf(<span class="hljs-string">"Usage: ./caesar key\n"</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
     &#125;
     <span class="hljs-keyword">else</span> 
     &#123;
@@ -453,7 +455,7 @@ Grade <span class="hljs-number">3</span></code></pre>
 <li>如果键无效（例如，不包含26个字符，包含不是字母字符的任何字符或不完全包含每个字母一次），则程序应打印您选择的错误消息（带有 <code>printf</code>）并从 <code>main</code> 值返回的<code>1</code>马上。</li>
 <li>您的程序必须输出 <code>plaintext:</code>（没有换行符），然后提示用户输入 <code>string</code> 纯文本（使用 <code>get_string</code>）。</li>
 <li>您的程序必须输出 <code>ciphertext:</code>（没有换行符），后跟明文的相应密文，并用明文中的每个字母字符替换密文中的相应字符；非字母字符应原样输出。</li>
-<li>您<strong>的程序必须保留大小写：大写字母必须保持为大写字母；小写字母必须保留为小写字母</strong>。</li>
+<li><strong>您的程序必须保留大小写：大写字母必须保持为大写字母；小写字母必须保留为小写字母。</strong></li>
 <li>输出密文后，应打印换行符。然后，您的程序应通过 <code>0</code> 从返回，退出 <code>main</code> 。</li>
 </ul>
 <h2 id="Method-2"><a href="#Method-2" class="headerlink" title="Method"></a>Method</h2><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
@@ -475,7 +477,7 @@ Grade <span class="hljs-number">3</span></code></pre>
                     
                       <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
                     
-                      <a class="hover-with-bg" href="/tags/C/">C</a>
+                      <a class="hover-with-bg" href="/tags/C%E8%AF%AD%E8%A8%80/">C语言</a>
                     
                   </div>
                 
