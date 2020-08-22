@@ -27,7 +27,7 @@ Text: Congratulations! Today is your day. You're off to Great Places! You're off
 Grade 3
 ```
 
-根据 [Scholastic的](https://www.scholastic.com/teachers/teaching-tools/collections/guided-reading-book-lists-for-every-level.html) 说法，[艾伯特·](https://www.scholastic.com/teachers/teaching-tools/collections/guided-reading-book-lists-for-every-level.html)怀特（EB White）的“夏洛特之网”介于二年级和四年级之间，而洛依·劳瑞（Lois Lowry）的“赐予者”介于八年级和十二年级之间。但是，一本书达到“四年级阅读水平”是什么意思？
+根据 [Scholastic ](https://www.scholastic.com/teachers/teaching-tools/collections/guided-reading-book-lists-for-every-level.html)的说法，[艾伯特·怀特](https://www.scholastic.com/teachers/teaching-tools/collections/guided-reading-book-lists-for-every-level.html)（EB White）的“夏洛特之网”介于二年级和四年级之间，而洛依·劳瑞（Lois Lowry）的“赐予者”介于八年级和十二年级之间。但是，一本书达到“四年级阅读水平”是什么意思？
 
 好吧，在许多情况下，人类专家可能会读一本书，并决定他们认为该书最适合的等级。但是您也可以想象有一种算法试图弄清楚什么是文本阅读水平。
 
