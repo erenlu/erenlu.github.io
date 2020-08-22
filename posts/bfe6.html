@@ -160,7 +160,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k words
+      1.7k words
     </span>
   
 
@@ -170,7 +170,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      24
+      25
        min read
     </span>
   
@@ -210,31 +210,41 @@
             
               <p class="note note-info">
                 
-                  Updated：August 13, 2020 pm
+                  Updated：August 22, 2020 pm
                 
               </p>
             
             <article class="markdown-body">
-              <h1 id="CS50-IDE"><a href="#CS50-IDE" class="headerlink" title="CS50 IDE"></a>CS50 IDE</h1><p>CS50 的课后作业将使用 CS50 IDE 进行完成和提交。</p>
+              <div class="note note-success">
+            <p>本文仅记录笔者在 CS50 Problem Set 1 (Fall 2020) 中的解题思路和过程。如有错误或疏漏欢迎留言指正！</p>
+          </div>
+
+<h1 id="CS50-IDE"><a href="#CS50-IDE" class="headerlink" title="CS50 IDE"></a>CS50 IDE</h1><p>CS50 的课后作业将使用 CS50 IDE 进行完成和提交。</p>
+<p>CS50 IDE 常用命令：</p>
 <ul>
-<li>clang is a kind of complier, convert source code to machine code.</li>
-</ul>
+<li><p>创建新文件夹。</p>
+<pre><code class="hljs arcade">mkdir ~<span class="hljs-regexp">/pset1/</span></code></pre>
+
+<p>eg: 在您的主目录中创建一个目录（即文件夹 pset1）。 <code>~</code> 表示您的home目录，<code>~/pset1</code> 表示一个名为<code>pset1</code> 的目录。</p>
+</li>
+<li><p>将自己移入（即打开）该目录。</p>
+<pre><code class="hljs jboss-cli"><span class="hljs-keyword">cd</span> ~<span class="hljs-string">/pset1/</span></code></pre>
+</li>
+<li><p>clang 是一种编译程序，将源代码转换为机器代码。</p>
 <pre><code class="hljs css"><span class="hljs-selector-tag">clang</span> <span class="hljs-selector-tag">xxx</span><span class="hljs-selector-class">.c</span></code></pre>
-
-<ul>
-<li>complie your program.</li>
-</ul>
+</li>
+<li><p>编译代码。</p>
 <pre><code class="hljs ebnf"><span class="hljs-attribute">make xxx</span></code></pre>
-
-<ul>
-<li>run your program.</li>
-</ul>
+</li>
+<li><p>运行代码。</p>
 <pre><code class="hljs jboss-cli"><span class="hljs-string">./xxx</span></code></pre>
 
-<h1 id="pset1-Mario-（more-comfortable）"><a href="#pset1-Mario-（more-comfortable）" class="headerlink" title="pset1 Mario （more comfortable）"></a>pset1 Mario （more comfortable）</h1><h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>Toward the beginning of World 1-1 in Nintendo’s Super Mario Brothers, Mario must hop over adjacent pyramids of blocks, per the below.</p>
+</li>
+</ul>
+<h1 id="Mario-More"><a href="#Mario-More" class="headerlink" title="Mario More"></a>Mario More</h1><p>Toward the beginning of World 1-1 in Nintendo’s Super Mario Brothers, Mario must hop over adjacent pyramids of blocks, per the below.</p>
 <p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004352.png" srcset="/img/loading.gif" alt="pyramids"></p>
 <p>Let’s recreate those pyramids in C, albeit in text, using hashes (<code>#</code>) for bricks, a la the below. Each hash is a bit taller than it is wide, so the pyramids themselves are also be taller than they are wide.</p>
-<h2 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h2><p>The program we’ll write will be called <code>mario</code>. And let’s allow the user to decide just how tall the pyramids should be by first prompting them for a positive integer between, say, 1 and 8, inclusive.</p>
+<h2 id="Puprose"><a href="#Puprose" class="headerlink" title="Puprose"></a>Puprose</h2><p>The program we’ll write will be called <code>mario</code>. And let’s allow the user to decide just how tall the pyramids should be by first prompting them for a positive integer between, say, 1 and 8, inclusive.</p>
 <pre><code class="hljs clean">$ ./mario
 Height: <span class="hljs-number">8</span>
        #  #
@@ -297,8 +307,8 @@ Height: <span class="hljs-number">8</span>
     &#125;
 &#125;</code></pre>
 
-<h1 id="pset1-Crash"><a href="#pset1-Crash" class="headerlink" title="pset1 Crash"></a>pset1 Crash</h1><h2 id="Background-1"><a href="#Background-1" class="headerlink" title="Background"></a>Background</h2><p>假设你是一位收营员，你手中只有 25 cent, 10 cent, 5 cent, 1 cent面值的纸币供你进行找零。 在你找零时要依据优先使用能用的最面值进行找零，这样才能使总共找零纸币数量最少，即全局最优解。</p>
-<h2 id="Target-1"><a href="#Target-1" class="headerlink" title="Target"></a>Target</h2><p>请设计一个程序，已知应找顾客多少钱，在仅使用以上 4 种面值的纸币的情况下，求出找零多少张纸币的数量。输入为负数或字符时提示再次输入。</p>
+<h1 id="Crash"><a href="#Crash" class="headerlink" title="Crash"></a>Crash</h1><p>假设你是一位收营员，你手中只有 25 cent, 10 cent, 5 cent, 1 cent面值的纸币供你进行找零。 在你找零时要依据优先使用能用的最面值进行找零，这样才能使总共找零纸币数量最少，即全局最优解。</p>
+<h2 id="Puprose-1"><a href="#Puprose-1" class="headerlink" title="Puprose"></a>Puprose</h2><p>请设计一个程序，已知应找顾客多少钱，在仅使用以上 4 种面值的纸币的情况下，求出找零多少张纸币的数量。输入为负数或字符时提示再次输入。</p>
 <p>e.g.</p>
 <pre><code class="hljs yaml"><span class="hljs-string">$</span> <span class="hljs-string">./cash</span>
 <span class="hljs-attr">Change owed:</span> <span class="hljs-number">-0.41</span>
@@ -335,7 +345,7 @@ Height: <span class="hljs-number">8</span>
     printf(<span class="hljs-string">"%i\n"</span>,n)<span class="hljs-comment">;</span>
 &#125;</code></pre>
 
-<h1 id="pset1-Credit"><a href="#pset1-Credit" class="headerlink" title="pset1 Credit"></a>pset1 Credit</h1><h2 id="Background-2"><a href="#Background-2" class="headerlink" title="Background"></a>Background</h2><p>美国信用卡的卡号有相应的数学关系，可以通过其关系判断是否为合法的信用卡卡号。<a href="https://cs50.harvard.edu/x/2020/psets/1/credit/#luhns-algorithm" target="_blank" rel="noopener">Luhn’s Algorithm</a> 算法就是一种判断信用卡卡号是否合法的一种算法。其定义为：</p>
+<h1 id="Credit"><a href="#Credit" class="headerlink" title="Credit"></a>Credit</h1><p>美国信用卡的卡号有相应的数学关系，可以通过其关系判断是否为合法的信用卡卡号。<a href="https://cs50.harvard.edu/x/2020/psets/1/credit/#luhns-algorithm" target="_blank" rel="noopener">Luhn’s Algorithm</a> 算法就是一种判断信用卡卡号是否合法的一种算法。其定义为：</p>
 <ol>
 <li>从数字的第二位到最后一位开始，每隔一位数字乘以 2，然后将这些乘积的数字相加。</li>
 <li>将总和加到没有乘以 2 的数字的总和上。</li>
@@ -359,7 +369,7 @@ Height: <span class="hljs-number">8</span>
 <p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008120027.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-27-47"></p>
 </li>
 </ol>
-<h2 id="Target-2"><a href="#Target-2" class="headerlink" title="Target"></a>Target</h2><p>write a program that prompts the user for a credit card number and then reports (via <code>printf</code>) whether it is a valid American Express, MasterCard, or Visa card number, per the definitions of each’s format herein. So that we can automate some tests of your code, we ask that your program’s last line of output be <code>AMEX\n</code> or <code>MASTERCARD\n</code> or <code>VISA\n</code> or <code>INVALID\n</code>, nothing more, nothing less. </p>
+<h2 id="Puprose-2"><a href="#Puprose-2" class="headerlink" title="Puprose"></a>Puprose</h2><p>write a program that prompts the user for a credit card number and then reports (via <code>printf</code>) whether it is a valid American Express, MasterCard, or Visa card number, per the definitions of each’s format herein. So that we can automate some tests of your code, we ask that your program’s last line of output be <code>AMEX\n</code> or <code>MASTERCARD\n</code> or <code>VISA\n</code> or <code>INVALID\n</code>, nothing more, nothing less. </p>
 <h2 id="Method-2"><a href="#Method-2" class="headerlink" title="Method"></a>Method</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004740.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-26-16"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004804.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-27-07"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004836.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-49-45"></p>
@@ -428,19 +438,12 @@ Height: <span class="hljs-number">8</span>
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
 
-<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>把pset1做完整体下来陆陆续续花了小两天的时间。看似题数不多，可每一题都很扎实。最后一题在做的时候硬是想不出来，最后还是去网上搜寻了思路。虽然才第一次作业，但作为一名c很垃圾并且很久没用 C 的我，也不得不开始感叹 CS50 的课程设计真的名不虚传。</p>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>把 pset1做完整体下来陆陆续续花了小两天的时间。看似题数不多，可每一题都很扎实。最后一题在做的时候硬是想不出来，最后还是去网上搜寻了思路。虽然才第一次作业，但作为一名 C 很垃圾并且很久没用 C 的我，也不得不开始感叹 CS50 的课程设计真的名不虚传。</p>
 
             </article>
             <hr>
             <div>
               <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-                    
-                  </div>
                 
                 
                   <div class="post-meta">
@@ -449,6 +452,8 @@ Height: <span class="hljs-number">8</span>
                       <a class="hover-with-bg" href="/tags/CS50/">CS50</a>
                     
                       <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                      <a class="hover-with-bg" href="/tags/C/">C</a>
                     
                   </div>
                 
