@@ -5,37 +5,57 @@ banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/CS50pSet_homework.jpg
 tags:
   - CS50
   - 学习笔记
-categories: 技术
+  - C语言 
 abbrlink: bfe6
 date: 2020-07-10 00:23:29
-excerpt: CS50 第一周课后作业。
+excerpt: CS50 Problem Set 1 (Fall 2020). Mario More, Cash, Credit Solutions
 ---
+
+{% note success %}
+
+本文仅记录笔者在 CS50 Problem Set 1 (Fall 2020) 中的解题思路和过程。如有错误或疏漏欢迎留言指正！
+
+{% endnote %}
 
 # CS50 IDE
 
 CS50 的课后作业将使用 CS50 IDE 进行完成和提交。
 
-- clang is a kind of complier, convert source code to machine code.
+CS50 IDE 常用命令：
 
-```
-clang xxx.c
-```
+- 创建新文件夹。
 
--  complie your program.
+  ```
+  mkdir ~/pset1/
+  ```
 
-```
-make xxx
-```
+  eg: 在您的主目录中创建一个目录（即文件夹 pset1）。 `~` 表示您的home目录，`~/pset1` 表示一个名为`pset1` 的目录。
 
-- run your program.
+- 将自己移入（即打开）该目录。
 
-```
-./xxx
-```
+  ```
+  cd ~/pset1/
+  ```
 
-# pset1 Mario （more comfortable）
+- clang 是一种编译程序，将源代码转换为机器代码。（clang 的操作可由 make xxx 代替）
 
-## Background
+  ```
+  clang xxx.c
+  ```
+
+- 编译代码。
+
+  ```
+  make xxx
+  ```
+
+- 运行代码。
+
+  ```
+  ./xxx
+  ```
+
+# Mario More
 
 Toward the beginning of World 1-1 in Nintendo’s Super Mario Brothers, Mario must hop over adjacent pyramids of blocks, per the below.
 
@@ -43,7 +63,7 @@ Toward the beginning of World 1-1 in Nintendo’s Super Mario Brothers, Mario mu
 
 Let’s recreate those pyramids in C, albeit in text, using hashes (`#`) for bricks, a la the below. Each hash is a bit taller than it is wide, so the pyramids themselves are also be taller than they are wide.
 
-## Target
+## Puprose
 
 The program we’ll write will be called `mario`. And let’s allow the user to decide just how tall the pyramids should be by first prompting them for a positive integer between, say, 1 and 8, inclusive.
 
@@ -120,13 +140,11 @@ int main(void)
 }
 ```
 
-# pset1 Crash
-
-## Background
+# Crash
 
 假设你是一位收营员，你手中只有 25 cent, 10 cent, 5 cent, 1 cent面值的纸币供你进行找零。 在你找零时要依据优先使用能用的最面值进行找零，这样才能使总共找零纸币数量最少，即全局最优解。
 
-## Target
+## Puprose
 
 请设计一个程序，已知应找顾客多少钱，在仅使用以上 4 种面值的纸币的情况下，求出找零多少张纸币的数量。输入为负数或字符时提示再次输入。
 
@@ -177,9 +195,7 @@ int main(void)
 }
 ```
 
-# pset1 Credit
-
-## Background
+# Credit
 
 美国信用卡的卡号有相应的数学关系，可以通过其关系判断是否为合法的信用卡卡号。[Luhn’s Algorithm](https://cs50.harvard.edu/x/2020/psets/1/credit/#luhns-algorithm) 算法就是一种判断信用卡卡号是否合法的一种算法。其定义为：
 
@@ -213,7 +229,7 @@ e.g. That’s kind of confusing, so let’s try an example with David’s Visa: 
 
    ![Snipaste_2020-07-10_12-27-47](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008120027.png)
 
-## Target
+## Puprose
 
 write a program that prompts the user for a credit card number and then reports (via `printf`) whether it is a valid American Express, MasterCard, or Visa card number, per the definitions of each’s format herein. So that we can automate some tests of your code, we ask that your program’s last line of output be `AMEX\n` or `MASTERCARD\n` or `VISA\n` or `INVALID\n`, nothing more, nothing less. 
 
@@ -298,7 +314,7 @@ int main(void)
 }
 ```
 
-# Conclusion
+# Summary
 
-把pset1做完整体下来陆陆续续花了小两天的时间。看似题数不多，可每一题都很扎实。最后一题在做的时候硬是想不出来，最后还是去网上搜寻了思路。虽然才第一次作业，但作为一名c很垃圾并且很久没用 C 的我，也不得不开始感叹 CS50 的课程设计真的名不虚传。
+把 pset1做完整体下来陆陆续续花了小两天的时间。看似题数不多，可每一题都很扎实。最后一题在做的时候硬是想不出来，最后还是去网上搜寻了思路。虽然才第一次作业，但作为一名 C 很垃圾并且很久没用 C 的我，也不得不开始感叹 CS50 的课程设计真的名不虚传。
 

@@ -5,7 +5,7 @@ banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/Code.jpg
 tags:
   - 学习笔记
   - CS50
-categories: 技术
+  - C语言
 abbrlink: 1cf2
 date: 2020-07-09 22:53:24
 excerpt: CS50 第一周学习笔记。
