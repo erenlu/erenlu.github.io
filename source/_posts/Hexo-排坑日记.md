@@ -1,7 +1,7 @@
 ---
 title: Hexo 排坑日记
-index_img: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200823221544.webp'
-banner_img: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200823221544.webp'
+index_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008232543535740.jpg
+banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008232543535740.jpg
 tags:
   - Hexo
 excerpt: 在此记录我在搭建 Hexo 博客中所遇到的坑以及解决办法（不定期更新）。
@@ -42,5 +42,9 @@ categories: 折腾派
   
   {% endnote %}
 
+# 其他问题
 
+- webp 格式图片无法在 Safari 浏览器显示
+
+  原因：webp 是谷歌研发的。为了全平台都能正常显示，并且不想额外折腾 CCS 代码，只好乖乖在博客中不适用 webp 格式的压缩图片。
 
