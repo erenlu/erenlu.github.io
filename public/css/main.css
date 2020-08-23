@@ -22,7 +22,7 @@ body a {
   transition-timing-function: ease-in-out;
 }
 body a:hover {
-  color: #4FB0C6;
+  color: #4ea1d3;
   text-decoration: none;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
@@ -595,7 +595,7 @@ sup > a::before,
   }
 }
 .navbar .dropdown-item:hover {
-  color: #4FB0C6;
+  color: #4ea1d3;
 }
 @supports (-webkit-backdrop-filter: blur(3px)) or (backdrop-filter: blur(3px)) {
   .navbar .dropdown-collapse {
@@ -1104,7 +1104,7 @@ h6::before {
 }
 .tocbot-active-link {
   font-weight: bold;
-  color: #4FB0C6;
+  color: #4ea1d3;
 }
 .tocbot-is-collapsed {
   max-height: 0;
@@ -1452,7 +1452,7 @@ h6::before {
   padding: 0.5rem;
 }
 .tagcloud a:hover {
-  color: #4FB0C6 !important;
+  color: #4ea1d3 !important;
 }
 .links .card {
   box-shadow: none;

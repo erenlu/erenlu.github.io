@@ -1,7 +1,7 @@
 ---
 title: Hexo's Fluid 主题的版权声明优化
-index_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200815138.jpg
-banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200815138.jpg
+index_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200824211.webp
+banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200824211.webp
 tags:
   - Hexo
   - Fluid

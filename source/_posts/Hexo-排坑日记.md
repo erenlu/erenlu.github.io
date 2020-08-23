@@ -1,7 +1,7 @@
 ---
 title: Hexo 排坑日记
-index_img: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200813142124.jpg'
-banner_img: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200813142124.jpg'
+index_img: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200823221544.webp'
+banner_img: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200823221544.webp'
 tags:
   - Hexo
 excerpt: 在此记录我在搭建 Hexo 博客中所遇到的坑以及解决办法（不定期更新）。

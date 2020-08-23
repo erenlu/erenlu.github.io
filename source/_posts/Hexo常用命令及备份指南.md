@@ -1,7 +1,7 @@
 ---
 title: Hexo 常用命令及备份指南
-index_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200813013345.jpg
-banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200813013345.jpg
+index_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200823224426.webp
+banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200823224426.webp
 tags:
   - Hexo
 excerpt: 在此记录常用 Hexo 命令及备份方式（不定期更新）。
