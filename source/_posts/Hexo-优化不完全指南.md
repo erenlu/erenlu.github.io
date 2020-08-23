@@ -8,6 +8,7 @@ tags:
 excerpt: 从 Vercel 托管到 jsDelivr CDN 加速，以及添加 Valine 评论系统...这里是加速 Hexo 博客站点不完全指南。
 abbrlink: db37
 date: 2020-08-12 01:48:09
+categories: 折腾派
 ---
 
 # 前言

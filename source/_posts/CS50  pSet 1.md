@@ -9,6 +9,7 @@ tags:
 abbrlink: bfe6
 date: 2020-07-10 00:23:29
 excerpt: CS50 Problem Set 1 (Fall 2020). Mario More, Cash, Credit Solutions
+categories: 学习派
 ---
 
 {% note success %}

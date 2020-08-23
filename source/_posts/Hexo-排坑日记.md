@@ -7,6 +7,7 @@ tags:
 excerpt: 在此记录我在搭建 Hexo 博客中所遇到的坑以及解决办法（不定期更新）。
 abbrlink: '7487'
 date: 2020-08-13 14:13:28
+categories: 折腾派
 ---
 
 {% note success %}

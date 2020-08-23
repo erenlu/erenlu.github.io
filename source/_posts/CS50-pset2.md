@@ -9,6 +9,7 @@ tags:
 excerpt: 'CS50 Problem Set 2 (Fall 2020). Readability, Caesar Solutions. (missing Substitution)'
 abbrlink: bea6
 date: 2020-08-22 11:04:25
+categories: 学习派
 ---
 
 {% note success %}

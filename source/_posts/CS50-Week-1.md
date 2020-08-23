@@ -9,6 +9,7 @@ tags:
 abbrlink: 1cf2
 date: 2020-07-09 22:53:24
 excerpt: CS50 第一周学习笔记。
+categories: 学习派
 ---
 
 > 提示：在此只是将零散的、个人化的知识点记录下来，完整笔记查看官方 [Notes](https://cs50.harvard.edu/x/2020/weeks/1/) 即可。 

@@ -7,6 +7,7 @@ tags:
 excerpt: 在此记录常用 Hexo 命令及备份方式（不定期更新）。
 abbrlink: 7da2
 date: 2020-08-08 22:06:41
+categories: 折腾派
 ---
 
 > 在此记录常用 Hexo 命令及备份方式（不定期更新）。

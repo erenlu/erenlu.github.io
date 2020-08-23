@@ -113,7 +113,7 @@ navbar:
   menu:  # 可自行增减，key 用来关联 languages/*.yml，如不存在关联则显示 key 本身的值；icon 是 css class，可以省略；增加 name 可以强制显示指定名称
  ## - { key: 'Home', link: '/', icon: 'iconfont icon-home-fill' }
     - { key: 'Archive', link: '/archives/', icon: 'iconfont icon-archive-fill' }
- ##  - { key: 'Category', link: '/categories/', icon: 'iconfont icon-category-fill' }
+    - { key: 'Category', link: '/categories/', icon: 'iconfont icon-category-fill' }
     - { key: 'Tags', link: '/tags/', icon: 'iconfont icon-tags-fill' }
     - { key: 'About', link: '/about/', icon: 'iconfont icon-user-fill' }
     - { key: 'Friends', link: '/links/', icon: 'iconfont icon-link-fill' }  # 友链页，把前面#去掉即可展示
@@ -332,13 +332,13 @@ archive:
 # 分类归档页
 # Categories Page
 #---------------------------
-#category:
- # banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_发现者号.jpg
-#  banner_img_height: 60  # available: 0 - 100
-#  banner_mask_alpha: 0.3  # available: 0 - 1.0
-  #subtitle:  Ashes to ashes, and dust to dust # 打字机内容
- # post_limit: 10  # 单个分类中折叠展示文章数的最大值，超过限制会显示 More
-#  order_by: '-length'  # 排序字段，前面带减号是倒序，不带减号是正序，可选项：name | length
+category:
+  banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_发现者号（compressed）.jpg
+  banner_img_height: 60  # available: 0 - 100
+  banner_mask_alpha: 0.3  # available: 0 - 1.0
+  subtitle:  Ashes to ashes, and dust to dust # 打字机内容
+  post_limit: 10  # 单个分类中折叠展示文章数的最大值，超过限制会显示 More
+  order_by: '-length'  # 排序字段，前面带减号是倒序，不带减号是正序，可选项：name | length
 
 #---------------------------
 # 标签归档页

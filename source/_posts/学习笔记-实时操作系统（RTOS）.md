@@ -5,10 +5,10 @@ banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008151.jpg
 tags:
   - 学习笔记
   - 嵌入式
-categories: 技术
+categories: 学习派
 abbrlink: 2cde
 date: 2020-07-07 13:46:15
-excerpt: 有关RTOS的定义和特点介绍。
+excerpt: 有关 RTOS 的定义和特点介绍。
 ---
 
 > 最近要学习 TI 家的 CC2640R2F 板子，许多嵌入式知识都要恶补一通了。在此记录，以作梳理也便日后查阅。
