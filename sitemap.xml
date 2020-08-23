@@ -151,14 +151,7 @@
   </url>
   
   <url>
-    <loc>https://erenspace.cool/tags/%E6%96%87%E5%AD%A6/</loc>
-    <lastmod>2020-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://erenspace.cool/tags/%E6%97%A5%E8%AE%B0/</loc>
+    <loc>https://erenspace.cool/tags/%E7%94%9F%E6%B4%BB/</loc>
     <lastmod>2020-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -179,7 +172,14 @@
   </url>
   
   <url>
-    <loc>https://erenspace.cool/tags/%E7%94%9F%E6%B4%BB/</loc>
+    <loc>https://erenspace.cool/tags/%E6%96%87%E5%AD%A6/</loc>
+    <lastmod>2020-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://erenspace.cool/tags/%E6%97%A5%E8%AE%B0/</loc>
     <lastmod>2020-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -202,14 +202,14 @@
   </url>
   
   <url>
-    <loc>https://erenspace.cool/categories/%E4%BA%BA%E6%96%87%E6%B4%BE/</loc>
+    <loc>https://erenspace.cool/categories/%E7%94%9F%E6%B4%BB%E6%B4%BE/</loc>
     <lastmod>2020-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://erenspace.cool/categories/%E7%94%9F%E6%B4%BB%E6%B4%BE/</loc>
+    <loc>https://erenspace.cool/categories/%E4%BA%BA%E6%96%87%E6%B4%BE/</loc>
     <lastmod>2020-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
