@@ -375,7 +375,7 @@ about:  # 关于页需要手动创建，具体请见：https://hexo.fluid-dev.co
    ##- { class: 'iconfont icon-github-fill', link: 'https://github.com/erenlu', tip: 'GitHub' }  
     - { class: 'iconfont icon-instagram-fill', link: 'https://www.instagram.com/eeeren_lu/', tip: 'Instagram' }
     - { class: 'iconfont icon-mail', link: 'mailto: voctery@gmail.com', tip: 'E-mail' }  
-    - { class: 'iconfont icon-telegram-fill', link: 'https://t.me/N_seng', tip: 'Telegram' }
+    - { class: 'iconfont icon-douban-fill', link: 'https://www.douban.com/people/62349307/', tip: '豆瓣' }
    
    
 

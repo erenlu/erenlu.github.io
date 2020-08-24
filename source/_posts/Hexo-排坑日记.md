@@ -22,7 +22,7 @@ categories: 折腾派
 
 # YAML 语法错误
 
-- **`YAML Exception: bad indentation of a mapping entry at line xxx`  错误提示**
+- ### `YAML Exception: bad indentation of a mapping entry at line xxx`  错误提示
 
   根据 [Hexo 官方文档](https://hexo.io/zh-cn/docs/troubleshooting.html) 说明：
 
@@ -44,7 +44,9 @@ categories: 折腾派
 
 # 其他问题
 
-- webp 格式图片无法在 Safari 浏览器显示
+- ### webp 格式图片无法在 Safari 浏览器显示
 
-  原因：webp 是谷歌研发的。为了全平台都能正常显示，并且不想额外折腾 CCS 代码，只好乖乖在博客中不适用 webp 格式的压缩图片。
+  原因：webp 是谷歌研发的，属于商业纠葛。
+  
+  解决：为了全平台都能正常显示，并且不想额外折腾 CCS 代码，只好乖乖在博客中不使用 webp 格式的压缩图片。
 
