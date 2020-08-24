@@ -4,7 +4,7 @@ index_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008232543535740.jpg
 banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008232543535740.jpg
 tags:
   - Hexo
-excerpt: 在此记录我在搭建 Hexo 博客中所遇到的坑以及解决办法（不定期更新）。
+excerpt: 在此记录我在搭建 Hexo 博客中所遇到的坑以及解决办法。（不定期更新）
 abbrlink: '7487'
 date: 2020-08-13 14:13:28
 categories: 折腾派
@@ -12,7 +12,7 @@ categories: 折腾派
 
 {% note success %}
 
-在此记录我在搭建 Hexo 博客中所遇到的坑以及解决办法（不定期更新）。
+在此记录我在搭建 Hexo 博客中所遇到的坑以及解决办法。（不定期更新）
 
 {% endnote %}
 
@@ -22,7 +22,7 @@ categories: 折腾派
 
 # YAML 语法错误
 
-- ### `YAML Exception: bad indentation of a mapping entry at line xxx`  错误提示
+-  **`YAML Exception: bad indentation of a mapping entry at line xxx`  错误提示**
 
   根据 [Hexo 官方文档](https://hexo.io/zh-cn/docs/troubleshooting.html) 说明：
 
@@ -44,7 +44,7 @@ categories: 折腾派
 
 # 其他问题
 
-- ### webp 格式图片无法在 Safari 浏览器显示
+-  **webp 格式图片无法在 Safari 浏览器显示**
 
   原因：webp 是谷歌研发的，属于商业纠葛。
   

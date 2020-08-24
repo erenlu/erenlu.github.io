@@ -3,7 +3,7 @@ title: GitHub 中的知识型 Star 汇总
 categories: 学习派
 tags:
   - GitHub
-excerpt: 本文汇总了笔者在 GitHub 上 Star 的优质资源，内容包括但不限于写作、提问、技术等方面（不定期更新）。
+excerpt: 本文汇总了笔者在 GitHub 上 Star 的优质资源，内容包括但不限于写作、提问、技术等方面。（不定期更新）
 abbrlink: '6877'
 date: 2020-08-24 11:48:50
 index_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200824125322.jpg
@@ -14,7 +14,7 @@ banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200824125322.jpg
 
 [GitHub](https://github.com/) 作为全球最大的 ~~同性交友~~ 代码托管平台，在有众多开源代码库的同时，也有许多非常有用的学习资源。在此笔者将在使用 GitHub 过程中所收集到的优质资源汇总，以便日后查阅和分享。
 
-# 文案排版
+# 文章排版
 
 一篇优秀的文章不仅需要内容的优质，同时在排版上也需要美观（谁叫我们是视觉动物？）。
 
@@ -46,9 +46,9 @@ banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200824125322.jpg
 
 {% endnote %}
 
-# Phython
+# Python
 
-> *"Life is short, you need Python"*
+> "Life is short, you need Python"
 >
 > "人生苦短，我用 Python"
 
