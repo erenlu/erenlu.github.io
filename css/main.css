@@ -1,6 +1,6 @@
 html,
 body {
-  font-size: 18px;
+  font-size: 16px;
   font-family: Source Serif Pro, Noto Serif SC;
 }
 html,
@@ -682,7 +682,7 @@ sup > a::before,
   overflow: visible;
 }
 .markdown-body pre code {
-  font-size: 95%;
+  font-size: 100%;
   display: block;
   overflow-x: auto;
   padding: 0.5rem 0;
