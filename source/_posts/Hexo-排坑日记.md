@@ -1,10 +1,10 @@
 ---
-title: Hexo 排坑日记
+title: Hexo 排坑日记（持续更新）
 index_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008232543535740.jpg
 banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008232543535740.jpg
 tags:
   - Hexo
-excerpt: 在此记录我在搭建 Hexo 博客中所遇到的坑以及解决办法。（不定期更新）
+excerpt: 在此记录我在搭建 Hexo 博客中所遇到的坑以及解决办法。
 abbrlink: '7487'
 date: 2020-08-13 14:13:28
 categories: 折腾派
@@ -12,7 +12,7 @@ categories: 折腾派
 
 {% note success %}
 
-在此记录我在搭建 Hexo 博客中所遇到的坑以及解决办法。（不定期更新）
+在此记录我在搭建 Hexo 博客中所遇到的坑以及解决办法。
 
 {% endnote %}
 

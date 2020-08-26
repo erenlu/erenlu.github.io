@@ -1,9 +1,9 @@
 ---
-title: GitHub 中的知识型 Star 汇总
+title: GitHub 中的学习型项目（持续更新）
 categories: 学习派
 tags:
   - GitHub
-excerpt: 本文汇总了笔者在 GitHub 上 Star 的优质资源，内容包括但不限于写作、提问、技术等方面。（不定期更新）
+excerpt: 本文汇总了笔者在 GitHub 上 Star 的优质学习资源，内容包括但不限于写作、英语、技术等方面。
 abbrlink: '6877'
 date: 2020-08-24 11:48:50
 index_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200824125322.jpg
@@ -46,6 +46,26 @@ banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200824125322.jpg
 
 {% endnote %}
 
+# 英语学习
+
+好的，在我的收藏夹吃灰吧！
+
+{% note success %}
+
+- [English-level-up-tips-for-Chinese](https://github.com/byoungd/English-level-up-tips-for-Chinese)
+
+  可能是让你受益匪浅的英语进阶指南。
+
+  注：想要获得更好的阅读体验，请访问本指南对应的 [GitBook](https://byoungd.gitbook.io/english-level-up-tips/) 页面。
+
+- [jgsrty.github.docs](https://github.com/jgsrty/jgsrty.github.docs)
+
+  此项目旨在培养阅读习惯，提高英文读写能力。
+
+  注： [国内访问地址 - 速度更快](https://wr0926.ml/go.html?u=https://rtyxmd.gitee.io/)
+
+{% endnote %}
+
 # Python
 
 > "Life is short, you need Python"
@@ -56,6 +76,6 @@ banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200824125322.jpg
 
 - [Python24](https://github.com/HaoZhang95/Python24)
 
-  集合了某培训机构的 Pyhton 教学视频以及讲义和项目代码（同时包含一些深度学习的内容），如果自学的话算是比较系统的教学资源。
+  集合了某培训机构的 Python 教学视频以及讲义和项目代码（同时包含一些深度学习的内容），如果自学的话算是比较系统的教学资源。
 
 {% endnote %}

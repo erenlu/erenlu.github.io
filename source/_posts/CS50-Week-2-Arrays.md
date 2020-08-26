@@ -158,92 +158,92 @@ printf("%c%c%c%c\n", names[0][0], names[0][1], names[0][2], names[0][3]);
   
   - 要记得在顶部先引用 `#include <string.h>` 才能使用
 
-# 排序
+# 排序（Sort）
 
 时时刻刻我们都应该问算法是否高效。
 
 ![Snipaste_2020-07-13_16-50-47](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004059.png)
 
-* ##  冒泡排序（Bubble sort）
+##  冒泡排序（Bubble sort）
 
-  - 是一种比较排序法。两两对比，将更小的交换到左边。每次解决一个小问题，但需要反反复复地去做。
+- 一种比较排序法。两两对比，将更小的交换到左边。每次解决一个小问题，但需要反反复复地去做。
 
-  - 伪代码（pseudocode）：
+- 伪代码（pseudocode）：
 
-    ```
-    repeat until no swaps
-    	for i from n-2  //倒数第二个，避免倒数第一个右边没有可比的
-    		if i'th and i+1'th elements out of order  //判断是否排序混乱
-    			swap them
-    ```
+  ```
+  repeat until no swaps
+  	for i from n-2  //倒数第二个，避免倒数第一个右边没有可比的
+  		if i'th and i+1'th elements out of order  //判断是否排序混乱
+  			swap them
+  ```
 
-  * 假如有 8 个数字，由以下步骤进行排序：
-    - 第一次：比较 7 次，[0,1] [1,2] [2,3]….[6,7]
-    - 第二次：比较 6 次，，[0,1]….[6,7]，（最后一个已经排序好了)
-    - ….
-    - 第七次：比较1 次，[0,1] （后面六个都排序好了）
-  * 优点：最右边已经确定，每次比较都可以少一个。
+* 假如有 8 个数字，由以下步骤进行排序：
+  - 第一次：比较 7 次，[0,1] [1,2] [2,3]….[6,7]
+  - 第二次：比较 6 次，，[0,1]….[6,7]，（最后一个已经排序好了)
+  - ….
+  - 第七次：比较1 次，[0,1] （后面六个都排序好了）
+* 优点：最右边已经确定，每次比较都可以少一个。
 
-* ### 选择排序（Selection sort）
+## 选择排序（Selection sort）
 
-  * 每一次都选择剩下中数字最小的人，丢到左边去交换，这样每一次排序后就不用管之前的情况。所以剩下的工作会原来越少。
+* 每一次都选择剩下中数字最小的人，丢到左边去交换，这样每一次排序后就不用管之前的情况。所以剩下的工作会原来越少。
 
-  * 伪代码：
+* 伪代码：
 
-    ```
-    For i from 0 to n–1
-        Find smallest item between i'th item and last item
-        Swap smallest item with i'th item
-    ```
+  ```
+  For i from 0 to n–1
+      Find smallest item between i'th item and last item
+      Swap smallest item with i'th item
+  ```
 
-  * 进行的次数为: (n - 1) + (n - 2) + ... + 1 = n(n - 1) / 2 = n² / 2 - n / 2
-  * 假如有 8 个数字，由以下步骤进行排序：
+* 进行的次数为: (n - 1) + (n - 2) + ... + 1 = n(n - 1) / 2 = n² / 2 - n / 2
+* 假如有 8 个数字，由以下步骤进行排序：
 
-    * 第一次：找出最小的数字，把 1 交换到最左边
-      第二次：找出剩下最小的数字，把 2 交换到左边
-      …
-      第七次：找出剩下最小的数字，把 7 交换到左边
+  * 第一次：找出最小的数字，把 1 交换到最左边
+    第二次：找出剩下最小的数字，把 2 交换到左边
+    …
+    第七次：找出剩下最小的数字，把 7 交换到左边
 
-  * 优点：最左边已经确定，每次比较都可以少一个人 缺点：每次都要搜寻一遍最小数，即使一开始顺序就是对的。
+* 优点：最左边已经确定，每次比较都可以少一个人 缺点：每次都要搜寻一遍最小数，即使一开始顺序就是对的。
 
-* ## 归并排序（Merge sort）
+## 归并排序（Merge sort）
 
-  * 不断地进行二等分，直到最小单位再开始进行比较，再最后进行合并比较。
+* 不断地进行二等分，直到最小单位再开始进行比较，再最后进行合并比较。
 
-  * 伪代码：
+* 伪代码：
 
-    ```
-    If only one item
-      Return
-    Else
-        Sort left half of items
-        Sort right half of items
-        Merge sorted halves
-    ```
+  ```
+  If only one item
+    Return
+  Else
+      Sort left half of items
+      Sort right half of items
+      Merge sorted halves
+  ```
 
-  * 假如有 8 个数字，由以下步骤进行排序：
+* 假如有 8 个数字，由以下步骤进行排序：
 
-    * 先一直二等分成最小数字，再进行合併
+  * 先一直二等分成最小数字，再进行合併
 
-      第一次：合併成 4 组 2 个数字
-      第二次：合併成 2 组 4 个数字
-      第三次：合併成 1 组 8 个数字
+    第一次：合併成 4 组 2 个数字
+    第二次：合併成 2 组 4 个数字
+    第三次：合併成 1 组 8 个数字
 
-  * 优点：移动的次数比泡沫跟选择更有效率，每个数字只移动了 3 次，8 * 3 共 24 次 缺点：需要用到额外记忆体。
+* 优点：移动的次数比泡沫跟选择更有效率，每个数字只移动了 3 次，8 * 3 共 24 次 缺点：需要用到额外记忆体。
 
-* ## 算法的时间复杂度
+## 算法的时间复杂度
 
-  * 又最高次幂决定。
+* 由最高次幂决定。
 
-  * ![Snipaste_2020-07-14_18-50-49](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004124.png)
+* ![Snipaste_2020-07-14_18-50-49](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004124.png)
 
-    时间复杂度由最差 → 最优
+  时间复杂度由最差 → 最优
 
-  * 由以下这张 gif 可以看出三种排序法明显的差别，以时间复杂度来说，Merge 优于 Bubble 优于 Selection：
+* 由以下这张 gif 可以看出三种排序法明显的差别，以时间复杂度来说，Merge 优于 Bubble 优于 Selection：
 
-    ![WPxq5w6](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004137.gif)
-  
-  * 同时运行的具有大量输入的排序算法的 [最终可视化](https://www.youtube.com/watch?v=ZZuD6iUe3Pc) 视频。
+  ![WPxq5w6](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004137.gif)
+
+* 同时运行的具有大量输入的排序算法的 [最终可视化](https://www.youtube.com/watch?v=ZZuD6iUe3Pc) 视频。
 
 # 参考资料
 
