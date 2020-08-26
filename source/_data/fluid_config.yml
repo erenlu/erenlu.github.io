@@ -113,7 +113,7 @@ navbar:
   menu:  # 可自行增减，key 用来关联 languages/*.yml，如不存在关联则显示 key 本身的值；icon 是 css class，可以省略；增加 name 可以强制显示指定名称
   ##  - { key: 'Home', link: '/', icon: 'iconfont icon-home-fill' }
     - { key: '归档', link: '/archives/', icon: 'iconfont icon-archive-fill' }
-  ##  - { key: 'Category', link: '/categories/', icon: 'iconfont icon-category-fill' }
+    - { key: '分类', link: '/categories/', icon: 'iconfont icon-category-fill' }
   ##  - { key: 'Tags', link: '/tags/', icon: 'iconfont icon-tags-fill' }
     - { key: '关于', link: '/about/', icon: 'iconfont icon-user-fill' }
     - { key: '友人', link: '/links/', icon: 'iconfont icon-link-fill' }  # 友链页，把前面#去掉即可展示
@@ -215,7 +215,7 @@ post:  # 部分配置同时控制自定义页面，注意备注
     collapseDepth: 0  # 层级的折叠深度，0 是全部折叠，6 是全部不折叠
   copyright:  # 版权声明
     enable: true
-    content: '本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener"> CC BY-SA 4.0 协议 </a>进行许可'
+    content: '署名-非商业性使用-相同方式共享 4.0 国际（<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="nofollow noopener">CC BY-NC-SA 4.0</a>）'
   prev_next:  # 文章底部上一篇下一篇功能
     enable: true
   custom:  # 文章底部自定义内容
@@ -336,7 +336,7 @@ category:
   banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_发现者号（compressed）.jpg
   banner_img_height: 60  # available: 0 - 100
   banner_mask_alpha: 0.3  # available: 0 - 1.0
-  subtitle:  归档页 # 打字机内容
+  subtitle:  分類 # 打字机内容
   post_limit: 10  # 单个分类中折叠展示文章数的最大值，超过限制会显示 More
   order_by: '-length'  # 排序字段，前面带减号是倒序，不带减号是正序，可选项：name | length
 
@@ -367,7 +367,7 @@ about:  # 关于页需要手动创建，具体请见：https://hexo.fluid-dev.co
   banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_自我介绍（compressing）.jpg
   banner_img_height: 60  # available: 0 - 100
   banner_mask_alpha: 0.3  # available: 0 - 1.0
-  subtitle:  誰？  # 打字机内容
+  subtitle:    誰？  # 打字机内容
   avatar: /img/sys/about.jpg # 头像
   name: Eren Lu
   introduce: '科研狗 / 爱听播客 / 有一只金毛' # 支持 HTML

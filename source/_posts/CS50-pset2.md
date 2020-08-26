@@ -130,7 +130,7 @@ int main(void)
 ## Summary
 
 - 要对数组的概念有一定的认识。把数组想成一串箱子，每个箱子里面放了对应的一个字符。
-- 在使用 ASSIC 码进行比较时使用 'a' 单引号。
+- 在使用 ASCII 码进行比较时使用 'a' 单引号。
 - 在类型不同的变量进行计算式应该使用强制类型转换。否则导致虽然编译不会报错，但最后的计算结果会出错。
 
 # Caesar
@@ -228,13 +228,13 @@ argv: argument vector
 
 ![Snipaste_2020-08-21_18-31-30](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822134124.png)
 
-先将 ASSIC 码转化为字母表的顺序：
+先将 ASCII 码转化为字母表的顺序：
 
 ![Snipaste_2020-08-21_19-26-18](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008221927524.png)
 
 ![Snipaste_2020-08-21_19-19-20](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822134551.png)
 
-再使用密文计算公式求出密文对应的字母表值，最后再加上 ASSIC 码对应值转换为 ASSIC 码的密文。
+再使用密文计算公式求出密文对应的字母表值，最后再加上 ASCII 码对应值转换为 ASCII 码的密文。
 
 ![Snipaste_2020-08-21_19-19-37](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822134610.png)
 
@@ -312,7 +312,7 @@ int main(int argc, string argv[])
 
 - 了解到 `main` 函数也是可以带参数的形式，一般都为 `main（argc, argv[]）`的参数形式。
 - 学习了`isupper` `islower` `atoi` 三个函数的使用。
-- 对 ASSIC 码有了进一步的理解。
+- 对 ASCII 码有了进一步的理解。
 
 # Substitution (To be continued)
 
