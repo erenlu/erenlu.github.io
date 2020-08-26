@@ -1,7 +1,7 @@
 html,
 body {
   font-size: 16px;
-  font-family: Georgia, Noto Serif SC, sans-serif;
+  font-family: Source Serif Pro, Noto Serif SC;
 }
 html,
 body,
@@ -648,7 +648,7 @@ sup > a::before,
 .markdown-body {
   font-size: 1rem;
   margin-bottom: 2rem;
-  font-family: Georgia, Noto Serif SC, sans-serif;
+  font-family: Source Serif Pro, Noto Serif SC;
   color: #000000;
 }
 .markdown-body h1,
