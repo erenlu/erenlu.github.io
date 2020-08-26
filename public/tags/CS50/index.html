@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 
 
@@ -26,7 +26,7 @@
   <meta name="description" content="Keep Calm and Carry On.">
   <meta name="author" content="Eren Lu">
   <meta name="keywords" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具/资源,教程,分享,推荐,娱乐,摄影,文学">
-  <title>Tags - CS50 - Eren&#39;s Spaceship</title>
+  <title>标签 - CS50 - Eren の 宇宙船</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -59,7 +59,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Eren's Spaceship</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Eren の 宇宙船</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -78,7 +78,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                Archive
+                归档
               </a>
             </li>
           
@@ -90,7 +90,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                About
+                关于
               </a>
             </li>
           
@@ -102,7 +102,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/links/">
                 <i class="iconfont icon-link-fill"></i>
-                Friends
+                友人
               </a>
             </li>
           
@@ -149,7 +149,7 @@
                 
 
 <div class="list-group">
-  <p class="h4">4 posts in total.</p>
+  <p class="h4">共计 4 篇文章</p>
   <hr>
   
     
@@ -203,7 +203,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -212,7 +212,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -229,38 +229,6 @@
 <font size="2" face="Georgia">
 <div class="text-center py-3">
 
-<div>
-  <span id="timeDate">载入天数...</span>
-  <span id="times">载入时分秒...</span>
-  <script>
-  var now = new Date();
-  function createtime(){
-      var grt= new Date("07/02/2020 00:00:00");//此处修改你的建站时间或者网站上线时间
-      now.setTime(now.getTime()+250);
-      days = (now - grt ) / 1000 / 60 / 60 / 24;
-      dnum = Math.floor(days);
-      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-      hnum = Math.floor(hours);
-      if(String(hnum).length ==1 ){
-          hnum = "0" + hnum;
-      }
-      minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-      mnum = Math.floor(minutes);
-      if(String(mnum).length ==1 ){
-                mnum = "0" + mnum;
-      }
-      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-      snum = Math.round(seconds);
-      if(String(snum).length ==1 ){
-                snum = "0" + snum;
-      }
-      document.getElementById("timeDate").innerHTML = "🚀 for&nbsp"+dnum+"&nbspdays";
-      document.getElementById("times").innerHTML = hnum + "&nbsphr&nbsp" + mnum + "&nbspmin&nbsp" + snum + "&nbspsec";
-  }
-  setInterval("createtime()",250);
-  </script>
-</div>
-
 
 <div>
     
@@ -275,7 +243,7 @@
     <div>
       <span>Copyright © 2020</span></a>
       <a href="https://erenspace.cool/" target="_blank" rel="nofollow noopener">
-       <span>Eren‘s Spaceship</span></a>    <br>
+       <span>Eren の 宇宙船</span></a>    <br>
     </div>
 
 </footer>
@@ -490,7 +458,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Tag - CS50&nbsp;",
+        "标签 - CS50&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

@@ -25,10 +25,18 @@ comments: true
 
 ## 更新日志
 
+- 2020-8-26
+
+  > 站点名称更改为：Eren の 宇宙船；
+  >
+  > 进行若干极简风格优化；
+  >
+  > 字体更改为思源宋体（使用字蛛压缩）。
+  
 - 2020-8-12
 
   > 弃用本地图库，启用 [GitHub](https://github.com/) + [jsDelivr](https://www.jsdelivr.com/) + [PicGo](https://github.com/Molunerfinn/picgo/releases) 搭建图床，提升站点图片加载速度。
-  
+
 - 2020-8-10
 
   > 主题优化（英文字体更改为 Georgia，改善代码大小，新增页脚信息，优化版权声明）；
@@ -41,7 +49,7 @@ comments: true
   >
   > 使用 [Vercel](https://vercel.com/) 为站点加速。
   >
-  
+
 - 2020-7-12  
 
   > 使用 [Valine](https://valine.js.org/) 作为博客评论系统。

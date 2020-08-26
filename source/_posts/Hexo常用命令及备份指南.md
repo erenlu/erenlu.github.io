@@ -32,6 +32,10 @@ categories: 折腾派
 
 - `hexo version`  显示 Hexo 版本；
 
+- `npm list` 查看插件；
+
+- `npm uninstall 插件名称` 卸载插件；
+
 # 备份博客
 
 使用 **[ hexo-git-backup](https://github.com/coneycode/hexo-git-backup)** 插件进行备份操作。
@@ -115,4 +119,5 @@ hexo s
 - [hexo-git-backup](https://github.com/coneycode/hexo-git-backup)
 - [Hexo博客使用插件hexo-git-backup通过GitHub备份与恢复](https://mxy493.xyz/2019/05/25/Hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6hexo-git-backup%E9%80%9A%E8%BF%87GitHub%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/)
 - [在Github上备份Hexo博客](https://lrscy.github.io/2018/01/26/Hexo-Github-Backup/)
+- [卸载 hexo 插件](https://www.dazhuanlan.com/2019/10/12/5da110cdd9a7b/)
 
