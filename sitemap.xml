@@ -130,13 +130,6 @@
 
   
   <url>
-    <loc>https://erenship.com/tags/GitHub/</loc>
-    <lastmod>2020-08-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://erenship.com/tags/CS50/</loc>
     <lastmod>2020-08-27</lastmod>
     <changefreq>daily</changefreq>
@@ -158,14 +151,7 @@
   </url>
   
   <url>
-    <loc>https://erenship.com/tags/%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2020-08-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://erenship.com/tags/%E5%9F%9F%E5%90%8D/</loc>
+    <loc>https://erenship.com/tags/GitHub/</loc>
     <lastmod>2020-08-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -179,21 +165,14 @@
   </url>
   
   <url>
+    <loc>https://erenship.com/tags/Fluid/</loc>
+    <lastmod>2020-08-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://erenship.com/tags/%E4%BC%98%E5%8C%96/</loc>
-    <lastmod>2020-08-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://erenship.com/tags/%E6%96%87%E5%AD%A6/</loc>
-    <lastmod>2020-08-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://erenship.com/tags/%E6%97%A5%E8%AE%B0/</loc>
     <lastmod>2020-08-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -214,7 +193,14 @@
   </url>
   
   <url>
-    <loc>https://erenship.com/tags/%E7%94%9F%E6%B4%BB/</loc>
+    <loc>https://erenship.com/tags/%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2020-08-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://erenship.com/tags/%E5%9F%9F%E5%90%8D/</loc>
     <lastmod>2020-08-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -228,7 +214,14 @@
   </url>
   
   <url>
-    <loc>https://erenship.com/tags/%E4%B9%A6%E6%91%98/</loc>
+    <loc>https://erenship.com/tags/%E6%96%87%E5%AD%A6/</loc>
+    <lastmod>2020-08-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://erenship.com/tags/%E6%97%A5%E8%AE%B0/</loc>
     <lastmod>2020-08-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -249,7 +242,14 @@
   </url>
   
   <url>
-    <loc>https://erenship.com/tags/Fluid/</loc>
+    <loc>https://erenship.com/tags/%E7%94%9F%E6%B4%BB/</loc>
+    <lastmod>2020-08-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://erenship.com/tags/%E4%B9%A6%E6%91%98/</loc>
     <lastmod>2020-08-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -272,14 +272,14 @@
   </url>
   
   <url>
-    <loc>https://erenship.com/categories/%E4%BA%BA%E6%96%87%E6%B4%BE/</loc>
+    <loc>https://erenship.com/categories/%E7%94%9F%E6%B4%BB%E6%B4%BE/</loc>
     <lastmod>2020-08-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://erenship.com/categories/%E7%94%9F%E6%B4%BB%E6%B4%BE/</loc>
+    <loc>https://erenship.com/categories/%E4%BA%BA%E6%96%87%E6%B4%BE/</loc>
     <lastmod>2020-08-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
