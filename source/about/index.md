@@ -29,19 +29,15 @@ comments: true
 
   > 站点名称更改为：Eren の 宇宙船；
   >
+  > 启用新域名：[erenship.com](https://erenship.com/)，并对旧域名重新定向；
+  >
   > 进行若干极简风格优化；
   >
-  > 字体更改为思源宋体（使用字蛛压缩）。
+  > 字体改为思源宋体（字蛛压缩）。
   
 - 2020-8-12
 
-  > 弃用本地图库，启用 [GitHub](https://github.com/) + [jsDelivr](https://www.jsdelivr.com/) + [PicGo](https://github.com/Molunerfinn/picgo/releases) 搭建图床，提升站点图片加载速度。
-
-- 2020-8-10
-
-  > 主题优化（英文字体更改为 Georgia，改善代码大小，新增页脚信息，优化版权声明）；
-  >
-  > 修改 “关于页” 排版，新增 “更新日志”。
+  > 使用 [GitHub](https://github.com/) + [jsDelivr](https://www.jsdelivr.com/) + [PicGo](https://github.com/Molunerfinn/picgo/releases) 搭建图床。
 
 - 2020-8-7
 

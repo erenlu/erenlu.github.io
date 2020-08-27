@@ -228,7 +228,7 @@ categories: 折腾派
          powered by Valine.</a></noscript>
    ```
 
-   实现效果参考：https://erenspace.cool/about/
+   实现效果参考：https://erenship.com/about/
 
 # 自定义字体
 
