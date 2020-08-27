@@ -27,10 +27,19 @@
   <meta name="description" content="Keep Calm and Carry On.">
   <meta name="author" content="Eren Lu">
   <meta name="keywords" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具/资源,教程,分享,推荐,娱乐,摄影,文学">
-  <title>标签 - d - Eren の 宇宙船</title>
+  <title>博客域名更换小记 - Eren の 宇宙船</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -56,7 +65,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -132,7 +141,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/bg_发现者号（compressed）.jpg') no-repeat center center;
+         style="background: url('/img/sys/NASA.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -140,6 +149,48 @@
             <span class="h2" id="subtitle">
               
             </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-08-27 12:12">
+      2020年8月27日 中午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      841 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-post-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-post-views"></span> 次
+      </span>
+    
+  
+</div>
 
             
           </div>
@@ -152,37 +203,178 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 1 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/posts/f82e.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">test</span>
-      <span style="float: right;">08-27</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年8月27日 下午
+                
+              </p>
+            
+            <article class="markdown-body">
+              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>因为内心其实是想拥有 <code>.com</code> 域名的，但建站初期脑子热，只想先把站点搭建起来再说。现在该搭建的也搭建好了，改润色的也润色完了，于是就打起了域名的主意。<del>（真相：下周就要开学了，想趁着开学再折腾一番）</del></p>
+<h1 id="新域名解析"><a href="#新域名解析" class="headerlink" title="新域名解析"></a>新域名解析</h1><p>如何购买新域名的过程不再赘述，笔者是在 <a href="https://www.namesilo.com/" target="_blank" rel="noopener">Namesilo</a> 购买的域名。</p>
+<blockquote>
+<p>优点：提供永久免费的域名隐私保护，防止别人通过 WHOIS 查询获取域名所有者的个人注册信息。</p>
+<p>缺点：网站的网页设计也太丑了，一股扑面而来的 20 年前设计感。</p>
+</blockquote>
+<ol>
+<li>购买新域名之后，需要将 GitHub page 的域名（你建站初期的 username.github.io 网址）解析到新域名。因为笔者使用了 Vercel 对网站进行托管，所以在域名解析处添加的是 Vercel 的域名。<img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/2020082712kk3539.png" srcset="/img/loading.gif" alt="Snipaste_2020-08-27_12-30-00"></li>
+<li>打开 <code>你的博客目录\public</code> 下的 <code>CNAME</code> 文件，将里面旧域名更改为你的新域名地址。<img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200827124148.png" srcset="/img/loading.gif" alt="Snipaste_2020-08-27_12-41-36"></li>
+<li>打开博客目录根下的 <code>_config.yml</code> 文件，将 url 地址改为新博客域名。<img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200827124440.png" srcset="/img/loading.gif" alt="Snipaste_2020-08-27_12-43-25"></li>
+</ol>
+<p>至此已经完成了博客到新域名的解析，执行部署命令，就可以通过新域名访问博客。</p>
+<div class="note note-danger">
+            <p>注：启用新域名后，文章链接会自动更换为新域名目录下的，不用手动更改。</p>
+          </div>
+
+<h1 id="删除旧域名"><a href="#删除旧域名" class="headerlink" title="删除旧域名"></a>删除旧域名</h1><p>现在我们可以通过新旧两个域名来访问博客，但是显得很累赘。我们只想启用一个博客域名，所以现在需要将旧域名处的域名解析进行删除。</p>
+<ol>
+<li>删除旧域名处的域名解析，也就是将 username.github.io 的解析文件删除（CNAME 记录类型）；</li>
+<li>删除 username.github.io对应的  A 记录类型的域名解析。</li>
+</ol>
+<p>笔者在基本上把过去添加的域名解析删干净了，包括百度站点或谷歌站点的认证记录，因为旧域名等于已经弃用了。</p>
+<h1 id="旧域名重新定向"><a href="#旧域名重新定向" class="headerlink" title="旧域名重新定向"></a>旧域名重新定向</h1><p>因为笔者的旧域名被友链收录，并且旧域名还有一年才到期。为了不麻烦友人重新填写站点信息 <del>（说得好像一年后还能跳转一样</del>）~~，所以需要将旧域名重新定向到新域名，以保证通过旧域名能自动跳转到新域名站点。</p>
+<ol>
+<li><p>参照以下博文创建新账号、新的 .io仓库并在就域名解析处添加新的 username.github.io 解析。</p>
+<div class="note note-success">
+            <p>参考教程：<a href="https://www.cz5h.com/article/7f0e.html" target="_blank" rel="noopener">Github托管站点的域名更换</a></p>
+          </div>
+</li>
+<li><p>在新账号的新仓库中添加以下四个文件（文件在 <a href="https://github.com/eren997/eren997.github.io" target="_blank" rel="noopener">此处</a>下载并上传）。<img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200827135300.png" srcset="/img/loading.gif" alt="Snipaste_2020-08-27_13-52-51"></p>
+</li>
+<li><p>修改其中 <code>404.html</code> <code>CNAME</code> <code>index.html</code> 这三个文件中的内容。将笔者的旧域名（erenspace.cool）替换为你的旧域名，将笔者的新域名（erenship.com）替换为你的新域名。        </p>
+</li>
+<li><p>保存之后，重新部署。</p>
+</li>
+</ol>
+<p>至此，我们便完成了对旧域名的重新定向。</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>我们来测验下最终效果：</p>
+<ul>
+<li>旧域名：<a href="erenspace.cool">www.erenspace.cool</a></li>
+<li>新域名：<a href="http://www.erenship.com" target="_blank" rel="noopener">www.erenship.com</a></li>
+</ul>
+<p>访问 <a href="www.erenspace.cool">www.erenspace.cool</a> → 最终访问 <a href="http://www.erenship.com" target="_blank" rel="noopener">www.erenship.com</a></p>
+<p>虽然完成了主域名的跳转，但是没实现旧域名全站内容跳转。不过好在建站不久，内容其实并不多。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%8A%98%E8%85%BE%E6%B4%BE/">折腾派</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9F%9F%E5%90%8D/">域名</a>
+                    
+                  </div>
+                
+              </div>
+
+             
+                <p class="note note-warning">
+	<strong>本文作者: </strong><a href="/">Eren Lu</a> <br>
+	<strong>本文链接: </strong><a href="https://erenship.com/posts/1f1b.html">https://erenship.com/posts/1f1b.html</a> <br>
+	<strong>版权声明: </strong>署名-非商业性使用-相同方式共享 4.0 国际（<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-NC-SA 4.0</a>）
+               </p>
+             
+
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/posts/1838.html">
+                        <span class="hidden-mobile">曾经留下的评论与感想</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "UH7QfXQF6JMWo43UdP0ryQ8r-MdYXbMMI",
+          app_key: "Xw3iWYWBBjFYvJr6L5b4kVQY",
+          placeholder: "记得留下邮箱，以便收到回复提醒~ ʕ •ᴥ•ʔ",
+          path: window.location.pathname,
+          avatar: "monsterid",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    }
+    createObserver(loadValine, 'vcomments');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
 
 
               </div>
-            </div>
+            
           </div>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812010911.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:120px; height:120px;"> <br> <div class="text-center py-1">    <div> * Keep Calm and Carry On *  </div> 
+    </div>
+  </div>
+
+
     
   </main>
 
@@ -381,10 +573,10 @@
       }
 
       // 如果是文章，请求文章的浏览数，并自增
-      if ('false' === 'true') {
+      if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/tags/d/index.html');
+          var target = decodeURI('/posts/1f1b.html');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -446,6 +638,31 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
 
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
@@ -453,7 +670,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - d&nbsp;",
+        "博客域名更换小记&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -468,6 +685,21 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
 
 
   <script  src="/js/local-search.js" ></script>
@@ -481,6 +713,20 @@
   </script>
 
 
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
 
 
 
