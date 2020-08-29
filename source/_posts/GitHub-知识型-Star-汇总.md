@@ -10,11 +10,11 @@ index_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200824125322.jpg
 banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200824125322.jpg
 ---
 
-# 前言
+## 前言
 
 [GitHub](https://github.com/) 作为全球最大的 ~~同性交友~~ 代码托管平台，在有众多开源代码库的同时，也有许多非常有用的学习资源。在此笔者将在使用 GitHub 过程中所收集到的优质资源汇总，以便日后查阅和分享。
 
-# 文章排版
+## 文章排版
 
 一篇优秀的文章不仅需要内容的优质，同时在排版上也需要美观（谁叫我们是视觉动物？）。
 
@@ -30,7 +30,7 @@ banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200824125322.jpg
 
 {% endnote %}
 
-# 如何提问
+## 如何提问
 
 如何高效提问是一个重要命题。
 
@@ -46,7 +46,7 @@ banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200824125322.jpg
 
 {% endnote %}
 
-# 英语学习
+## 英语学习
 
 好的，在我的收藏夹吃灰吧！
 
@@ -66,7 +66,7 @@ banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200824125322.jpg
 
 {% endnote %}
 
-# Python
+## Python
 
 > "Life is short, you need Python"
 >

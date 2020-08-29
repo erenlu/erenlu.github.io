@@ -1,7 +1,7 @@
 html,
 body {
   font-size: 16px;
-  font-family: Source Serif Pro, Noto Serif SC;
+  font-family: "Noto Serif SC", PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
 }
 html,
 body,
@@ -648,7 +648,7 @@ sup > a::before,
 .markdown-body {
   font-size: 1rem;
   margin-bottom: 2rem;
-  font-family: Source Serif Pro, Noto Serif SC;
+  font-family: "Noto Serif SC", PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
   color: #000000;
 }
 .markdown-body h1,

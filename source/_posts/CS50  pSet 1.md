@@ -1,15 +1,15 @@
 ---
 title: CS50 | pset 1
-index_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/cs50pset.png
-banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/CS50pSet_homework.jpg
+index_img: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/cs50pset.png'
+banner_img: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/CS50pSet_homework.jpg'
 tags:
   - CS50
   - 学习笔记
-  - C语言 
-abbrlink: bfe6
-date: 2020-07-10 00:23:29
-excerpt: CS50 Problem Set 1 (Fall 2020). Mario More, Cash, Credit Solutions
+  - C语言
+excerpt: 'CS50 Problem Set 1 (Fall 2020). Mario More, Cash, Credit Solutions'
+date: 2020-07-11 22:04:25
 categories: 学习派
+abbrlink: b465
 ---
 
 {% note success %}
@@ -27,7 +27,7 @@ CS50 IDE 常用命令：
 - 创建新文件夹。
 
   ```
-  mkdir ~/pset1/
+  mkdir ~/pset1/Copy
   ```
 
   eg: 在您的主目录中创建一个目录（即文件夹 pset1）。 `~` 表示您的home目录，`~/pset1` 表示一个名为`pset1` 的目录。
@@ -35,32 +35,32 @@ CS50 IDE 常用命令：
 - 将自己移入（即打开）该目录。
 
   ```
-  cd ~/pset1/
+  cd ~/pset1/Copy
   ```
 
 - clang 是一种编译程序，将源代码转换为机器代码。（clang 的操作可由 make xxx 代替）
 
   ```
-  clang xxx.c
+  clang xxx.cCopy
   ```
 
 - 编译代码。
 
   ```
-  make xxx
+  make xxxCopy
   ```
 
 - 运行代码。
 
   ```
-  ./xxx
+  ./xxxCopy
   ```
 
 # Mario More
 
 Toward the beginning of World 1-1 in Nintendo’s Super Mario Brothers, Mario must hop over adjacent pyramids of blocks, per the below.
 
-![pyramids](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004352.png)
+![mario](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004352.png)
 
 Let’s recreate those pyramids in C, albeit in text, using hashes (`#`) for bricks, a la the below. Each hash is a bit taller than it is wide, so the pyramids themselves are also be taller than they are wide.
 
@@ -78,12 +78,12 @@ Height: 8
    #####  #####
   ######  ######
  #######  #######
-########  ########
+########  ########Copy
 ```
 
 ## Method
 
-![Snipaste_2020-07-09_23-09-55](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004406.png)
+[![Snipaste_2020-07-09_23-09-55](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004406.png)](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004406.png)
 
 首先是对左边金字塔进行完成，因为右边只需要行数个 #，而左边要对空格和 # 进行处理。
 
@@ -138,7 +138,7 @@ int main(void)
         
         printf("\n");
     }
-}
+}Copy
 ```
 
 # Crash
@@ -156,12 +156,12 @@ $ ./cash
 Change owed: -0.41
 Change owed: foo
 Change owed: 0.41
-4
+4Copy
 ```
 
 ## Method
 
-![Snipaste_2020-07-10_11-34-13](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004424.png)
+[![Snipaste_2020-07-10_11-34-13](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004424.png)](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004424.png)
 
 需将 9 dollar 先转换为 900 cent。
 
@@ -193,7 +193,7 @@ int main(void)
     
     n = a+b+c+d;
     printf("%i\n",n);
-}
+}Copy
 ```
 
 # Credit
@@ -228,25 +228,25 @@ e.g. That’s kind of confusing, so let’s try an example with David’s Visa: 
 
 3. Yup, the last digit in that sum (20) is a 0, so David’s card is legit!
 
-   ![Snipaste_2020-07-10_12-27-47](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008120027.png)
+   [![Snipaste_2020-07-10_12-27-47](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008120027.png)](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008120027.png)
 
 ## Puprose
 
-write a program that prompts the user for a credit card number and then reports (via `printf`) whether it is a valid American Express, MasterCard, or Visa card number, per the definitions of each’s format herein. So that we can automate some tests of your code, we ask that your program’s last line of output be `AMEX\n` or `MASTERCARD\n` or `VISA\n` or `INVALID\n`, nothing more, nothing less. 
+write a program that prompts the user for a credit card number and then reports (via `printf`) whether it is a valid American Express, MasterCard, or Visa card number, per the definitions of each’s format herein. So that we can automate some tests of your code, we ask that your program’s last line of output be `AMEX\n` or `MASTERCARD\n` or `VISA\n` or `INVALID\n`, nothing more, nothing less.
 
 ## Method
 
-![Snipaste_2020-07-10_12-26-16](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004740.png)
+[![Snipaste_2020-07-10_12-26-16](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004740.png)](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004740.png)
 
-![Snipaste_2020-07-10_12-27-07](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004804.png)
+[![Snipaste_2020-07-10_12-27-07](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004804.png)](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004804.png)
 
-![Snipaste_2020-07-10_12-49-45](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004836.png)
+[![Snipaste_2020-07-10_12-49-45](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004836.png)](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004836.png)
 
-![Snipaste_2020-07-10_12-50-27](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812005831.png)
+[![Snipaste_2020-07-10_12-50-27](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812005831.png)](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812005831.png)
 
-![Snipaste_2020-07-10_12-52-25](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004933.png)
+[![Snipaste_2020-07-10_12-52-25](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004933.png)](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004933.png)
 
-重点在于对奇数和偶数部分的求和。奇数部分 for 循环使用 `i / 100` 来获得下一次奇数位(间隔两位)，使用 `oddsum % 10 ` 获得当前奇数位的数值。
+重点在于对奇数和偶数部分的求和。奇数部分 for 循环使用 `i / 100` 来获得下一次奇数位(间隔两位)，使用 `oddsum % 10` 获得当前奇数位的数值。
 
 偶数部分 for 循环，先 `x2 = i / 10` 让卡号从偶数位开始。由于偶数位需要 ×2 再相加，并且如果乘机为十位还需要拆开分别数字相加（e.g. 2×6=12，相加时是 1+2。此时在 for 循环中嵌套if判断，若乘机两位数则进行分解相加，否则直接相加，再同理求得偶数位和。
 
@@ -312,10 +312,9 @@ int main(void)
         printf("INVALID\n");
         
     return 0;
-}
+}Copy
 ```
 
 # Summary
 
 把 pset1做完整体下来陆陆续续花了小两天的时间。看似题数不多，可每一题都很扎实。最后一题在做的时候硬是想不出来，最后还是去网上搜寻了思路。虽然才第一次作业，但作为一名 C 很垃圾并且很久没用 C 的我，也不得不开始感叹 CS50 的课程设计真的名不虚传。
-

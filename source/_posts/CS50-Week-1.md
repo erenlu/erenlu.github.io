@@ -12,9 +12,13 @@ excerpt: CS50 第一周学习笔记。
 categories: 学习派
 ---
 
-> 提示：在此只是将零散的、个人化的知识点记录下来，完整笔记查看官方 [Notes](https://cs50.harvard.edu/x/2020/weeks/1/) 即可。 
+{% note success %}
 
-# 零散知识点
+提示：在此只是将零散的、个人化的知识点记录下来，完整笔记查看官方 [Notes](https://cs50.harvard.edu/x/2020/weeks/1/) 即可。 
+
+{% endnote %}
+
+## 零散知识点
 
 - 语法糖
 
@@ -103,7 +107,7 @@ int get_positive_int(void)
   }
   ```
 
-# 类型、格式、运算符
+## 类型、格式、运算符
 
 There are other types we can use for our variables
 
@@ -140,7 +144,7 @@ And there are some mathematical operators we can use:
 - `/` for division
 - `%` for remainder
 
-# 浮点的不精确 & 整数的溢出
+## 浮点的不精确 & 整数的溢出
 
 我们的电脑有内存，在硬件芯片称为随机存取存储器。我们的程序在运行时使用 RAM 来存储数据，但是内存是有限的。因此，对于有限的比特数，我们不能代表所有可能的数（其中有无限个数）。所以我们的计算机对每个浮点和整型都有一定数量的位，并且必须在某一点四舍五入到最接近的十进制值。
 

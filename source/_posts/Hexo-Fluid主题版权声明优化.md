@@ -27,11 +27,11 @@ categories: 折腾派
 
 {% endnote %}
 
-# 前言
+## 前言
 
 在茫茫 Hexo 主题中，一眼选中了 Material Design 风格的 [Fluid 主题](https://github.com/fluid-dev/hexo-theme-fluid)。老实说基本功能已经完全够用了，可以骨子里那股折腾劲儿又来了，看着自己的网站总觉得哪儿哪儿不顺心。于是有了此贴，专门用来记录笔者自定义 Fluid 主题的过程，以便日后查阅，同时也供相同主题版本的朋友参考。
 
-# 版权声明优化
+## 版权声明优化
 
 {% note primary %}
 
@@ -57,7 +57,7 @@ categories: 折腾派
 
 根据大佬的提示（还贴心地标出代码位置，小姐姐很 nice 了），并结合网上相应对版权声明修改的资料进行了操作。
 
-## 步骤
+**步骤**
 
 1. 打开 `themes\fluid\layout` 中的 `post.ejs` 文件；
 
@@ -90,7 +90,7 @@ categories: 折腾派
 
 4. cmd  `hexo g -d`  部署博客。Bingo！
 
-## 修改 Tag 颜色
+**修改 Tag 颜色**
 
 1. 根据 [官方文档 ](https://hexo.fluid-dev.com/docs/guide/#tag-%E6%8F%92%E4%BB%B6)了解到 Tag 相应的语法；
 
@@ -98,11 +98,11 @@ categories: 折腾派
 
 2. 如果要修改 Tag 颜色只需要修改 `<p class="note note-warning">` 即可。
 
-## 错误做法
+**错误做法**
 
-**修改主题配置文件 `config.yml`**
+1. 修改主题配置文件 `config.yml`
 
-一开始笔者以为只需要简单的修改主题配置文件 `_config.yml` 里面版权声明处，但在“本文链接”无法正常生成链接。即使在“本文链接”后面加上代码仍然失败。
+   一开始笔者以为只需要简单的修改主题配置文件 `_config.yml` 里面版权声明处，但在“本文链接”无法正常生成链接。即使在“本文链接”后面加上代码仍然失败。
 
 ```
 <a href="<%- full_url_for(page.path) %>"><%- full_url_for(page.path) %></a>
@@ -110,11 +110,11 @@ categories: 折腾派
 
 ![微信图片_20200807203239](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812003717.png)
 
-`hexo s` `hexo g` 生成结果如下图：
+​	`hexo s` `hexo g` 生成结果如下图：
 
 ![Snipaste_2020-08-08_13-57-16](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812003237.png)
 
-**单纯复制修改主题的代码**
+​	2. 单纯复制修改主题的代码
 
 前面谈到有位小姐姐修改的 [Fluid主题]() 能实现我的目标，我寻思着直接找她改动的代码不就行了吗。于是直接就把相应位置的代码给 copy 了过来，结果造成了页面错误。
 
@@ -122,11 +122,11 @@ categories: 折腾派
 
 最后进行修改调试，才恢复正常。
 
-# 添加运行时间
+## 添加运行时间
 
 <p class="note note-primary">目的：在站点页面页脚处实时显示网站运行时间 & 自定义页脚信息。</p>
 
-## 步骤
+**步骤**
 
 1. 打开文件夹 `\themes\fluid\layout\_partial` 下的 `footer.ejs` 文件。
 
@@ -185,7 +185,7 @@ categories: 折腾派
 
 ![Snipaste_2020-08-26_18-14-44](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200826181457.png)
 
-# 关于页添加评论
+## 关于页添加评论
 
 {% note primary %}
 
@@ -195,7 +195,7 @@ categories: 折腾派
 
 {% endnote %}
 
-## 步骤
+**步骤**
 
 1. 打开之前自行创建的关于页 `.md` 文件：![Snipaste_2020-08-26_18-43-02](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200826184334.png)
 
@@ -230,7 +230,13 @@ categories: 折腾派
 
    实现效果参考：https://erenship.com/about/
 
-# 自定义字体
+## ~~自定义字体~~
+
+{% note danger %}
+
+出现 Bug，此部分内容暂时无效。
+
+{% endnote %}
 
 {% note primary %}
 
@@ -257,7 +263,7 @@ categories: 折腾派
 >
 > 让网页自由引入中文字体成为可能
 
-## 步骤
+**步骤**
 
 **添加自定义字体**
 
@@ -318,7 +324,7 @@ font:  # 主题字体配置
 
 {% endnote %}
 
-# 参考资料
+## 参考资料
 
 - [Fluid配置文档](https://hexo.fluid-dev.com/docs/guide/#%E4%B8%BB%E9%A2%98%E7%AE%80%E4%BB%8B)
 - [Hexo Fluid 主题 UI 修改版](https://github.com/qixa/hexo-theme-fluid-mod)

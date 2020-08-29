@@ -11,7 +11,7 @@ date: 2020-08-12 01:48:09
 categories: 折腾派
 ---
 
-# 前言
+## 前言
 
 在我们使用 Hexo 作为框架搭建静态博客时，存在两个主要因素影响着网站访问速度。
 
@@ -24,7 +24,7 @@ categories: 折腾派
 
 所以，我们在此主要针对以上两个问题来进行优化。
 
-# Vercel 托管
+## Vercel 托管
 
 **Vercel** 是一家提供 JamStack（静态网站）托管的平台，支持自动从 GitHub 等仓库拉取代码, 按自定义构建方式进行构建，最后把生成的静态网站进行发布; 在这基础上同时也支持自定义域名，自动申请 SSL 证书等功能。
 
@@ -40,7 +40,7 @@ categories: 折腾派
 
 此外，按照上述教程进行操作之后，查看 Domain 一栏是否解析生效。此时可能会出现一会儿配置失败，一会儿配置成功的情况。若出现标红提示配置失败，点击查看错误提示。**如果是提示更改为 Vercel 的 DNS 服务器，只需到你博客域名服务商，将 DNS 服务器地址更改为 Vercel 要求的地址即可。**（例如我的域名服务商是阿里云，我到官网去把阿里云官方的 DNS 服务器地址改为 Vercel 的即可。DNS 服务器地址为两个，都需要进行更改）![Snipaste_2020-08-12_02-35-18](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812033929.png)
 
-## 效果图
+**效果图**
 
 对比站点 github.io 的原始域名，访问延迟明显减小：
 
@@ -50,7 +50,7 @@ categories: 折腾派
 
 ![网站速度诊断](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812040604.png)
 
-# jsDelivr 加速
+## jsDelivr 加速
 
 在博客的撰写中，我们一般是直接引用本地图库资源（使用 hexo-asset-image 插件）对文章进行配图。之后再`hexo g -d` 将文章和图片资源一同部署到 GitHub 。而我们在访问这些图片资源时又需要再从 GitHub 上进行提取，而 GitHub 上的访问速度本身已经很慢，再去加载大量图片更加会拖慢网页速度。虽然我们前面已经对博客进行了 Vercel 托管，但是我们有一种更简单高效的方式对图片进行上传，那就是**利用 GitHub 图库+ jsDelivr CDN 加速+ PicGo 客户端实现图库的高效使用**。
 
@@ -107,7 +107,7 @@ npm remove  hexo-asset-image
 
 在使用图床之后，我们所用的的图片就可以不放在本地。那么图片在每次编译部署也就不用上传到网上，这缩短了编译时间。
 
-# Valine 评论系统 （邮件提醒）
+## Valine 评论系统 （邮件提醒）
 
 {% note success %}
 
@@ -118,7 +118,7 @@ npm remove  hexo-asset-image
 
 {% endnote %}
 
-# 其他优化教程
+## 其他优化教程
 
 {% note success %}
 
@@ -130,11 +130,11 @@ npm remove  hexo-asset-image
 
 {% endnote %}
 
-# 总结
+## 后记
 
 完成上述操作之后，博客的打开速度不出意外就会快很多。不过做了这么多操作，我们最核心关注的点还是应该在**博客内容质量**，以及**输出频率**上。总结下来就是内容为王，同时兼顾用户体验。
 
-# 参考资料
+## 参考资料
 
 - [使用 Vercel 加速 Hexo 静态博客访问](https://vincentqin.tech/posts/speedup-gitpage/)
 - [Github+jsDelivr+PicGo 打造稳定快速、高效免费图床](https://www.itrhx.com/2019/08/01/A27-image-hosting/)

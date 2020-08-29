@@ -214,13 +214,13 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年8月27日 下午
+                  本文最后更新于：2020年8月29日 晚上
                 
               </p>
             
             <article class="markdown-body">
-              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>因为内心其实是想拥有 <code>.com</code> 域名的，但建站初期脑子热，只想先把站点搭建起来再说。现在该搭建的也搭建好了，改润色的也润色完了，于是就打起了域名的主意。<del>（真相：下周就要开学了，想趁着开学再折腾一番）</del></p>
-<h1 id="新域名解析"><a href="#新域名解析" class="headerlink" title="新域名解析"></a>新域名解析</h1><p>如何购买新域名的过程不再赘述，笔者是在 <a href="https://www.namesilo.com/" target="_blank" rel="noopener">Namesilo</a> 购买的域名。</p>
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为内心其实是想拥有 <code>.com</code> 域名的，但建站初期脑子热，只想先把站点搭建起来再说。现在该搭建的也搭建好了，改润色的也润色完了，于是就打起了域名的主意。<del>（真相：下周就要开学了，想趁着开学再折腾一番）</del></p>
+<h2 id="新域名解析"><a href="#新域名解析" class="headerlink" title="新域名解析"></a>新域名解析</h2><p>如何购买新域名的过程不再赘述，笔者是在 <a href="https://www.namesilo.com/" target="_blank" rel="noopener">Namesilo</a> 购买的域名。</p>
 <blockquote>
 <p>优点：提供永久免费的域名隐私保护，防止别人通过 WHOIS 查询获取域名所有者的个人注册信息。</p>
 <p>缺点：网站的网页设计也太丑了，一股扑面而来的 20 年前设计感。</p>
@@ -241,7 +241,7 @@
             <p>注：启用新域名后，文章链接会自动更换为新域名目录下的，不用手动更改。</p>
           </div>
 
-<h1 id="删除旧域名"><a href="#删除旧域名" class="headerlink" title="删除旧域名"></a>删除旧域名</h1><p>现在我们可以通过新旧两个域名来访问博客，但是显得很累赘。我们只想启用一个博客域名，所以现在需要将旧域名处的域名解析进行删除。</p>
+<h2 id="删除旧域名"><a href="#删除旧域名" class="headerlink" title="删除旧域名"></a>删除旧域名</h2><p>现在我们可以通过新旧两个域名来访问博客，但是显得很累赘。我们只想启用一个博客域名，所以现在需要将旧域名处的域名解析进行删除。</p>
 <ul>
 <li><p>删除旧域名处的域名解析，也就是将 username.github.io 的解析文件删除（CNAME 记录类型）；</p>
 </li>
@@ -253,7 +253,7 @@
             <p>注：因为笔者之前使用了 Vercel 对站点托管，所以此处还需要删去 Vercel 的解析域名。</p>
           </div>
 
-<h1 id="旧域名重新定向"><a href="#旧域名重新定向" class="headerlink" title="旧域名重新定向"></a>旧域名重新定向</h1><p>因为笔者的旧域名被友链收录，并且旧域名还有一年才到期。为了不麻烦友人重新填写站点信息 <del>（说得好像一年后还能跳转一样）</del>，所以需要将旧域名重新定向到新域名，以保证通过旧域名能自动跳转到新域名站点。</p>
+<h2 id="旧域名重新定向"><a href="#旧域名重新定向" class="headerlink" title="旧域名重新定向"></a>旧域名重新定向</h2><p>因为笔者的旧域名被友链收录，并且旧域名还有一年才到期。为了不麻烦友人重新填写站点信息 <del>（说得好像一年后还能跳转一样）</del>，所以需要将旧域名重新定向到新域名，以保证通过旧域名能自动跳转到新域名站点。</p>
 <ul>
 <li><p>参照以下博文创建新账号、新的 .io仓库并在就域名解析处添加新的 username.github.io 解析。</p>
 <div class="note note-success">
@@ -268,14 +268,14 @@
 </li>
 </ul>
 <p>至此，我们便完成了对旧域名的重新定向。</p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>我们来测验下最终效果：</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>我们来测验下最终效果：</p>
 <ul>
 <li>旧域名：<a href="https://erenspace.cool" target="_blank" rel="noopener">https://erenspace.cool</a></li>
 <li>新域名：<a href="https://erenship.com">https://erenship.com</a></li>
 </ul>
 <p>访问 <a href="https://erenspace.cool" target="_blank" rel="noopener">https://erenspace.cool</a> → 最终访问 <a href="https://erenship.com">https://erenship.com</a></p>
 <p>虽然完成了主域名的跳转，但是没实现旧域名全站内容跳转。不过好在建站不久，内容其实并不多。</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://www.yanbinghu.com/2019/03/29/25951.html" target="_blank" rel="noopener">多个域名映射同一个github pages</a></li>
 <li><a href="https://www.cz5h.com/article/7f0e.html" target="_blank" rel="noopener">Github托管站点的域名更换</a></li>
 </ul>
@@ -306,7 +306,7 @@
 
              
                 <p class="note note-warning">
-	<strong>本文作者: </strong><a href="/">Eren Lu</a> <br>
+	<strong>本文作者: </strong><a href="/">Eren</a> <br>
 	<strong>本文链接: </strong><a href="https://erenship.com/posts/1f1b.html">https://erenship.com/posts/1f1b.html</a> <br>
 	<strong>版权声明: </strong>署名-非商业性使用-相同方式共享 4.0 国际（<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-NC-SA 4.0</a>）
                </p>

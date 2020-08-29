@@ -16,7 +16,7 @@ categories: 折腾派
 
 {% endnote %}
 
-# 常用命令
+## 常用命令
 
 - `hexo n "title"` 创建新文章；
 
@@ -36,11 +36,11 @@ categories: 折腾派
 
 - `npm uninstall 插件名称` 卸载插件；
 
-# 备份博客
+## 备份博客
 
 使用 **[ hexo-git-backup](https://github.com/coneycode/hexo-git-backup)** 插件进行备份操作。
 
-## 安装插件
+### 安装插件
 
 如果 Hexo 版本是 3.x.x，则应按如下方式安装：
 
@@ -48,7 +48,7 @@ categories: 折腾派
 $ npm install hexo-git-backup --save
 ```
 
-## 插件升级
+### 插件升级
 
 如果使用 --save 安装，则在更新时必须先删除。
 
@@ -57,7 +57,7 @@ $ npm remove hexo-git-backup
 $ npm install hexo-git-backup --save
 ```
 
-## 插件配置
+### 插件配置
 
 在博客目录根的 _config.yml 中增加相应配置。
 
@@ -74,15 +74,15 @@ backup:
 
 > 插件更多配置细则请参考官方文档。
 
-## 插件使用
+### 插件使用
 
 `hexo b`  备份博客到 GitHub 上对应的 backup 分支。
 
 **建议每次发布博客 `hexo d` 的时候都同时 `hexo b` 对博客进行备份更新。**
 
-# 恢复博客
+## 恢复博客
 
-## 安装 Hexo
+### 安装 Hexo
 
 在新环境下根据 [Hexo官方文档](https://hexo.io/zh-cn/) 安装配置好Hexo环境，
 
@@ -92,7 +92,7 @@ backup:
 npm install --save hexo-deployer-git
 ```
 
-## 覆盖本地文件
+### 覆盖本地文件
 
 从之前插件备份到 GitHub 分支中下载博客文件到本地，并覆盖本地博客文件。
 
@@ -108,12 +108,12 @@ hexo s
 
 如果成功接下来就是安装常用插件的任务了....
 
-# 后记
+## 后记
 
 - 如果不想使用 [hexo-git-backup](https://github.com/coneycode/hexo-git-backup) 插件对博客进行备份，可参考此文：[在Github上备份Hexo博客](https://lrscy.github.io/2018/01/26/Hexo-Github-Backup/) 。
 - 在 `hexo d` 时若出现 `fatal: 'github' does not appear to be a git repository` 的错误，请参考此 [Issue](https://github.com/coneycode/hexo-git-backup/issues/8) 。
 
-# 参考资料
+## 参考资料
 
 - [Hexo官方文档](https://hexo.io/zh-cn/docs/commands)
 - [hexo-git-backup](https://github.com/coneycode/hexo-git-backup)

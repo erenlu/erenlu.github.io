@@ -12,9 +12,13 @@ excerpt: CS50 第二周学习笔记。
 categories: 学习派
 ---
 
-> 提示: 在此只是将零散的、个人化的知识点记录下来，完整笔记查看官方 [Notes](https://cs50.harvard.edu/x/2020/notes/2/) 即可。 
+{% note success %}
 
-# 零散知识点
+提示：在此只是将零散的、个人化的知识点记录下来，完整笔记查看官方 [Notes](https://cs50.harvard.edu/x/2020/notes/2/) 即可。 
+
+{% endnote %} 
+
+## 零散知识点
 
 - CPU 只懂得低级别的汇编语言
   
@@ -58,7 +62,7 @@ categories: 学习派
 
 - 关于返回值：当不设置返回值时，main 自动返回 0。当程序变得复杂时，返回值变得非常有用，因为可以查看程序是否有错。e.g. 404 error，system error 29.
 
-# 数据类型（Data Types）
+## 数据类型（Data Types）
 
 
 In C, we have different types of variables we can use for storing data:
@@ -71,7 +75,7 @@ In C, we have different types of variables we can use for storing data:
 - double 8 bytes
 - string ? bytes
 
-# 数组（Arrays）
+## 数组（Arrays）
 
 ```
 #include <cs50.h>
@@ -100,7 +104,7 @@ int main(void)
 
 - 数组像美国高中学校里的大柜子，并且电脑一次只能打开一个柜子来看。
 
-# 字符串（Strings）
+## 字符串（Strings）
 
 * 字符串其实只是字符的数组。如果我们有一个字符串s，每个字符都可以用 `s[0]`、`s[1]` 来访问，以此类推。
 
@@ -158,13 +162,13 @@ printf("%c%c%c%c\n", names[0][0], names[0][1], names[0][2], names[0][3]);
   
   - 要记得在顶部先引用 `#include <string.h>` 才能使用
 
-# 排序（Sort）
+## 排序（Sort）
 
 时时刻刻我们都应该问算法是否高效。
 
 ![Snipaste_2020-07-13_16-50-47](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004059.png)
 
-##  冒泡排序（Bubble sort）
+###  冒泡排序（Bubble sort）
 
 - 一种比较排序法。两两对比，将更小的交换到左边。每次解决一个小问题，但需要反反复复地去做。
 
@@ -184,7 +188,7 @@ printf("%c%c%c%c\n", names[0][0], names[0][1], names[0][2], names[0][3]);
   - 第七次：比较1 次，[0,1] （后面六个都排序好了）
 * 优点：最右边已经确定，每次比较都可以少一个。
 
-## 选择排序（Selection sort）
+### 选择排序（Selection sort）
 
 * 每一次都选择剩下中数字最小的人，丢到左边去交换，这样每一次排序后就不用管之前的情况。所以剩下的工作会原来越少。
 
@@ -206,7 +210,7 @@ printf("%c%c%c%c\n", names[0][0], names[0][1], names[0][2], names[0][3]);
 
 * 优点：最左边已经确定，每次比较都可以少一个人 缺点：每次都要搜寻一遍最小数，即使一开始顺序就是对的。
 
-## 归并排序（Merge sort）
+### 归并排序（Merge sort）
 
 * 不断地进行二等分，直到最小单位再开始进行比较，再最后进行合并比较。
 
@@ -231,7 +235,7 @@ printf("%c%c%c%c\n", names[0][0], names[0][1], names[0][2], names[0][3]);
 
 * 优点：移动的次数比泡沫跟选择更有效率，每个数字只移动了 3 次，8 * 3 共 24 次 缺点：需要用到额外记忆体。
 
-## 算法的时间复杂度
+### 算法的时间复杂度
 
 * 由最高次幂决定。
 
@@ -245,7 +249,7 @@ printf("%c%c%c%c\n", names[0][0], names[0][1], names[0][2], names[0][3]);
 
 * 同时运行的具有大量输入的排序算法的 [最终可视化](https://www.youtube.com/watch?v=ZZuD6iUe3Pc) 视频。
 
-# 参考资料
+## 参考资料
 
 - [【筆記】CS50 - week 2 編譯、陣列、加密、排序法 ( 2019年更新 )](https://yakimhsu.com/cs50/CS50_week2.html)
 - [初學者學演算法-談什麼是演算法和時間複雜度](https://medium.com/appworks-school/%E5%88%9D%E5%AD%B8%E8%80%85%E5%AD%B8%E6%BC%94%E7%AE%97%E6%B3%95-%E8%AB%87%E4%BB%80%E9%BA%BC%E6%98%AF%E6%BC%94%E7%AE%97%E6%B3%95%E5%92%8C%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6-b1f6908e4b80)

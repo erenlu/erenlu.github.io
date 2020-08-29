@@ -16,11 +16,11 @@ categories: 折腾派
 
 {% endnote %}
 
-# 前言
+## 前言
 
 曾经年少被 “10 分钟搭建属于自己的个人博客” 的教程（ ~~忽悠~~ ）所鼓舞。风风火火地搭建好基于 Hexo 的个人博客，可谁知接下来等着自己的是各种出乎意料的 Bug。
 
-# YAML 语法错误
+## YAML 语法错误
 
 -  **`YAML Exception: bad indentation of a mapping entry at line xxx`  错误提示**
 
@@ -42,7 +42,7 @@ categories: 折腾派
   
   {% endnote %}
 
-# 其他问题
+## 其他问题
 
 -  **webp 格式图片无法在 Safari 浏览器显示**
 

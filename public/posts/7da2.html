@@ -214,7 +214,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年8月26日 晚上
+                  本文最后更新于：2020年8月29日 晚上
                 
               </p>
             
@@ -223,7 +223,7 @@
             <p>在此记录常用 Hexo 命令及备份方式。</p>
           </div>
 
-<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><ul>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
 <li><p><code>hexo n &quot;title&quot;</code> 创建新文章；</p>
 </li>
 <li><p><code>hexo g -d</code>  生成静态文件（gnerate），且文件生成后立即部署网站（deploy）；</p>
@@ -242,15 +242,15 @@
 <li><p><code>npm uninstall 插件名称</code> 卸载插件；</p>
 </li>
 </ul>
-<h1 id="备份博客"><a href="#备份博客" class="headerlink" title="备份博客"></a>备份博客</h1><p>使用 <strong><a href="https://github.com/coneycode/hexo-git-backup" target="_blank" rel="noopener"> hexo-git-backup</a></strong> 插件进行备份操作。</p>
-<h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><p>如果 Hexo 版本是 3.x.x，则应按如下方式安装：</p>
+<h2 id="备份博客"><a href="#备份博客" class="headerlink" title="备份博客"></a>备份博客</h2><p>使用 <strong><a href="https://github.com/coneycode/hexo-git-backup" target="_blank" rel="noopener"> hexo-git-backup</a></strong> 插件进行备份操作。</p>
+<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>如果 Hexo 版本是 3.x.x，则应按如下方式安装：</p>
 <pre><code class="hljs sql">$ npm <span class="hljs-keyword">install</span> hexo-git-<span class="hljs-keyword">backup</span> <span class="hljs-comment">--save</span></code></pre>
 
-<h2 id="插件升级"><a href="#插件升级" class="headerlink" title="插件升级"></a>插件升级</h2><p>如果使用 –save 安装，则在更新时必须先删除。</p>
+<h3 id="插件升级"><a href="#插件升级" class="headerlink" title="插件升级"></a>插件升级</h3><p>如果使用 –save 安装，则在更新时必须先删除。</p>
 <pre><code class="hljs sql">$ npm remove hexo-git-<span class="hljs-keyword">backup</span>
 $ npm <span class="hljs-keyword">install</span> hexo-git-<span class="hljs-keyword">backup</span> <span class="hljs-comment">--save</span></code></pre>
 
-<h2 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h2><p>在博客目录根的 _config.yml 中增加相应配置。</p>
+<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><p>在博客目录根的 _config.yml 中增加相应配置。</p>
 <pre><code class="hljs less"><span class="hljs-attribute">backup</span>:
     <span class="hljs-attribute">type</span>: git
     <span class="hljs-attribute">theme</span>: coney,landscape,xxx
@@ -262,13 +262,13 @@ $ npm <span class="hljs-keyword">install</span> hexo-git-<span class="hljs-keywo
 <blockquote>
 <p>插件更多配置细则请参考官方文档。</p>
 </blockquote>
-<h2 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h2><p><code>hexo b</code>  备份博客到 GitHub 上对应的 backup 分支。</p>
+<h3 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h3><p><code>hexo b</code>  备份博客到 GitHub 上对应的 backup 分支。</p>
 <p><strong>建议每次发布博客 <code>hexo d</code> 的时候都同时 <code>hexo b</code> 对博客进行备份更新。</strong></p>
-<h1 id="恢复博客"><a href="#恢复博客" class="headerlink" title="恢复博客"></a>恢复博客</h1><h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><p>在新环境下根据 <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo官方文档</a> 安装配置好Hexo环境，</p>
+<h2 id="恢复博客"><a href="#恢复博客" class="headerlink" title="恢复博客"></a>恢复博客</h2><h3 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h3><p>在新环境下根据 <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo官方文档</a> 安装配置好Hexo环境，</p>
 <p>安装博客部署到 GitHub 所需要的插件：</p>
 <pre><code class="hljs sql">npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save hexo-deployer-git</span></code></pre>
 
-<h2 id="覆盖本地文件"><a href="#覆盖本地文件" class="headerlink" title="覆盖本地文件"></a>覆盖本地文件</h2><p>从之前插件备份到 GitHub 分支中下载博客文件到本地，并覆盖本地博客文件。</p>
+<h3 id="覆盖本地文件"><a href="#覆盖本地文件" class="headerlink" title="覆盖本地文件"></a>覆盖本地文件</h3><p>从之前插件备份到 GitHub 分支中下载博客文件到本地，并覆盖本地博客文件。</p>
 <p>此外，可以只下载其中的 <code>config.yml，theme/，source/，scaffolds/，package.json，.gitignore</code> 这六个文件覆盖。</p>
 <p>此时运行如下三连进行测试博客是否迁移成功。</p>
 <pre><code class="hljs properties"><span class="hljs-attr">hexo</span> <span class="hljs-string">clean</span>
@@ -276,11 +276,11 @@ $ npm <span class="hljs-keyword">install</span> hexo-git-<span class="hljs-keywo
 <span class="hljs-attr">hexo</span> <span class="hljs-string">s</span></code></pre>
 
 <p>如果成功接下来就是安装常用插件的任务了….</p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><ul>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><ul>
 <li>如果不想使用 <a href="https://github.com/coneycode/hexo-git-backup" target="_blank" rel="noopener">hexo-git-backup</a> 插件对博客进行备份，可参考此文：<a href="https://lrscy.github.io/2018/01/26/Hexo-Github-Backup/" target="_blank" rel="noopener">在Github上备份Hexo博客</a> 。</li>
 <li>在 <code>hexo d</code> 时若出现 <code>fatal: &#39;github&#39; does not appear to be a git repository</code> 的错误，请参考此 <a href="https://github.com/coneycode/hexo-git-backup/issues/8" target="_blank" rel="noopener">Issue</a> 。</li>
 </ul>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://hexo.io/zh-cn/docs/commands" target="_blank" rel="noopener">Hexo官方文档</a></li>
 <li><a href="https://github.com/coneycode/hexo-git-backup" target="_blank" rel="noopener">hexo-git-backup</a></li>
 <li><a href="https://mxy493.xyz/2019/05/25/Hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6hexo-git-backup%E9%80%9A%E8%BF%87GitHub%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/" target="_blank" rel="noopener">Hexo博客使用插件hexo-git-backup通过GitHub备份与恢复</a></li>
@@ -312,7 +312,7 @@ $ npm <span class="hljs-keyword">install</span> hexo-git-<span class="hljs-keywo
 
              
                 <p class="note note-warning">
-	<strong>本文作者: </strong><a href="/">Eren Lu</a> <br>
+	<strong>本文作者: </strong><a href="/">Eren</a> <br>
 	<strong>本文链接: </strong><a href="https://erenship.com/posts/7da2.html">https://erenship.com/posts/7da2.html</a> <br>
 	<strong>版权声明: </strong>署名-非商业性使用-相同方式共享 4.0 国际（<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-NC-SA 4.0</a>）
                </p>
