@@ -153,8 +153,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-07-10 00:23">
-      2020年7月10日 凌晨
+    <time datetime="2020-07-11 22:04">
+      2020年7月11日 晚上
     </time>
   </div>
 
@@ -214,7 +214,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年8月23日 下午
+                  本文最后更新于：2020年8月29日 晚上
                 
               </p>
             
@@ -227,26 +227,26 @@
 <p>CS50 IDE 常用命令：</p>
 <ul>
 <li><p>创建新文件夹。</p>
-<pre><code class="hljs arcade">mkdir ~<span class="hljs-regexp">/pset1/</span></code></pre>
+<pre><code class="hljs dockerfile">mkdir ~/pset1/<span class="hljs-keyword">Copy</span></code></pre>
 
 <p>eg: 在您的主目录中创建一个目录（即文件夹 pset1）。 <code>~</code> 表示您的home目录，<code>~/pset1</code> 表示一个名为<code>pset1</code> 的目录。</p>
 </li>
 <li><p>将自己移入（即打开）该目录。</p>
-<pre><code class="hljs jboss-cli"><span class="hljs-keyword">cd</span> ~<span class="hljs-string">/pset1/</span></code></pre>
+<pre><code class="hljs dockerfile">cd ~/pset1/<span class="hljs-keyword">Copy</span></code></pre>
 </li>
 <li><p>clang 是一种编译程序，将源代码转换为机器代码。（clang 的操作可由 make xxx 代替）</p>
-<pre><code class="hljs css"><span class="hljs-selector-tag">clang</span> <span class="hljs-selector-tag">xxx</span><span class="hljs-selector-class">.c</span></code></pre>
+<pre><code class="hljs css"><span class="hljs-selector-tag">clang</span> <span class="hljs-selector-tag">xxx</span><span class="hljs-selector-class">.cCopy</span></code></pre>
 </li>
 <li><p>编译代码。</p>
-<pre><code class="hljs ebnf"><span class="hljs-attribute">make xxx</span></code></pre>
+<pre><code class="hljs ebnf"><span class="hljs-attribute">make xxxCopy</span></code></pre>
 </li>
 <li><p>运行代码。</p>
-<pre><code class="hljs jboss-cli"><span class="hljs-string">./xxx</span></code></pre>
+<pre><code class="hljs jboss-cli"><span class="hljs-string">./xxxCopy</span></code></pre>
 
 </li>
 </ul>
 <h1 id="Mario-More"><a href="#Mario-More" class="headerlink" title="Mario More"></a>Mario More</h1><p>Toward the beginning of World 1-1 in Nintendo’s Super Mario Brothers, Mario must hop over adjacent pyramids of blocks, per the below.</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004352.png" srcset="/img/loading.gif" alt="pyramids"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004352.png" srcset="/img/loading.gif" alt="mario"></p>
 <p>Let’s recreate those pyramids in C, albeit in text, using hashes (<code>#</code>) for bricks, a la the below. Each hash is a bit taller than it is wide, so the pyramids themselves are also be taller than they are wide.</p>
 <h2 id="Puprose"><a href="#Puprose" class="headerlink" title="Puprose"></a>Puprose</h2><p>The program we’ll write will be called <code>mario</code>. And let’s allow the user to decide just how tall the pyramids should be by first prompting them for a positive integer between, say, 1 and 8, inclusive.</p>
 <pre><code class="hljs clean">$ ./mario
@@ -258,9 +258,9 @@ Height: <span class="hljs-number">8</span>
    #####  #####
   ######  ######
  #######  #######
-########  ########</code></pre>
+########  ########Copy</code></pre>
 
-<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004406.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-09_23-09-55"></p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p><a href="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004406.png" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004406.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-09_23-09-55"></a></p>
 <p>首先是对左边金字塔进行完成，因为右边只需要行数个 #，而左边要对空格和 # 进行处理。</p>
 <p>最后使用判断的方式进行 <strong>i+j&lt;h-1</strong> ，因为刚好在第四行的时候 “空格” 和 “#” 的数量是一个分水岭。其中i是行数，j 是列数，他们都是从 0 开始计数。</p>
 <h2 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h2><pre><code class="hljs dart"><span class="hljs-comment"><span class="markdown">/<span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span>*</span></span>
@@ -309,7 +309,7 @@ Height: <span class="hljs-number">8</span>
         
         printf(<span class="hljs-string">"\n"</span>);
     &#125;
-&#125;</code></pre>
+&#125;Copy</code></pre>
 
 <h1 id="Crash"><a href="#Crash" class="headerlink" title="Crash"></a>Crash</h1><p>假设你是一位收营员，你手中只有 25 cent, 10 cent, 5 cent, 1 cent面值的纸币供你进行找零。 在你找零时要依据优先使用能用的最面值进行找零，这样才能使总共找零纸币数量最少，即全局最优解。</p>
 <h2 id="Puprose-1"><a href="#Puprose-1" class="headerlink" title="Puprose"></a>Puprose</h2><p>请设计一个程序，已知应找顾客多少钱，在仅使用以上 4 种面值的纸币的情况下，求出找零多少张纸币的数量。输入为负数或字符时提示再次输入。</p>
@@ -318,9 +318,9 @@ Height: <span class="hljs-number">8</span>
 <span class="hljs-attr">Change owed:</span> <span class="hljs-number">-0.41</span>
 <span class="hljs-attr">Change owed:</span> <span class="hljs-string">foo</span>
 <span class="hljs-attr">Change owed:</span> <span class="hljs-number">0.41</span>
-<span class="hljs-number">4</span></code></pre>
+<span class="hljs-string">4Copy</span></code></pre>
 
-<h2 id="Method-1"><a href="#Method-1" class="headerlink" title="Method"></a>Method</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004424.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_11-34-13"></p>
+<h2 id="Method-1"><a href="#Method-1" class="headerlink" title="Method"></a>Method</h2><p><a href="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004424.png" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004424.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_11-34-13"></a></p>
 <p>需将 9 dollar 先转换为 900 cent。</p>
 <h2 id="The-Code-1"><a href="#The-Code-1" class="headerlink" title="The Code"></a>The Code</h2><pre><code class="hljs autoit"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cs50.h&gt;</span></span>
@@ -347,7 +347,7 @@ Height: <span class="hljs-number">8</span>
     
     n = a+b+c+d<span class="hljs-comment">;</span>
     printf(<span class="hljs-string">"%i\n"</span>,n)<span class="hljs-comment">;</span>
-&#125;</code></pre>
+&#125;Copy</code></pre>
 
 <h1 id="Credit"><a href="#Credit" class="headerlink" title="Credit"></a>Credit</h1><p>美国信用卡的卡号有相应的数学关系，可以通过其关系判断是否为合法的信用卡卡号。<a href="https://cs50.harvard.edu/x/2020/psets/1/credit/#luhns-algorithm" target="_blank" rel="noopener">Luhn’s Algorithm</a> 算法就是一种判断信用卡卡号是否合法的一种算法。其定义为：</p>
 <ol>
@@ -370,15 +370,15 @@ Height: <span class="hljs-number">8</span>
 <p>13 + 4 + 0 + 0 + 0 + 0 + 0 + 3 + 0 = 20</p>
 </li>
 <li><p>Yup, the last digit in that sum (20) is a 0, so David’s card is legit!</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008120027.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-27-47"></p>
+<p><a href="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008120027.png" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008120027.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-27-47"></a></p>
 </li>
 </ol>
-<h2 id="Puprose-2"><a href="#Puprose-2" class="headerlink" title="Puprose"></a>Puprose</h2><p>write a program that prompts the user for a credit card number and then reports (via <code>printf</code>) whether it is a valid American Express, MasterCard, or Visa card number, per the definitions of each’s format herein. So that we can automate some tests of your code, we ask that your program’s last line of output be <code>AMEX\n</code> or <code>MASTERCARD\n</code> or <code>VISA\n</code> or <code>INVALID\n</code>, nothing more, nothing less. </p>
-<h2 id="Method-2"><a href="#Method-2" class="headerlink" title="Method"></a>Method</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004740.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-26-16"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004804.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-27-07"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004836.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-49-45"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812005831.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-50-27"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004933.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-52-25"></p>
+<h2 id="Puprose-2"><a href="#Puprose-2" class="headerlink" title="Puprose"></a>Puprose</h2><p>write a program that prompts the user for a credit card number and then reports (via <code>printf</code>) whether it is a valid American Express, MasterCard, or Visa card number, per the definitions of each’s format herein. So that we can automate some tests of your code, we ask that your program’s last line of output be <code>AMEX\n</code> or <code>MASTERCARD\n</code> or <code>VISA\n</code> or <code>INVALID\n</code>, nothing more, nothing less.</p>
+<h2 id="Method-2"><a href="#Method-2" class="headerlink" title="Method"></a>Method</h2><p><a href="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004740.png" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004740.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-26-16"></a></p>
+<p><a href="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004804.png" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004804.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-27-07"></a></p>
+<p><a href="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004836.png" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004836.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-49-45"></a></p>
+<p><a href="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812005831.png" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812005831.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-50-27"></a></p>
+<p><a href="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004933.png" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004933.png" srcset="/img/loading.gif" alt="Snipaste_2020-07-10_12-52-25"></a></p>
 <p>重点在于对奇数和偶数部分的求和。奇数部分 for 循环使用 <code>i / 100</code> 来获得下一次奇数位(间隔两位)，使用 <code>oddsum % 10</code> 获得当前奇数位的数值。</p>
 <p>偶数部分 for 循环，先 <code>x2 = i / 10</code> 让卡号从偶数位开始。由于偶数位需要 ×2 再相加，并且如果乘机为十位还需要拆开分别数字相加（e.g. 2×6=12，相加时是 1+2。此时在 for 循环中嵌套if判断，若乘机两位数则进行分解相加，否则直接相加，再同理求得偶数位和。</p>
 <h2 id="The-Code-2"><a href="#The-Code-2" class="headerlink" title="The Code"></a>The Code</h2><pre><code class="hljs dart"><span class="hljs-comment"><span class="markdown">/<span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span>*</span></span>
@@ -440,7 +440,7 @@ Height: <span class="hljs-number">8</span>
         printf(<span class="hljs-string">"INVALID\n"</span>);
         
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre>
+&#125;Copy</code></pre>
 
 <h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>把 pset1做完整体下来陆陆续续花了小两天的时间。看似题数不多，可每一题都很扎实。最后一题在做的时候硬是想不出来，最后还是去网上搜寻了思路。虽然才第一次作业，但作为一名 C 很垃圾并且很久没用 C 的我，也不得不开始感叹 CS50 的课程设计真的名不虚传。</p>
 
@@ -460,9 +460,9 @@ Height: <span class="hljs-number">8</span>
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-                    
                       <a class="hover-with-bg" href="/tags/CS50/">CS50</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
                     
                       <a class="hover-with-bg" href="/tags/C%E8%AF%AD%E8%A8%80/">C语言</a>
                     
@@ -472,8 +472,8 @@ Height: <span class="hljs-number">8</span>
 
              
                 <p class="note note-warning">
-	<strong>本文作者: </strong><a href="/">Eren Lu</a> <br>
-	<strong>本文链接: </strong><a href="https://erenship.com/posts/bfe6.html">https://erenship.com/posts/bfe6.html</a> <br>
+	<strong>本文作者: </strong><a href="/">Eren</a> <br>
+	<strong>本文链接: </strong><a href="https://erenship.com/posts/b465.html">https://erenship.com/posts/b465.html</a> <br>
 	<strong>版权声明: </strong>署名-非商业性使用-相同方式共享 4.0 国际（<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-NC-SA 4.0</a>）
                </p>
              
@@ -763,7 +763,7 @@ Height: <span class="hljs-number">8</span>
       if ('true' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/posts/bfe6.html');
+          var target = decodeURI('/posts/b465.html');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
