@@ -230,21 +230,21 @@ categories: 折腾派
 
    实现效果参考：https://erenship.com/about/
 
-## ~~自定义字体~~
-
-{% note danger %}
-
-出现 Bug，此部分内容暂时无效。
-
-{% endnote %}
+## 自定义字体
 
 {% note primary %}
 
-目的：在网站中引入自定义字体。
+目的：在网站中引入自定义字体；
 
 本教程以引入思源宋体为例。
 
 {% endnote %}
+
+{% note danger %}
+
+如需引入本地字体，可使用 [字蛛（font-spider）](http://font-spider.org/) 对字体文件进行压缩，但由于未知原因笔者使用字蛛压缩失败。故而使用在线托管字体网址进行字体引用。
+
+{% endnote %} 
 
 字体，作为影响网页美观的重要因素。我们常常需要个性化字体来突显网站的风格。但由于中文字体不同于英文字体只需覆盖 26 个字母 ，中文字体包由于包含大量中文字库，其文件大小通常有几兆甚至十几兆。这给网页浏览来带极大的流量负担，拖慢加载速度，影响用户体验。
 
@@ -257,66 +257,33 @@ categories: 折腾派
 
 但是，这怎么能止住我们追求美的脚步呢？
 
-在此我们引出今天的主角： [字蛛（font-spider）](http://font-spider.org/)
+### 引入字体
 
-> 字蛛是一个中文字体压缩器
->
-> 让网页自由引入中文字体成为可能
+2018 年在 Google Fonts 上已经托管了思源宋体，所以我们可以直接通过托管引入到我们的博客中。打开 [Google Fonts](https://fonts.google.com/)，搜索思源宋体的英文名：`Noto Serif SC`，在列表中选择我们个人觉得合适的字体样式，点击右侧的 `Select this style`，注意此处可根据自己需要选择多个样式。关于字体引用概念和前期准备工作请参考以下教程，在 **本地设置** 中会针对 Fluid 主题的自定义操作进行讲解。
 
-**步骤**
+{% note success %}
 
-**添加自定义字体**
+参考教程：https://bestzuo.cn/posts/notoserifsc.html
 
-1. 先创建自定义字体所需要的一些文件：
+{% endnote %}
 
-   在博客根目录 (非theme目录) `source` 文件夹下创建 `fonts` 文件夹（用于存放字体文件）；
-   在 `\themes\fluid\source\css` 下新建 `custom.css` 文件;
-   在 Fluid 主题对应的 `_config.yml` 找到`custom_css:` 在后面添加 `/css/custom.css`。
+### 本地设置
 
-2. 下载目标字体，推荐网站：[google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/)
+1. 在按照上述教程将 <Link> 代码复制好之后，打开 `\themes\fluid\layout\_partial` 目录下的 `head.ejs` 文件，将引入链接添加进文档中。
 
-3. 进行声明和设置字体：
+   ![Snipaste_2020-09-05_10-37-29](https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200905103fff918.png)
 
-   将下载好的文件解压到夹刚刚创建的 `fonts` 文件夹中，再将网页自动生成的 @font-face 定义放到 `/css/custom.css` 中。
+   ![Snipaste_2020-09-05_10-40-47](https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/2020090510kk4055.png)
 
-   ![Snipaste_2020-08-26_19-53-36](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/2020082620020588.png)
+2. 将字体英文名称添加到 `\themes\fluid\source\css\variables\` 目录下的 `base.styl` 文件中，具体位置为 `font-family:` 。例如笔者引入的字体位思源宋体，其英文名称为 “Noto Serif SC”。
 
-4. 将字体英文名称添加到 `\themes\fluid\source\css\variables\` 目录下的 `base.styl` 文件中，具体位置为 `font-family:` 。例如笔者引入的字体位思源宋体，其英文名称为 “Noto Serif SC”。![Snipaste_2020-08-26_20-01-37](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200826200147.png)
+   ![Snipaste_2020-08-26_20-01-37](https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200826200147.png)
 
-至此，我们就完成了自定义字体引入。你可以执行部署命令来检查是否成功引入。由于未对字体压缩，新字体加载应该会比较慢。
+至此，我们就完成了自定义字体引入。你可以执行部署命令来检查是否成功引入。
 
-**注：**如果检查发现没有引入成功，请检查`fluid_config.yml` 中如下部分是否进行改动。可以添加引入字体英文名称。例如笔者所引入字体的英文名称： ` font_family:  Source Serif Pro, Noto Serif SC`，再进行重新部署检查。
 
-```
-font:  # 主题字体配置
-  font_size: 16px                   # 全局字号
-  font_family:                      # 全局 Georgia, sans-serif
-  code_font_size: 100%              # 代码的字号
-```
 
-**字体压缩**
-
-1. 安装字蛛。
-
-   ```
-   npm install font-spider -g
-   ```
-
-2. 生成新的字体库。
-
-   ```
-   font-spider  <博客文件夹>\public\index.html
-   ```
-
-   此处 <博客文件夹> 是对应 `index.html` 文件所在的目录。例如笔者此处所执行的代码为：
-
-   ```
-   font-spider  D:\MyBlog\public\index.html
-   ```
-
-至此，我们便完成了引入字体 + 字体压缩的所有工作。你可以执行部署命令来检查现在网页加载是否有较大提升。
-
-​         
+​        
 
 {% note danger %}
 
@@ -329,6 +296,4 @@ font:  # 主题字体配置
 - [Fluid配置文档](https://hexo.fluid-dev.com/docs/guide/#%E4%B8%BB%E9%A2%98%E7%AE%80%E4%BB%8B)
 - [Hexo Fluid 主题 UI 修改版](https://github.com/qixa/hexo-theme-fluid-mod)
 - [Hexo Fluid主题 添加自定义字体](https://largesse.12306.recipes/posts/3c2a5351.html)
-- [我是如何加速博客的](https://blog.jalenchuh.cn/posts/how-i-make-blog-faster/)
-- [ttf 字体压缩](https://lruihao.cn/posts/web-font.html)
-
+- [博客网站字体设置：思源宋体](https://bestzuo.cn/posts/notoserifsc.html#%E4%BD%BF%E7%94%A8%E6%80%9D%E6%BA%90%E5%AE%8B%E4%BD%93)
