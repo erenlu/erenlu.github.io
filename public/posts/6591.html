@@ -1,21 +1,19 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
 <head>
   <meta charset="UTF-8">
- <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <meta name="baidu-site-verification" content="zK1yNfVfey" />
 
-  
     <meta name="keywords" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具,资源,教程,分享,推荐,娱乐,摄影,文学">
     <meta name="description" content="觅之，自有所获" />
     <meta property="site_name" content="Eren の 宇宙船" />
-   
-
   <link rel="apple-touch-icon" sizes="76x76" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
   <link rel="icon" type="image/png" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
   <meta name="viewport"
@@ -35,7 +33,11 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
   
 
   
@@ -43,11 +45,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -56,6 +58,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -126,8 +129,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -135,32 +144,35 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200906004359.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-09-05 18:51">
-      2020年9月5日 晚上
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-05 18:51" pubdate>
+        2020年9月5日 晚上
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      811 字
+      812 字
     </span>
   
 
@@ -206,7 +218,9 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">打球手歪后，我却要安利「蜜雪冰城」</h1>
             
               <p class="note note-info">
                 
@@ -214,7 +228,7 @@
                 
               </p>
             
-            <article class="markdown-body">
+            <div class="markdown-body" id="post-body">
               <h2 id="受伤"><a href="#受伤" class="headerlink" title="受伤"></a>受伤</h2><p>昨天下午打球，接球的时候小拇指被急速飞来的球给打折了… 小拇指靠近指甲的第一、第二个关节给往外翻 30° 左右 。疼得我立马没知觉了。可怕的是我当时看着这扭曲的小拇指竟然 <strong>顺手给掰回来了</strong> 。</p>
 <p>随后下场休息，准备再战（现在想来当时我脑子是瓦特掉了吗？）。坐了大概 30s 后就感觉眼前很模糊，眼睛无法聚焦，就像以前贫血的症状一样。当时以为缓一缓就没事了，结果一分钟后仍然这样，并且被我强行掰回来的手指开始痛了。之后马上打电话叫室友来医务室陪我，我凭感觉自行走到医务室去（因为当时眼前依旧很模糊，我也太逞能了，还好没直接晕倒）。</p>
 <p>到医务室后，校医听我情况后马上让室友扶着我去床上躺下。给我喝了两大杯糖水后，我的意识才慢慢缓过来。</p>
@@ -243,9 +257,9 @@
 <blockquote>
 <p>「不是这只手指，是小拇指这只。」</p>
 </blockquote>
-<p>随即，他尴尬地笑了笑…我无奈的摇了摇头。</p>
+<p>随即，他尴尬地笑了笑…我无奈地摇了摇头。</p>
 <p>之后骨科医生建议我先观察两天，后续有情况再挂骨科门诊，不要挂急诊。</p>
-<p>于是我点头道谢，这点头是为了后半句…</p>
+<p>于是我点头道谢，这点头是为了后半句话…</p>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>虽说是安利「冰雪蜜城」，但其实也为了苦中作乐，<del>老实说真心觉得不太好喝</del>。</p>
 <p>最应该感谢的其实是负责的校医。看得出来校医当时得知我头晕眼花，又加之没吃晚饭后，觉得事态有点严重，说话的口气都变得紧张起来，不过搞得我心更慌了😂，估计是怕我休克吧。</p>
 <p>此外还要感谢我的可爱室友 @强强，耽搁了他复习 GET 的时间（就是因为这一晚上，他考不了 100 分了，害）</p>
@@ -256,7 +270,7 @@
 <li>一定要有个好室友</li>
 </ul>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -278,7 +292,7 @@
                 
               </div>
 
-             
+          
                 <p class="note note-warning">
 	<strong>本文作者: </strong><a href="/">Eren</a> <br>
 	<strong>本文链接: </strong><a href="https://erenship.com/posts/6591.html">https://erenship.com/posts/6591.html</a> <br>
@@ -288,27 +302,27 @@
 
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/posts/fb22.html">
-                        <span class="hidden-mobile">当我凝视这双眼睛时，我在思考什么</span>
+                        <span class="hidden-mobile">这喵眼里有整个星空</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments">
                 
                 
   <div id="vcomments"></div>
@@ -328,19 +342,18 @@
           highlight: false,
           recordIP: true,
           serverURLs: "",
-
         });
       });
     }
-    createObserver(loadValine, 'vcomments');
+    waitElementVisible('vcomments', loadValine);
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -435,6 +448,10 @@
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 
@@ -636,7 +653,7 @@
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: 'article.markdown-body',
+        contentSelector: '#post-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -750,21 +767,12 @@
   
     <!-- Google Analytics -->
     <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
       ga('create', 'UA-176568792-1', 'auto');
       ga('send', 'pageview');
     </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
   
 
   
@@ -774,10 +782,6 @@
   
 
   
-
-
-
-
 
 
 

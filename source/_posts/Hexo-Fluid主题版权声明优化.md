@@ -230,6 +230,49 @@ categories: 折腾派
 
    实现效果参考：https://erenship.com/about/
 
+   
+
+   ### 更新
+
+   {% note danger %}
+
+   由于在使用覆盖方式升级 Fluid 主题到 1.8.3 后关于页评论板块消失。更新添加评论方法。
+
+   {% endnote %} 
+
+   打开 `\themes\fluid\layout` 文件下的 `about.ejs` 文件，在文件末尾添加以下评论代码即可。
+
+   ```
+   <% if(theme.valine.appid && theme.valine.appkey){ %>
+     <div id="vcomments"></div>
+     <script type="text/javascript">
+       function loadValine() {
+         addScript('<%= url_join(theme.static_prefix.valine, 'Valine.min.js') %>', function () {
+           new Valine({
+             el: "#vcomments",
+             app_id: "<%= theme.valine.appid %>",
+             app_key: "<%= theme.valine.appkey %>",
+             placeholder: "<%= theme.valine.placeholder %>",
+             path: <%= theme.valine.path %>,
+             avatar: "<%= theme.valine.avatar %>",
+             meta: <%- JSON.stringify(theme.valine.meta || []) %>,
+             pageSize: "<%= theme.valine.pageSize %>",
+             lang: "<%= theme.valine.lang %>",
+             highlight: <%= theme.valine.highlight %>,
+             recordIP: <%= theme.valine.recordIP %>,
+             serverURLs: "<%= theme.valine.serverURLs %>",
+           });
+         });
+       }
+       waitElementVisible('vcomments', loadValine);
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" rel="nofollow noopener">comments
+         powered by Valine.</a></noscript>
+   <% } %>
+   ```
+
+   
+
 ## 自定义字体
 
 {% note primary %}

@@ -16,11 +16,10 @@
           highlight: <%= theme.valine.highlight %>,
           recordIP: <%= theme.valine.recordIP %>,
           serverURLs: "<%= theme.valine.serverURLs %>",
-
         });
       });
     }
-    createObserver(loadValine, 'vcomments');
+    waitElementVisible('vcomments', loadValine);
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" rel="nofollow noopener">comments
       powered by Valine.</a></noscript>

@@ -57,32 +57,5 @@ comments: true
 
 感谢你花时间阅读我的博客。祝好！
 
-
-
-​                           
-
- <div id="vcomments"></div>
-  <script type="text/javascript">
-    function loadValine() {
-      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
-        new Valine({
-          el: "#vcomments",
-          app_id: "UH7QfXQF6JMWo43UdP0ryQ8r-MdYXbMMI",
-          app_key: "Xw3iWYWBBjFYvJr6L5b4kVQY",
-          placeholder: "留下点什么叭... ᶘ ᵒᴥᵒᶅ",
-          path: window.location.pathname,
-          avatar: "monsterid",
-          meta: ["nick","mail","link"],
-          pageSize: "10",
-          lang: "zh-CN",
-          highlight: false,
-          recordIP: false,
-          serverURLs: "",
-        });
-      });
-    }
-    createObserver(loadValine, 'vcomments');
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
-      powered by Valine.</a></noscript>
+​                     
 

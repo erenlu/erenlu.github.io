@@ -12,7 +12,7 @@ page.banner_mask_alpha = theme.about.banner_mask_alpha
     <div class="about-name"><%- theme.about.name %></div>
     <div class="about-intro"><%- theme.about.introduce %></div>
     <div class="about-icons">
-      <% for(const each of theme.about.icons) { %>
+      <% for(const each of theme.about.icons || []) { %>
         <% if (!each.class) continue; %>
         <% var cls = each.class %>
         <% var isQr = each.qrcode %>
@@ -31,4 +31,33 @@ page.banner_mask_alpha = theme.about.banner_mask_alpha
 </div>
 <div class="mt-5 markdown-body">
   <%- page.content %>
+
+<% if(theme.valine.appid && theme.valine.appkey){ %>
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('<%= url_join(theme.static_prefix.valine, 'Valine.min.js') %>', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "<%= theme.valine.appid %>",
+          app_key: "<%= theme.valine.appkey %>",
+          placeholder: "<%= theme.valine.placeholder %>",
+          path: <%= theme.valine.path %>,
+          avatar: "<%= theme.valine.avatar %>",
+          meta: <%- JSON.stringify(theme.valine.meta || []) %>,
+          pageSize: "<%= theme.valine.pageSize %>",
+          lang: "<%= theme.valine.lang %>",
+          highlight: <%= theme.valine.highlight %>,
+          recordIP: <%= theme.valine.recordIP %>,
+          serverURLs: "<%= theme.valine.serverURLs %>",
+        });
+      });
+    }
+    waitElementVisible('vcomments', loadValine);
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" rel="nofollow noopener">comments
+      powered by Valine.</a></noscript>
+<% } %>
+
+
 </div>

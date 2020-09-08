@@ -8,15 +8,13 @@ if (page.title) {
 
 <head>
   <meta charset="UTF-8">
- <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <meta name="baidu-site-verification" content="zK1yNfVfey" />
 
-  
     <meta name="keywords" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具,资源,教程,分享,推荐,娱乐,摄影,文学">
     <meta name="description" content="觅之，自有所获" />
     <meta property="site_name" content="Eren の 宇宙船" />
-   
-
   <link rel="apple-touch-icon" sizes="76x76" href="<%- url_for(theme.apple_touch_icon) %>">
   <link rel="icon" type="image/png" href="<%- url_for(theme.favicon) %>">
   <meta name="viewport"
@@ -27,10 +25,11 @@ if (page.title) {
   <% } %>
   <meta name="theme-color" content="<%- theme.color.navbar_bg_color %>">
   <meta name="description" content="<%= config.description %>">
-  <meta name="author" content="<%= config.author %>">
+  <meta name="author" content="<%= page.author || config.author %>">
   <meta name="keywords" content="<%= config.keywords %>">
   <title><%= title %></title>
 
   <%- partial('_partial/css.ejs') %>
   <%- js_ex(theme.static_prefix.internal_js, 'utils.js') %>
+  <%- js_ex(theme.static_prefix.internal_js, 'color-schema.js') %>
 </head>
