@@ -172,7 +172,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.2k 字
+      2.4k 字
     </span>
   
 
@@ -182,7 +182,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      27
+      31
        分钟
     </span>
   
@@ -224,7 +224,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年9月5日 下午
+                  本文最后更新于：2020年9月8日 晚上
                 
               </p>
             
@@ -391,6 +391,40 @@
 <p>实现效果参考：<a href="https://erenship.com/about/">https://erenship.com/about/</a></p>
 </li>
 </ol>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3>   <div class="note note-danger">
+            <p>由于在使用覆盖方式升级 Fluid 主题到 1.8.3 后关于页评论板块消失。更新添加评论方法。</p>
+          </div> 
+
+<p>   打开 <code>\themes\fluid\layout</code> 文件下的 <code>about.ejs</code> 文件，在文件末尾添加以下评论代码即可。</p>
+   <pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">if</span>(<span class="hljs-attr">theme.valine.appid</span> &amp;&amp; <span class="hljs-attr">theme.valine.appkey</span>)&#123; %&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"vcomments"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span>
+<span class="actionscript">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadValine</span><span class="hljs-params">()</span> </span>&#123;</span>
+<span class="actionscript">      addScript(<span class="hljs-string">'&lt;%= url_join(theme.static_prefix.valine, '</span>Valine.min.js<span class="hljs-string">') %&gt;'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="actionscript">        <span class="hljs-keyword">new</span> Valine(&#123;</span>
+<span class="actionscript">          el: <span class="hljs-string">"#vcomments"</span>,</span>
+<span class="actionscript">          app_id: <span class="hljs-string">"&lt;%= theme.valine.appid %&gt;"</span>,</span>
+<span class="actionscript">          app_key: <span class="hljs-string">"&lt;%= theme.valine.appkey %&gt;"</span>,</span>
+<span class="actionscript">          placeholder: <span class="hljs-string">"&lt;%= theme.valine.placeholder %&gt;"</span>,</span>
+<span class="handlebars"><span class="xml">          path: <span class="hljs-tag">&lt;<span class="hljs-name">%=</span> <span class="hljs-attr">theme.valine.path</span> %&gt;</span>,</span></span>
+<span class="actionscript">          avatar: <span class="hljs-string">"&lt;%= theme.valine.avatar %&gt;"</span>,</span>
+<span class="javascript">          meta: &lt;%- <span class="hljs-built_in">JSON</span>.stringify(theme.valine.meta || []) %&gt;,</span>
+<span class="actionscript">          pageSize: <span class="hljs-string">"&lt;%= theme.valine.pageSize %&gt;"</span>,</span>
+<span class="actionscript">          lang: <span class="hljs-string">"&lt;%= theme.valine.lang %&gt;"</span>,</span>
+<span class="handlebars"><span class="xml">          highlight: <span class="hljs-tag">&lt;<span class="hljs-name">%=</span> <span class="hljs-attr">theme.valine.highlight</span> %&gt;</span>,</span></span>
+<span class="handlebars"><span class="xml">          recordIP: <span class="hljs-tag">&lt;<span class="hljs-name">%=</span> <span class="hljs-attr">theme.valine.recordIP</span> %&gt;</span>,</span></span>
+<span class="actionscript">          serverURLs: <span class="hljs-string">"&lt;%= theme.valine.serverURLs %&gt;"</span>,</span>
+        &#125;);
+      &#125;);
+    &#125;
+<span class="actionscript">    waitElementVisible(<span class="hljs-string">'vcomments'</span>, loadValine);</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">noscript</span>&gt;</span>Please enable JavaScript to view the <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://valine.js.org"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"nofollow noopener"</span>&gt;</span>comments
+      powered by Valine.<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">noscript</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">%</span> &#125; %&gt;</span></code></pre>
+
+
+
 <h2 id="自定义字体"><a href="#自定义字体" class="headerlink" title="自定义字体"></a>自定义字体</h2><div class="note note-primary">
             <p>目的：在网站中引入自定义字体；</p><p>本教程以引入思源宋体为例。</p>
           </div>
