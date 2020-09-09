@@ -441,6 +441,12 @@ links:
       image: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200909101237.jpg'
     }
    - {
+      title: 'BobMaster’s Blog',
+      intro: '生活的点滴是热爱呀',
+      link: 'https://blog.hibobmaster.com/',
+      image: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200909130415.jpeg'
+    }
+   - {
       title: '木子的博客',
       intro: '垃圾佬、搬砖社畜、运维工程师',
       link: 'https://blog.k8s.li',
