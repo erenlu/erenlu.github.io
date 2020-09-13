@@ -265,8 +265,8 @@
 <p>简单来说，蓝牙 Mesh 组网就是将众多的蓝牙设备互相连接，进而组成一个网络。各个蓝牙设备在网络中被称为节点（某些关键节点被称为网关）。各节点之间能够互相进行通信。</p>
 <p><strong>蓝牙 Mesh 能让我们建立无线设备之间的“多对多”（m:m）关系</strong>。此外，设备能够将数据中继到不在初始设备直接无线电覆盖范围内的其他设备。这样，Mesh 网络就能够跨越非常大的物理区域，并包含大量设备。</p>
 <blockquote>
-<p>The new mesh capability enables many-to-many (m:m) device communications and is optimized for creating large-scale device networks. It is ideally suited for building automation, sensor networks, and other IoT solutions where tens, hundreds, or thousands of devices need to reliably and securely communicate with one another<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="蓝牙 Mesh 简介
-">[1]</span></a></sup>.</p>
+<p>The new mesh capability enables many-to-many (m:m) device communications and is optimized for creating large-scale device networks. It is ideally suited for building automation, sensor networks, and other IoT solutions where tens, hundreds, or thousands of devices need to reliably and securely communicate with one another<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="An Intro to Bluetooth Mesh Part 1
+">[2]</span></a></sup>.</p>
 <p>新的网状功能可实现多对多 (m:m) 设备通信，并为创建大规模设备网络进行了优化。它非常适合楼宇自动化、传感器网络和其他物联网解决方案，在这些方案中，几十台、几百台或几千台设备需要可靠和安全地相互通信。</p>
 </blockquote>
 <p>对于满足日益普及的各种通信需求，Mesh 拓扑结构能提供最佳的方式，因此蓝牙 Mesh 网络应运而生，典型的应用包括楼宇自动化和传感器网络等。这些通信需求包括：</p>
@@ -399,10 +399,10 @@
 <h3 id="安全（Security）"><a href="#安全（Security）" class="headerlink" title="安全（Security）"></a>安全（Security）</h3><p><strong>所有蓝牙 Mesh 网络消息的安全保障都来自网络密钥（NetKey）和应用密钥（AppKey）对消息的加密和验证。</strong>NetKey 用于网络层通信。假设蓝牙 Mesh 网络没有子网，则该 Mesh 网络内的所有通信都使用相同的网络密钥。</p>
 <p><strong>AppKey 用于应用程序的数据。</strong>网络中的一些节点具有特定应用，并且根据应用的需要对一些潜在敏感数据的访问进行限制。这些节点具有特定的 AppKey，并与特定应用相关联。会使用不同 AppKey 的领域通常包括安全（楼宇门禁、机房门禁和 CEO 办公室门禁）、照明（制造厂房、外部楼宇照明和人行道）和 HVAC 系统。</p>
 <p>中继节点（relay node）（如灯泡或墙壁开关）通常具有有效的 NetKey，能够在网络内中继敏感性消息。然而，这些节点无法访问各种限制区域（如楼宇控制或 HVAC 系统）的特定 AppKey，，亦无法解密应用程序的数据。</p>
-<h3 id="启动配置（Provisioning）"><a href="#启动配置（Provisioning）" class="headerlink" title="启动配置（Provisioning）"></a>启动配置（Provisioning）</h3><p>配网的全过程包括大概 5 个步骤<sup id="fnref:7" class="footnote-ref"><a href="#fn:7" rel="footnote"><span class="hint--top hint--rounded" aria-label="蓝牙mesh — 解密蓝牙mesh系列文章汇总
-">[7]</span></a></sup>, 分别是：</p>
+<h3 id="启动配置（Provisioning）"><a href="#启动配置（Provisioning）" class="headerlink" title="启动配置（Provisioning）"></a>启动配置（Provisioning）</h3><p>启动配置的全过程包括大概 5 个步骤<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="蓝牙 Mesh 简介
+">[1]</span></a></sup>, 分别是：</p>
 <ul>
-<li>Beaconing: 告诉你我要配网, 这里使用的是新定义的 AD 广播包类型, Mesh AD；</li>
+<li>Beaconing: 发送Beacon信号，告诉你我要配网, 这里使用的是新定义的 AD 广播包类型, Mesh AD；</li>
 <li>Invitation: 配网者 Provisioner 听到了这个 Beacon 以后, 就发一个邀请, 用的就是配网邀请 PDU（Protocol Data Unit）；</li>
 <li>Exchanging Public Keys: 交换公钥；</li>
 <li>Authentication: 一个互动随机数的认证流程；</li>
