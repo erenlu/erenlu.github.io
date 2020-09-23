@@ -411,6 +411,12 @@ links:
       image: '/img/sys/realcat-android-chrome-192x192.png'
     }
    - {
+      title: 'kcalm-boy',
+      intro: '一面技术，一面生活',
+      link: 'https://www.lifepart.top/',
+      image: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200923141732.jpg'
+    }
+   - {
       title: 'Lete乐特‘s Blog',
       intro: '人生只有一次，大胆的生活！',
       link: 'https://www.lete114.top/',
