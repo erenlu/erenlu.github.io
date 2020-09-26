@@ -36,7 +36,7 @@ page.banner_mask_alpha = theme.about.banner_mask_alpha
   <div id="vcomments"></div>
   <script type="text/javascript">
     function loadValine() {
-      addScript('<%= url_join(theme.static_prefix.valine, 'Valine.min.js') %>', function () {
+      addScript('<%= url_join(theme.static_prefix.valine, 'https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js') %>', function () {
         new Valine({
           el: "#vcomments",
           app_id: "<%= theme.valine.appid %>",
@@ -49,7 +49,10 @@ page.banner_mask_alpha = theme.about.banner_mask_alpha
           lang: "<%= theme.valine.lang %>",
           highlight: <%= theme.valine.highlight %>,
           recordIP: <%= theme.valine.recordIP %>,
-          serverURLs: "<%= theme.valine.serverURLs %>",
+          serverURLs: "<%= theme.valine.serverURLs %>", 
+          master: "<%= theme.valine.master%>",
+          friends: "<%= theme.valine.friends%>",
+          tagMeta : ["博主","友人","访客"],
         });
       });
     }
