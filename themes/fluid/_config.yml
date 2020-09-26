@@ -309,7 +309,7 @@ gitalk:
 valine:
   appid: UH7QfXQF6JMWo43UdP0ryQ8r-MdYXbMMI # 从 LeanCloud 的应用中得到的 appId
   appkey: Xw3iWYWBBjFYvJr6L5b4kVQY # 从 LeanCloud 的应用中得到的 APP Key
-  placeholder: 评论系统暂时失效,正在加紧修复中~~~ （记得留下邮箱，以便收到回复提醒~ ʕ •ᴥ•ʔ  # 评论框占位提示符  
+  placeholder: 评论系统暂时抽风无法评论,正在加紧修复中~~~ （记得留下邮箱，以便收到回复提醒~ ʕ •ᴥ•ʔ  # 评论框占位提示符  
   path: window.location.pathname # 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
   avatar: wavatar # Gravatar 头像展示方式
   meta: ['nick', 'mail', 'link']  # 评论者相关属性
