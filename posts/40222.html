@@ -171,7 +171,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.4k 字
+      2.7k 字
     </span>
   
 
@@ -181,7 +181,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      31
+      35
        分钟
     </span>
   
@@ -221,6 +221,12 @@
             <!-- SEO header -->
             <h1 style="display: none">Hexo&#39;s Fluid 主题私人定制（持续更新）</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月26日 下午
+                
+              </p>
+            
             <div class="markdown-body" id="post-body">
               <div class="note note-success">
             <p>运行环境：</p><p><a href="https://github.com/fluid-dev/hexo-theme-fluid/releases" target="_blank" rel="noopener">Fluid</a> version：1.8.1</p><p><a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a> version：4.2.1</p>
@@ -230,6 +236,14 @@
             <p>注：随着主题版本升级，主题文件内容可能有变动，请谨慎参考。</p>
           </div>
 
+<p>快速到达指南：</p>
+<ul>
+<li><a href="http://localhost:4000/posts/40222.html#%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E%E4%BC%98%E5%8C%96" target="_blank" rel="noopener">版权声明优化</a></li>
+<li><a href="http://localhost:4000/posts/40222.html#%E6%B7%BB%E5%8A%A0%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4" target="_blank" rel="noopener">添加运行时间</a></li>
+<li><a href="http://localhost:4000/posts/40222.html#%E5%85%B3%E4%BA%8E%E9%A1%B5%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA" target="_blank" rel="noopener">关于页添加评论</a></li>
+<li><a href="http://localhost:4000/posts/40222.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93" target="_blank" rel="noopener">自定义字体</a></li>
+<li><a href="http://erenship.com/posts/40222.html#%E8%AF%84%E8%AE%BA%E6%A0%B7%E5%BC%8F%E7%BE%8E%E5%8C%96">评论样式美化</a></li>
+</ul>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在茫茫 Hexo 主题中，一眼选中了 Material Design 风格的 <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="noopener">Fluid 主题</a>。老实说基本功能已经完全够用了，可以骨子里那股折腾劲儿又来了，看着自己的网站总觉得哪儿哪儿不顺心。于是有了此贴，专门用来记录笔者自定义 Fluid 主题的过程，以便日后查阅，同时也供相同主题版本的朋友参考。</p>
 <h2 id="版权声明优化"><a href="#版权声明优化" class="headerlink" title="版权声明优化"></a>版权声明优化</h2><div class="note note-primary">
             <p>目的：修改文章页底部版权声明内容，实现显示 “本文作者”、“本文地址”、“版权声明” 的内容。</p>
@@ -451,7 +465,37 @@
 </li>
 </ol>
 <p>至此，我们就完成了自定义字体引入。你可以执行部署命令来检查是否成功引入。</p>
-<p>​        </p>
+<h2 id="评论样式美化"><a href="#评论样式美化" class="headerlink" title="评论样式美化"></a>评论样式美化</h2><div class="note note-primary">
+            <p>目的：展现评论者身份标识</p>
+          </div>
+
+<p>由于当前版本的 Valine 不能实现评论者身份标识的功能，所以我们需要使用魔改版的 Valine。</p>
+<ul>
+<li><p>打开 <code>\themes\fluid\layout\_partial\comments</code> 中的  <code>valine.ejs</code>  文件，替换红标处内容为<code>https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js</code> </p>
+</li>
+<li><p>新增以下内容。</p>
+<pre><code class="hljs avrasm"><span class="hljs-symbol">master:</span> <span class="hljs-string">"&lt;%= theme.valine.master%&gt;"</span>,
+<span class="hljs-symbol">friends:</span> <span class="hljs-string">"&lt;%= theme.valine.friends%&gt;"</span>,
+<span class="hljs-symbol">tagMeta:</span> [<span class="hljs-string">"博主"</span>,<span class="hljs-string">"友人"</span>,<span class="hljs-string">"访客"</span>],</code></pre>
+
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200926161913.png" srcset="/img/loading.gif" alt="Snipaste_2020-09-26_16-10-32"></p>
+<ul>
+<li>打开主题配置文件 <code>\MyBlog\source\_data</code> 在 valine 评论系统处新增</li>
+</ul>
+<pre><code class="hljs avrasm"><span class="hljs-symbol">master:</span> b20c2cxxxxd422dc29ec7a5a3bd66f2ad <span class="hljs-meta"># 你邮箱的md5加密(百度md5在线加密)</span>
+<span class="hljs-symbol">friends:</span> a9126a74dxxxx638def0b16025,<span class="hljs-number">0173939</span>xxxxx32a8cffc288b046dc <span class="hljs-meta"># 好友邮箱的md5加密</span></code></pre>
+
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200926161840.png" srcset="/img/loading.gif" alt="Snipaste_2020-09-26_16-15-02"></p>
+<ul>
+<li><code>hexo s</code> , <code>hexo g -d</code>  重新部署便能看到效果。</li>
+<li>若想在关于页也实现这样的效果，则对应地在<code>about.ejs</code> 里更新相关代码。</li>
+<li>不过有一位友人 @<a href="https://ccafder.com/" target="_blank" rel="noopener">青平散人</a> 始终无法实现身份显示，至今未找到原因。</li>
+</ul>
+<p>​    效果图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/202009261dd62549.png" srcset="/img/loading.gif" alt="Snipaste_2020-09-26_16-21-34"></p>
+<p>​                          </p>
 <div class="note note-danger">
             <p>生命在于折腾。</p>
           </div>
@@ -461,6 +505,9 @@
 <li><a href="https://github.com/qixa/hexo-theme-fluid-mod" target="_blank" rel="noopener">Hexo Fluid 主题 UI 修改版</a></li>
 <li><a href="https://largesse.12306.recipes/posts/3c2a5351.html" target="_blank" rel="noopener">Hexo Fluid主题 添加自定义字体</a></li>
 <li><a href="https://bestzuo.cn/posts/notoserifsc.html#%E4%BD%BF%E7%94%A8%E6%80%9D%E6%BA%90%E5%AE%8B%E4%BD%93" target="_blank" rel="noopener">博客网站字体设置：思源宋体</a></li>
+<li><a href="https://bestzuo.cn/posts/763113948.html" target="_blank" rel="noopener">博客Valine评论样式美化</a></li>
+<li><a href="https://lovelijunyi.gitee.io/posts/e52c.html" target="_blank" rel="noopener">Valine评论系统详解</a></li>
+<li></li>
 </ul>
 
             </div>
@@ -544,7 +591,7 @@
           recordIP: false,
           serverURLs: "https://suh7qfxqf.api.lncldglobal.com",
           master: "b20c2c44cead422dc29ec7a5a3bd66f2ad",
-          friends: "a9126a74d0551660d7d638def0b16025,0173939703d787032a8cffc288b046dc,6f192bdd8b9484a48f5620c9c3f95408,1520d833351f3ab49746a3a0cf0d91",
+          friends: "a9126a74d0551660d7d638def0b16025,0173939703d787032a8cffc288b046dc,1520d833351f3adab49746a3a0cf0d91,6f192bdd8b9484a48f5620c9c3f95408",
           tagMeta: ["博主","友人","访客"],
         });
       });
@@ -810,9 +857,9 @@
       }
     }
 
-    var app_id = 'sYLq5IWzkEREIimFccwD43g5-MdYXbMMI'
-    var app_key = 'GkksEpbAHSg15FVbJuGXiYaw'
-    var server_url = ''
+    var app_id = 'jauMdl8cvkseHUDG81ucNoej-MdYXbMMI'
+    var app_key = 'T7zcEHNEYGyPVNB8BW5A16TH'
+    var server_url = 'https://jaumdl8c.api.lncldglobal.com'
 
     function fetchData(api_server) {
       var Counter = (method, url, data) => {

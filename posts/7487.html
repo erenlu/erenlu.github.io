@@ -171,7 +171,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      490 字
+      607 字
     </span>
   
 
@@ -181,7 +181,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      6
        分钟
     </span>
   
@@ -221,6 +221,12 @@
             <!-- SEO header -->
             <h1 style="display: none">Hexo 排坑日记（持续更新）</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月26日 下午
+                
+              </p>
+            
             <div class="markdown-body" id="post-body">
               <div class="note note-success">
             <p>在此记录我在搭建 Hexo 博客中所遇到的坑以及解决办法。</p>
@@ -249,6 +255,11 @@
 <p>解决：为了全平台都能正常显示，并且不想额外折腾 CCS 代码，只好乖乖在博客中不使用 webp 格式的压缩图片。</p>
 </li>
 </ul>
+<h2 id="valine-评论系统失效"><a href="#valine-评论系统失效" class="headerlink" title="valine 评论系统失效"></a>valine 评论系统失效</h2><p>某日突然发现评论系统出故障。之前的评论消失，且无法进行新的评论。</p>
+<p>后来询问 <a href="https://www.lete114.top/" target="_blank" rel="noopener">@Lete乐特</a> 才明白原来是 “LeanCloud的问题，国内版无影响，国际版需要添加 serverURLs”。</p>
+<p>在主题 <code>config.yml</code> 中添加对应字段即可。（自己排查了两三天，问大佬一下就解决了~真的强呀！）</p>
+<p>先附上 <a href="https://www.lete114.top/" target="_blank" rel="noopener">@Lete乐特</a> 答复的内容，以供参考。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200926163426.png" srcset="/img/loading.gif" alt="QQ图片20200926123515"></p>
 
             </div>
             <hr>
@@ -329,7 +340,7 @@
           recordIP: false,
           serverURLs: "https://suh7qfxqf.api.lncldglobal.com",
           master: "b20c2c44cead422dc29ec7a5a3bd66f2ad",
-          friends: "a9126a74d0551660d7d638def0b16025,0173939703d787032a8cffc288b046dc,6f192bdd8b9484a48f5620c9c3f95408,1520d833351f3ab49746a3a0cf0d91",
+          friends: "a9126a74d0551660d7d638def0b16025,0173939703d787032a8cffc288b046dc,1520d833351f3adab49746a3a0cf0d91,6f192bdd8b9484a48f5620c9c3f95408",
           tagMeta: ["博主","友人","访客"],
         });
       });
@@ -595,9 +606,9 @@
       }
     }
 
-    var app_id = 'sYLq5IWzkEREIimFccwD43g5-MdYXbMMI'
-    var app_key = 'GkksEpbAHSg15FVbJuGXiYaw'
-    var server_url = ''
+    var app_id = 'jauMdl8cvkseHUDG81ucNoej-MdYXbMMI'
+    var app_key = 'T7zcEHNEYGyPVNB8BW5A16TH'
+    var server_url = 'https://jaumdl8c.api.lncldglobal.com'
 
     function fetchData(api_server) {
       var Counter = (method, url, data) => {
