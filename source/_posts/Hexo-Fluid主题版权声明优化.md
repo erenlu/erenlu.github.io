@@ -27,6 +27,14 @@ categories: 折腾派
 
 {% endnote %}
 
+快速到达指南：
+
+- [版权声明优化](http://localhost:4000/posts/40222.html#%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E%E4%BC%98%E5%8C%96)
+- [添加运行时间](http://localhost:4000/posts/40222.html#%E6%B7%BB%E5%8A%A0%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4)
+- [关于页添加评论](http://localhost:4000/posts/40222.html#%E5%85%B3%E4%BA%8E%E9%A1%B5%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA)
+- [自定义字体](http://localhost:4000/posts/40222.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93)
+- [评论样式美化](http://erenship.com/posts/40222.html#%E8%AF%84%E8%AE%BA%E6%A0%B7%E5%BC%8F%E7%BE%8E%E5%8C%96)
+
 ## 前言
 
 在茫茫 Hexo 主题中，一眼选中了 Material Design 风格的 [Fluid 主题](https://github.com/fluid-dev/hexo-theme-fluid)。老实说基本功能已经完全够用了，可以骨子里那股折腾劲儿又来了，看着自己的网站总觉得哪儿哪儿不顺心。于是有了此贴，专门用来记录笔者自定义 Fluid 主题的过程，以便日后查阅，同时也供相同主题版本的朋友参考。
@@ -324,9 +332,46 @@ categories: 折腾派
 
 至此，我们就完成了自定义字体引入。你可以执行部署命令来检查是否成功引入。
 
+## 评论样式美化
 
+{% note primary %}
 
-​        
+目的：展现评论者身份标识
+
+{% endnote %}
+
+由于当前版本的 Valine 不能实现评论者身份标识的功能，所以我们需要使用魔改版的 Valine。
+
+- 打开 `\themes\fluid\layout\_partial\comments` 中的  `valine.ejs`  文件，替换红标处内容为`https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js` 
+
+- 新增以下内容。
+
+  ```
+   master: "<%= theme.valine.master%>",
+   friends: "<%= theme.valine.friends%>",
+   tagMeta: ["博主","友人","访客"],
+  ```
+
+![Snipaste_2020-09-26_16-10-32](https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200926161913.png)
+
+- 打开主题配置文件 `\MyBlog\source\_data` 在 valine 评论系统处新增
+
+```
+  master: b20c2cxxxxd422dc29ec7a5a3bd66f2ad # 你邮箱的md5加密(百度md5在线加密)
+  friends: a9126a74dxxxx638def0b16025,0173939xxxxx32a8cffc288b046dc # 好友邮箱的md5加密
+```
+
+![Snipaste_2020-09-26_16-15-02](https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200926161840.png)
+
+- `hexo s` , `hexo g -d`  重新部署便能看到效果。
+- 若想在关于页也实现这样的效果，则对应地在`about.ejs` 里更新相关代码。
+- 不过有一位友人 @[青平散人](https://ccafder.com/) 始终无法实现身份显示，至今未找到原因。
+
+​    效果图：
+
+![Snipaste_2020-09-26_16-21-34](https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/202009261dd62549.png)
+
+​                          
 
 {% note danger %}
 
@@ -340,3 +385,7 @@ categories: 折腾派
 - [Hexo Fluid 主题 UI 修改版](https://github.com/qixa/hexo-theme-fluid-mod)
 - [Hexo Fluid主题 添加自定义字体](https://largesse.12306.recipes/posts/3c2a5351.html)
 - [博客网站字体设置：思源宋体](https://bestzuo.cn/posts/notoserifsc.html#%E4%BD%BF%E7%94%A8%E6%80%9D%E6%BA%90%E5%AE%8B%E4%BD%93)
+- [博客Valine评论样式美化](https://bestzuo.cn/posts/763113948.html)
+- [Valine评论系统详解](https://lovelijunyi.gitee.io/posts/e52c.html)
+- 
+

@@ -50,3 +50,14 @@ categories: 折腾派
   
   解决：为了全平台都能正常显示，并且不想额外折腾 CCS 代码，只好乖乖在博客中不使用 webp 格式的压缩图片。
 
+## valine 评论系统失效
+
+某日突然发现评论系统出故障。之前的评论消失，且无法进行新的评论。
+
+后来询问 [@Lete乐特](https://www.lete114.top/) 才明白原来是 “LeanCloud的问题，国内版无影响，国际版需要添加 serverURLs”。
+
+在主题 `config.yml` 中添加对应字段即可。（自己排查了两三天，问大佬一下就解决了~真的强呀！）
+
+先附上 [@Lete乐特](https://www.lete114.top/) 答复的内容，以供参考。
+
+![QQ图片20200926123515](https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200926163426.png)
