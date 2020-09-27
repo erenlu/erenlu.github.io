@@ -181,7 +181,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      35
+      34
        分钟
     </span>
   
@@ -485,7 +485,6 @@
 <ul>
 <li><code>hexo s</code> , <code>hexo g -d</code>  重新部署便能看到效果。</li>
 <li>若想在关于页也实现这样的效果，则对应地在<code>about.ejs</code> 里更新相关代码。</li>
-<li>不过有一位友人 @<a href="https://ccafder.com/" target="_blank" rel="noopener">青平散人</a> 始终无法实现身份显示，至今未找到原因。</li>
 </ul>
 <p>​    效果图：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/202009261dd62549.png" srcset="/img/loading.gif" alt="Snipaste_2020-09-26_16-21-34"></p>
@@ -587,6 +586,7 @@
           master: "b20c2c44cead422dc29ec7a5a3bd66f2ad",
           friends: "a9126a74d0551660d7d638def0b16025,0173939703d787032a8cffc288b046dc,1520d833351f3adab49746a3a0cf0d91,6f192bdd8b9484a48f5620c9c3f95408",
           tagMeta: ["博主","友人","访客"],
+          metaPlaceholder: {"nick":"昵称","mail":"邮箱"},
         });
       });
     }
@@ -661,12 +661,37 @@
   
 
   <footer class="mt-4"> 
-<font size="2" face="Georgia">
+<font size="2" face="Noto Serif SC">
 <div class="text-center py-3">
 
 
 <div>
     
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            👁️‍🗨️ 
+            <span id="leancloud-site-pv"></span>
+            
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            👥 
+            <span id="leancloud-site-uv"></span>
+            
+          </span>
+      
+
+    
+  </div>
+
 
     
 
