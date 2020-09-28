@@ -1,9 +1,6 @@
 ---
 title: 浅谈蓝牙 Mesh 组网技术
 categories: 学习派
-tags:
-  - 低功耗蓝牙
-  - Mesh 组网
 excerpt: 最近在做导师手下的蓝牙 Mesh 组网项目，在此粗浅地记录蓝牙 Mesh 组网相关知识。
 abbrlink: 63c7
 date: 2020-09-12 14:33:21

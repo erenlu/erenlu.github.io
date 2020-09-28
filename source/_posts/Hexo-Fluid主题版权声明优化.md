@@ -2,9 +2,6 @@
 title: Hexo's Fluid 主题私人定制（持续更新）
 index_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200813020009.jpg
 banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200813020009.jpg
-tags:
-  - Hexo
-  - Fluid
 abbrlink: 40222
 date: 2020-08-08 11:55:36
 excerpt: 本文介绍如何修改 Fluid 主题配置文件，以实现版权声明优化、显示运行时间、关于页添加评论、自定义字体等功能。

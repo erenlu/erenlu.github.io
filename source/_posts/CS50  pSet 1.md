@@ -2,10 +2,6 @@
 title: CS50 | pset 1
 index_img: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/cs50pset.png'
 banner_img: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/CS50pSet_homework.jpg'
-tags:
-  - CS50
-  - 学习笔记
-  - C语言
 excerpt: 'CS50 Problem Set 1 (Fall 2020). Mario More, Cash, Credit Solutions'
 date: 2020-07-11 22:04:25
 categories: 学习派

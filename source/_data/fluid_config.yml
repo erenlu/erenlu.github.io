@@ -43,8 +43,8 @@ fun_features: # 一些好玩的功能
     style: love # 目前设置两个值：values（价值观词汇） | love（爱心）
 
 dark_mode:   # 主题暗色模式，开启后菜单中会出现切换按钮，用户浏览器会存储切换选项，并且会遵循 prefers-color-scheme 自动切换
-  enable: true
-  default: auto  # 默认的模式：auto | light | dark，选择 auto 时优先遵循 prefers-color-scheme，其次按用户本地时间 18 点到次日 6 点之间进入暗色模式，**注意：当用户手动切换后则不再按照默认模式**
+  enable: false
+  default: light  # 默认的模式：auto | light | dark，选择 auto 时优先遵循 prefers-color-scheme，其次按用户本地时间 18 点到次日 6 点之间进入暗色模式，**注意：当用户手动切换后则不再按照默认模式**
 
 
 color:  # 主题颜色配置，不一定能每一处都生效，可能会被局部样式覆盖，这种情况建议用自定义 css 解决。配色可以在这获得启发： https://www.webdesignrankings.com/resources/lolcolors/
@@ -112,9 +112,9 @@ navbar:
     px: 3  # 模糊像素，只能为数字，数字越大模糊度越高
     alpha: 0.6   # 透明度，只能为数字，范围0~1，数字越大透明度越低，注意透明过度可能看不清菜单字体
   menu:  # 可自行增减，key 用来关联 languages/*.yml，如不存在关联则显示 key 本身的值；icon 是 css class，可以省略；增加 name 可以强制显示指定名称
-    - { key: '首页', link: '/', icon: 'iconfont icon-home-fill' }
+  ##  - { key: '首页', link: '/', icon: 'iconfont icon-home-fill' }
     - { key: '归档', link: '/archives/', icon: 'iconfont icon-archive-fill' }
-    - { key: '分类', link: '/categories/', icon: 'iconfont icon-category-fill' }
+  ##  - { key: '分类', link: '/categories/', icon: 'iconfont icon-category-fill' }
   ##  - { key: 'Tags', link: '/tags/', icon: 'iconfont icon-tags-fill' }
     - { key: '关于', link: '/about/', icon: 'iconfont icon-user-fill' }
     - { key: '友人', link: '/links/', icon: 'iconfont icon-link-fill' }  # 友链页，把前面#去掉即可展示
@@ -140,7 +140,7 @@ banner_parallax: true  # 头图滚动视差
 #---------------------------
 footer:
   statistics:  # 展示网站的 PV、UV 统计数
-    enable: true
+    enable: false
     source: "leancloud"  # 统计数据来源，可选：busuanzi | leancloud，使用 leancloud 需要在 web_analytics 中设置 api 参数，使用 busuanzi 注意可能间歇抽风
     pv_format: "访问量{}次"  # 显示的文本，{}是数字的占位符（必须包含)，下同
     uv_format: "访客数{}人"
@@ -173,8 +173,8 @@ index:
   post_url_target: _self  # available: _blank | _self
   post_meta: # 是否显示文章信息（时间、分类、标签）
     date: true
-    category: false
-    tag: true
+    category: true
+    tag: false
 
 # 通过 hexo new page 命令创建的页面
 # Custom Page
@@ -217,12 +217,12 @@ post:  # 部分配置同时控制自定义页面，注意备注
     headingSelector: h1,h2,h3,h4,h5,h6
     collapseDepth: 0  # 层级的折叠深度，0 是全部折叠，6 是全部不折叠
   copyright:  # 版权声明
-    enable: true
+    enable: false
     content: '署名-非商业性使用-相同方式共享 4.0 国际（<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="nofollow noopener">CC BY-NC-SA 4.0</a>）'
   prev_next:  # 文章底部上一篇下一篇功能
     enable: true
   custom:  # 文章底部自定义内容
-    enable: true
+    enable: false
     content: '<img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812010911.png" class="rounded mx-auto d-block mt-5" style="width:120px; height:120px;"> <br>
                              <div class="text-center py-1">   
                             <div> # Do more, know more, be more
@@ -294,7 +294,7 @@ gitalk:
 valine:
   appid: UH7QfXQF6JMWo43UdP0ryQ8r-MdYXbMMI # 从 LeanCloud 的应用中得到的 appId
   appkey: Xw3iWYWBBjFYvJr6L5b4kVQY # 从 LeanCloud 的应用中得到的 APP Key
-  placeholder: 记得留下邮箱，以便收到回复提醒喔~ ᶘ ᵒᴥᵒᶅ   # 评论框占位提示符  
+  placeholder: 在这里输入内容...   # 评论框占位提示符  
   path: window.location.pathname # 当前文章页路径，用于区分不同的文章页，以保证正确读取该文章页下的评论列表
   avatar: wavatar # Gravatar 头像展示方式
   meta: ['nick', 'mail', 'link']  # 评论者相关属性
@@ -305,7 +305,6 @@ valine:
   serverURLs: https://suh7qfxqf.api.lncldglobal.com # REST API 服务器地址，国际版不填
   master: b20c2c44cead422dc29ec7a5a3bd66f2ad # 你邮箱的md5加密(百度md5在线加密)
   friends: a9126a74d0551660d7d638def0b16025,0173939703d787032a8cffc288b046dc,1520d833351f3adab49746a3a0cf0d91,6f192bdd8b9484a48f5620c9c3f95408 # 好友邮箱的md5加密
-# background: https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp 
 
 # 畅言
 # http://changyan.kuaizhan.com/hex

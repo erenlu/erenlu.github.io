@@ -2,10 +2,6 @@
 title: CS50 | pset 2
 index_img: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/cs50pset.png'
 banner_img: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/CS50pSet_homework.jpg'
-tags:
-  - CS50
-  - 学习笔记
-  - C语言
 excerpt: 'CS50 Problem Set 2 (Fall 2020). Readability, Caesar Solutions. (missing Substitution)'
 abbrlink: bea6
 date: 2020-07-22 11:04:25

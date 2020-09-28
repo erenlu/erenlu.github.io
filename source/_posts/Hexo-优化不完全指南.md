@@ -2,9 +2,6 @@
 title: Hexo 博客站点加速不完全指南
 index_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200813012440.jpg
 banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200813012440.jpg
-tags:
-  - Hexo
-  - 优化
 excerpt: 从 Vercel 托管到 jsDelivr CDN 加速，以及添加 Valine 评论系统...这里是加速 Hexo 博客站点不完全指南。
 abbrlink: db37
 date: 2020-08-12 01:48:09

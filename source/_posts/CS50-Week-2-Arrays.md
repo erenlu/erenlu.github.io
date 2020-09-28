@@ -2,10 +2,6 @@
 title: CS50 | Week 2 Arrays & Sorts
 index_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/CS50.png
 banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/Code.jpg
-tags:
-  - 学习笔记
-  - CS50
-  - C语言
 abbrlink: '3291'
 date: 2020-07-14 16:00:21
 excerpt: CS50 第二周学习笔记。

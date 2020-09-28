@@ -2,10 +2,6 @@
 title: CS50 | Week 1 C
 index_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/CS50.png
 banner_img: https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/Code.jpg
-tags:
-  - 学习笔记
-  - CS50
-  - C语言
 abbrlink: 1cf2
 date: 2020-07-09 22:53:24
 excerpt: CS50 第一周学习笔记。
