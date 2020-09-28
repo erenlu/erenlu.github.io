@@ -42,6 +42,11 @@ fun_features: # 一些好玩的功能
     enable: false
     style: love # 目前设置两个值：values（价值观词汇） | love（爱心）
 
+dark_mode:   # 主题暗色模式，开启后菜单中会出现切换按钮，用户浏览器会存储切换选项，并且会遵循 prefers-color-scheme 自动切换
+  enable: true
+  default: auto  # 默认的模式：auto | light | dark，选择 auto 时优先遵循 prefers-color-scheme，其次按用户本地时间 18 点到次日 6 点之间进入暗色模式，**注意：当用户手动切换后则不再按照默认模式**
+
+
 color:  # 主题颜色配置，不一定能每一处都生效，可能会被局部样式覆盖，这种情况建议用自定义 css 解决。配色可以在这获得启发： https://www.webdesignrankings.com/resources/lolcolors/
   body_bg_color: "#eee"             # body 背景色
   navbar_bg_color: "#000000"        # 顶部菜单背景色
@@ -107,7 +112,7 @@ navbar:
     px: 3  # 模糊像素，只能为数字，数字越大模糊度越高
     alpha: 0.6   # 透明度，只能为数字，范围0~1，数字越大透明度越低，注意透明过度可能看不清菜单字体
   menu:  # 可自行增减，key 用来关联 languages/*.yml，如不存在关联则显示 key 本身的值；icon 是 css class，可以省略；增加 name 可以强制显示指定名称
-  ##  - { key: 'Home', link: '/', icon: 'iconfont icon-home-fill' }
+    - { key: '首页', link: '/', icon: 'iconfont icon-home-fill' }
     - { key: '归档', link: '/archives/', icon: 'iconfont icon-archive-fill' }
     - { key: '分类', link: '/categories/', icon: 'iconfont icon-category-fill' }
   ##  - { key: 'Tags', link: '/tags/', icon: 'iconfont icon-tags-fill' }
@@ -300,7 +305,7 @@ valine:
   serverURLs: https://suh7qfxqf.api.lncldglobal.com # REST API 服务器地址，国际版不填
   master: b20c2c44cead422dc29ec7a5a3bd66f2ad # 你邮箱的md5加密(百度md5在线加密)
   friends: a9126a74d0551660d7d638def0b16025,0173939703d787032a8cffc288b046dc,1520d833351f3adab49746a3a0cf0d91,6f192bdd8b9484a48f5620c9c3f95408 # 好友邮箱的md5加密
-  bg: https://gitee.com/cungudafa/source/raw/master/img/gif/Sitich/Sitich30.gif #/img/comment_bg.png # valine background
+# background: https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp 
 
 # 畅言
 # http://changyan.kuaizhan.com/hex
@@ -377,7 +382,7 @@ about:  # 关于页需要手动创建，具体请见：https://hexo.fluid-dev.co
   ##  - { class: 'iconfont icon-github-fill', link: 'https://github.com/erenlu', tip: 'GitHub' }  
     - { class: 'iconfont icon-instagram-fill', link: 'https://www.instagram.com/eeeren_lu/', tip: 'Instagram' }
     - { class: 'iconfont icon-mail', link: 'mailto: voctery@gmail.com', tip: 'E-mail' }  
-  ##  - { class: 'iconfont icon-douban-fill', link: 'https://www.douban.com/people/62349307/', tip: '豆瓣' }
+    - { class: 'iconfont icon-rss-fill', link: 'https://erenship.com/atom.xml', tip: 'RSS 订阅' }
    
    
 
@@ -391,6 +396,7 @@ page404:
   banner_mask_alpha: 0.3  # available: 0 - 1.0
   subtitle: 糟糕！页面走丢啦...  # 打字机内容
 
+rss: /atom.xml
 
 #---------------------------
 # 友链页

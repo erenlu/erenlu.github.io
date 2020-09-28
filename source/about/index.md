@@ -28,11 +28,8 @@ comments: true
 
   > 站点名称更改为：Eren の 宇宙船；
   >
-  > 启用新域名：[erenship.com](https://erenship.com/)；
+  > 启用新域名：[erenship.com](https://erenship.com/)。
   >
-  > 进行若干极简风格优化；
-  >
-  > 字体改为思源宋体。
   
 - 2020-8-12
 
@@ -45,17 +42,13 @@ comments: true
   > 使用 [Vercel](https://vercel.com/) 为站点加速。
   >
 
-- 2020-7-12  
-
-  > 使用 [Valine](https://valine.js.org/) 作为博客评论系统。
-
 - 2020-7-2    
 
   > 基于 [Hexo 框架](https://hexo.io/zh-cn/) + [Fluid 主题](https://github.com/fluid-dev/hexo-theme-fluid) 创建 Eren's Spaceship, 并成功启航。
 
 ## 写在最后
 
-感谢你花时间阅读我的博客。祝好！
+感谢你花时间阅读我的博客，祝好！
 
 ​                     
 
