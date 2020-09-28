@@ -19,12 +19,12 @@
           master: "<%= theme.valine.master%>",
           friends: "<%= theme.valine.friends%>",
           tagMeta: ["博主","友人","访客"],
-          metaPlaceholder: {"nick":"昵称","mail":"邮箱"},
+          metaPlaceholder: {"nick":"昵称（必填）","mail":"邮箱（选填）","link":"网址（https://）"},
         });
       });
     }
     waitElementVisible('vcomments', loadValine);
-  </script>
+    </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" rel="nofollow noopener">comments
       powered by Valine.</a></noscript>
 <% } %>
