@@ -112,7 +112,7 @@ navbar:
     px: 3  # 模糊像素，只能为数字，数字越大模糊度越高
     alpha: 0.6   # 透明度，只能为数字，范围0~1，数字越大透明度越低，注意透明过度可能看不清菜单字体
   menu:  # 可自行增减，key 用来关联 languages/*.yml，如不存在关联则显示 key 本身的值；icon 是 css class，可以省略；增加 name 可以强制显示指定名称
-  ##  - { key: '首页', link: '/', icon: 'iconfont icon-home-fill' }
+    - { key: '首页', link: '/', icon: 'iconfont icon-home-fill' }
     - { key: '归档', link: '/archives/', icon: 'iconfont icon-archive-fill' }
   ##  - { key: '分类', link: '/categories/', icon: 'iconfont icon-category-fill' }
   ##  - { key: 'Tags', link: '/tags/', icon: 'iconfont icon-tags-fill' }
@@ -437,18 +437,6 @@ links:
       intro: 'Dream it possible, make it possible',
       link: 'https://bestzuo.cn',
       image: 'https://cdn.jsdelivr.net/gh/Sanarous/files/images/avatar.jpeg'
-    }
-   - {
-      title: 'LeFlacon‘s Blog',
-      intro: '梦想做个靠谱的好人_(:з」∠)_',
-      link: 'https://leflacon.top/',
-      image: 'https://tva1.sinaimg.cn/large/00831rSTly1gcsjn9y09kj30sg0sgmxr.jpg'
-    }
-   - {
-      title: 'Steven‘s Blog',
-      intro: '大学萌新的普通 Blog',
-      link: 'https://blog.hly0928.com/',
-      image: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200909101237.jpg'
     }
    - {
       title: 'BobMaster‘s Blog',

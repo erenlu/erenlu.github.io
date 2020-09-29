@@ -22,26 +22,22 @@ comments: true
 
 > *“坚持下来的都足以证明你是一个与众不同的人，也许在途中会发现很多与你志同道合的人！”*
 
+## 版权声明
+
+除特殊说明，博客文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="nofollow noopener">CC BY-NC-SA 4.0</a> 协议。
+
 ## 更新日志
 
 - 2020-8-26
 
-  > 站点名称更改为：Eren の 宇宙船；
-  >
-  > 启用新域名：[erenship.com](https://erenship.com/)。
+  > 站点名称更改为：Eren の 宇宙船，启用新域名：[erenship.com](https://erenship.com/)。
   >
   
-- 2020-8-12
-
-  > 使用 [GitHub](https://github.com/) + [jsDelivr](https://www.jsdelivr.com/) + [PicGo](https://github.com/Molunerfinn/picgo/releases) 搭建图床。
-
 - 2020-8-7
 
   > 拥有了第一条友链 [@vincentqin](https://vincentqin.tech/)；
   >
-  > 使用 [Vercel](https://vercel.com/) 为站点加速。
-  >
-
+  
 - 2020-7-2    
 
   > 基于 [Hexo 框架](https://hexo.io/zh-cn/) + [Fluid 主题](https://github.com/fluid-dev/hexo-theme-fluid) 创建 Eren's Spaceship, 并成功启航。
