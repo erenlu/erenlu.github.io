@@ -304,7 +304,7 @@ valine:
   recordIP: false # 是否记录评论者IP
   serverURLs: https://suh7qfxqf.api.lncldglobal.com # REST API 服务器地址，国际版不填
   master: b20c2c44cead422dc29ec7a5a3bd66f2ad # 你邮箱的md5加密(百度md5在线加密)
-  friends: a9126a74d0551660d7d638def0b16025,0173939703d787032a8cffc288b046dc,1520d833351f3adab49746a3a0cf0d91,6f192bdd8b9484a48f5620c9c3f95408 # 好友邮箱的md5加密
+  friends: a9126a74d0551660d7d638def0b16025,0173939703d787032a8cffc288b046dc,1520d833351f3adab49746a3a0cf0d91,6f192bdd8b9484a48f5620c9c3f95408,4627388bbef109f3345048262a595cd9 # 好友邮箱的md5加密
 
 # 畅言
 # http://changyan.kuaizhan.com/hex
@@ -421,16 +421,16 @@ links:
       image: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200923141732.jpg'
     }
    - {
-      title: 'Lete乐特‘s Blog',
-      intro: '人生只有一次，大胆的生活！',
-      link: 'https://www.lete114.top/',
-      image: 'https://cdn.jsdelivr.net/gh/lete114/lete114.github.io/img/Lete.png'
-    }
-   - {
       title: '青平散人',
       intro: '梦醒细无声',
       link: 'https://ccafder.com',
       image: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/友链_青平散人123.jpg'
+    }
+   - {
+      title: 'Jalen Chuh',
+      intro: '爱折腾的少年，信奉「好看就是生产力」',
+      link: 'https://jalenchuh.cn',
+      image: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20201003195403.jpg'
     }
    - {
       title: 'Sanarous',
@@ -443,4 +443,10 @@ links:
       intro: '生活的点滴是热爱呀',
       link: 'https://blog.hibobmaster.com/',
       image: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200909130415.jpeg'
+    }
+   - {
+      title: 'Lete乐特‘s Blog',
+      intro: '人生只有一次，大胆的生活！',
+      link: 'https://www.lete114.top/',
+      image: 'https://cdn.jsdelivr.net/gh/lete114/lete114.github.io/img/Lete.png'
     }

@@ -35,7 +35,7 @@ comments: true
   
 - 2020-8-7
 
-  > 拥有了第一条友链 [@vincentqin](https://vincentqin.tech/)；
+  > 拥有了第一条友链 [@vincentqin](https://vincentqin.tech/)。
   >
   
 - 2020-7-2    
