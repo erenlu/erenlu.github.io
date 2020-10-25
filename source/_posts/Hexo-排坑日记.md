@@ -65,3 +65,17 @@ categories: 折腾派
 先附上 [@Lete乐特](https://www.lete114.top/) 答复的内容，以供参考。
 
 ![QQ图片20200926123515](https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200926163426.png)
+
+## PicGo 上传错误
+
+- 错误信息：Failed to fetch
+
+  错误原因：**端口设置错误** 造成的。
+
+  解决方法：打开设置，点击设置 Server 选项，**将端口改为 36677 端口**，这是 PicGo 推荐的默认端口号。
+
+- 错误信息：{“success”,false}
+
+  错误原因：文件名冲突。
+
+  解决方法：打开设置，将【**时间戳重命名】**打开。

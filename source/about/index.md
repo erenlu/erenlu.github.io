@@ -24,7 +24,7 @@ comments: true
 
 ## 版权声明
 
-除特殊说明，博客文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="nofollow noopener">CC BY-NC-SA 4.0</a> 协议。
+除特殊说明，博文均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="nofollow noopener">CC BY-NC-SA 4.0</a> 协议。
 
 ## 更新日志
 
