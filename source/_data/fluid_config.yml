@@ -433,13 +433,13 @@ links:
       image: 'https://cdn.jsdelivr.net/gh/Sanarous/files/images/avatar.jpeg'
     }
    - {
-      title: 'BobMaster‘s Blog',
+      title: "BobMaster's Blog",
       intro: '生活的点滴是热爱呀',
       link: 'https://blog.hibobmaster.com/',
       image: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200909130415.jpeg'
     }
    - {
-      title: 'Lete乐特‘s Blog',
+      title: "Lete乐特's Blog",
       intro: '人生只有一次，大胆的生活！',
       link: 'https://www.lete114.top/',
       image: 'https://cdn.jsdelivr.net/gh/lete114/lete114.github.io/img/Lete.png'
