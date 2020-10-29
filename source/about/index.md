@@ -30,17 +30,17 @@ comments: true
 
 - 2020-8-26
 
-  > 站点名称更改为：Eren の 宇宙船，启用新域名：<u>[erenship.com](https://erenship.com/)</u>。
+  > 站点名称更改为：Eren の 宇宙船，启用新域名：[erenship.com](https://erenship.com/)。
   >
   
 - 2020-8-7
 
-  > 拥有了第一条友链 <u>[@vincentqin](https://vincentqin.tech/)</u>。
+  > 拥有了第一条友链 [@vincentqin](https://vincentqin.tech/)。
   >
   
 - 2020-7-2    
 
-  > 基于 <u>[Hexo 框架](https://hexo.io/zh-cn/)</u> + <u>[Fluid 主题](https://github.com/fluid-dev/hexo-theme-fluid)</u> 创建 Eren's Spaceship, 并成功启航。
+  > 基于 [Hexo 框架](https://hexo.io/zh-cn/)< + [Fluid 主题](https://github.com/fluid-dev/hexo-theme-fluid) 创建 Eren's Spaceship, 并成功启航。
 
 ## 写在最后
 
