@@ -40,7 +40,7 @@ comments: true
   
 - 2020-7-2    
 
-  > 基于 [Hexo 框架](https://hexo.io/zh-cn/)< + [Fluid 主题](https://github.com/fluid-dev/hexo-theme-fluid) 创建 Eren's Spaceship, 并成功启航。
+  > 基于 [Hexo 框架](https://hexo.io/zh-cn/) + [Fluid 主题](https://github.com/fluid-dev/hexo-theme-fluid) 创建 Eren's Spaceship, 并成功启航。
 
 ## 写在最后
 
