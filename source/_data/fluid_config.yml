@@ -410,6 +410,12 @@ links:
   subtitle:  友人目 # 打字机内容
   items:  # intro 与 image 可省略 
    - {
+      title: 'Ing 的赏花会',
+      intro: '此世是地狱顶上的一场赏花会',
+      link: 'https://ingflower.com/',
+      image: 'https://cdn.jsdelivr.net/gh/erenlu/picgo/img/20210212115122.jpg'
+    }
+   - {
       title: 'RealCat',
       intro: 'Keep Your Curiosity',
       link: 'https://vincentqin.tech',
