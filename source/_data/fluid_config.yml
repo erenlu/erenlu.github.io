@@ -409,51 +409,52 @@ links:
   banner_mask_alpha: 0.3  # available: 0 - 1.0
   subtitle:  友人目 # 打字机内容
   items:  # intro 与 image 可省略 
+
    - {
       title: 'Ing 的赏花会',
-      intro: '此世是地狱顶上的一场赏花会',
+      intro: '热爱文字的少女，也是博主的女友',
       link: 'https://ingflower.com/',
       image: 'https://cdn.jsdelivr.net/gh/erenlu/picgo/img/20210212115122.jpg'
     }
    - {
       title: 'RealCat',
-      intro: 'Keep Your Curiosity',
+      intro: '主攻 SLAM 领域的清华大佬，目前就职于商汤科技',
       link: 'https://vincentqin.tech',
       image: '/img/sys/realcat-android-chrome-192x192.png'
     }
    - {
       title: '青平散人',
-      intro: '梦醒细无声',
+      intro: '乐于分享的好友，目前在吉大深造',
       link: 'https://ccafder.com',
       image: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/友链_青平散人123.jpg'
     }
    - {
       title: 'Jalen Chuh',
-      intro: '爱折腾的少年，信奉「好看就是生产力」',
+      intro: '爱折腾的少年，目前在念初中',
       link: 'https://jalenchuh.cn',
       image: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20201003195403.jpg'
     }
    - {
       title: 'Sanarous',
-      intro: 'Dream it possible, make it possible',
+      intro: '主攻 Java 程式的厉害角色，目前就职于华为',
       link: 'https://bestzuo.cn',
       image: 'https://cdn.jsdelivr.net/gh/Sanarous/files/images/avatar.jpeg'
     }
    - {
       title: "BobMaster's Blog",
-      intro: '生活的点滴是热爱呀',
+      intro: '一位爱音乐也爱技术的记录者，目前在中南大学深造',
       link: 'https://blog.hibobmaster.com/',
       image: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200909130415.jpeg'
     }
    - {
       title: "Lete乐特's Blog",
-      intro: '人生只有一次，大胆的生活！',
+      intro: '00 年的技术 boy',
       link: 'https://www.lete114.top/',
-      image: 'https://cdn.jsdelivr.net/gh/lete114/lete114.github.io/img/Lete.png'
+      image: 'https://www.lete114.top/img/avatar.png'
     }
    - {
       title: 'Kcalm-Boy',
-      intro: '一面技术，一面生活',
+      intro: '我研究生的可爱室友',
       link: 'https://www.lifepart.top/',
       image: 'https://cdn.jsdelivr.net/gh/erenlu/PicGo//img/20200923141732.jpg'
     }
