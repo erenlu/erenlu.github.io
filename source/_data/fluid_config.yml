@@ -411,12 +411,6 @@ links:
   items:  # intro 与 image 可省略 
 
    - {
-      title: 'Ing 的赏花会',
-      intro: '一位有点才华的有趣女子，同时也是博主美又野的女友',
-      link: 'https://ingflower.com/',
-      image: 'https://cdn.jsdelivr.net/gh/erenlu/picgo/img/20210212115122.jpg'
-    }
-   - {
       title: 'RealCat',
       intro: '主攻 SLAM 领域的清华大佬，目前就职于商汤科技',
       link: 'https://vincentqin.tech',
