@@ -7,31 +7,34 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" 
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
+  <link rel="icon" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#2f4154">
+  <meta name="theme-color" content="#000000">
   <meta name="author" content="Eren">
   <meta name="keywords" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具/资源,教程,分享,推荐,娱乐,摄影,文学">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="本文将简述 H.264 的基本原理过程，如有疏漏欢迎指正交流。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
+<meta property="og:title" content="音视频学习笔记｜（一）H.264 基础原理介绍">
 <meta property="og:url" content="https://erenship.com/posts/undefined.html">
 <meta property="og:site_name" content="Eren の 宇宙船">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="本文将简述 H.264 的基本原理过程，如有疏漏欢迎指正交流。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-04-14T15:12:09.554Z">
-<meta property="article:modified_time" content="2023-04-14T15:12:09.554Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111620179.jpg">
+<meta property="article:published_time" content="2022-11-11T08:26:30.000Z">
+<meta property="article:modified_time" content="2022-11-11T08:35:00.919Z">
 <meta property="article:author" content="Eren">
 <meta property="article:tag" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具&#x2F;资源,教程,分享,推荐,娱乐,摄影,文学">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111620179.jpg">
   
   
   
-  <title>Hello World - Eren の 宇宙船</title>
+  <title>音视频学习笔记｜（一）H.264 基础原理介绍 - Eren の 宇宙船</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -69,7 +72,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"erenship.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"erenship.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":"UA-176568792-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"jauMdl8cvkseHUDG81ucNoej-MdYXbMMI","app_key":"T7zcEHNEYGyPVNB8BW5A16TH","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -79,6 +82,35 @@
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
   
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('https://www.google-analytics.com/analytics.js', function() {
+          window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) };
+          ga.l = +new Date;
+          ga('create', 'UA-176568792-1', 'auto');
+          ga('send', 'pageview');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
 
 
   
@@ -95,7 +127,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Eren の 宇宙船</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -113,31 +145,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/Categories/">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -149,7 +157,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/Tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -161,9 +169,21 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/About/">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>朋友</span>
               </a>
             </li>
           
@@ -191,13 +211,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111620179.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="音视频学习笔记｜（一）H.264 基础原理介绍"></span>
           
         </div>
 
@@ -208,8 +228,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-04-14 23:12" pubdate>
-          2023年4月14日 晚上
+        <time datetime="2022-11-11 16:26" pubdate>
+          2022年11月11日 下午
         </time>
       </span>
     
@@ -220,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          367 字
+          8.1k 字
         
       </span>
     
@@ -231,12 +251,20 @@
         
         
         
-          4 分钟
+          17 分钟
         
       </span>
     
 
     
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
     
   </div>
 
@@ -269,24 +297,217 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">音视频学习笔记｜（一）H.264 基础原理介绍</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年11月11日 下午
+                  
+                
+              </p>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <h2 id="一、视频压缩基础"><a href="#一、视频压缩基础" class="headerlink" title="一、视频压缩基础"></a>一、视频压缩基础</h2><h3 id="1-1-压缩基本概念"><a href="#1-1-压缩基本概念" class="headerlink" title="1.1 压缩基本概念"></a>1.1 压缩基本概念</h3><ul>
+<li><p>编码的目的是为了压缩，编码是一种压缩技术方法；</p>
+</li>
+<li><p>编码的作用就是压缩数据和统一格式；</p>
+</li>
+<li><p>视频压缩原理——数据冗余</p>
+<ul>
+<li>空间冗余：图像相邻像素之间有较强的相关性</li>
+<li>时间冗余：相邻前后帧图像内容相似</li>
+<li>视觉冗余：人眼对某些细节不敏感，对图像中高频信息的敏感度小于低频信息，故可以适当剔除高频信息</li>
+<li>编码冗余（信息熵冗余）：一幅图像中不同像素出现的概率不同，对出现次数较多的像素用少的位数编码以此来减小编码大小（哈夫曼编码）</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-封装格式"><a href="#1-2-封装格式" class="headerlink" title="1.2 封装格式"></a>1.2 封装格式</h3><ul>
+<li>封装格式也叫容器，就是将已经编码压缩好的视频轨和音频轨按照一定的格式放到一个文件中；</li>
+<li>他是一个外壳容器，常见的格式（后缀名）有 mp4、mov、avi、mkv 等；</li>
+</ul>
+<h3 id="1-3-常见视频压缩算法"><a href="#1-3-常见视频压缩算法" class="headerlink" title="1.3 常见视频压缩算法"></a>1.3 常见视频压缩算法</h3><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111600783.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="二、H264-编码概述"><a href="#二、H264-编码概述" class="headerlink" title="二、H264 编码概述"></a>二、H264 编码概述</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111605703.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-1-YUV-图像"><a href="#2-1-YUV-图像" class="headerlink" title="2.1 YUV 图像"></a>2.1 <strong>YUV 图像</strong></h3><p>YUV 是一种色彩编码模型，也叫做 YCbCr，其中 “Y” 表示明亮度（Luminance），“U” 和 “V” 分别表示色度（Chrominance）和浓度（Chroma）</p>
+<p>其实亮度 Y 也可以理解成 RGB 图像中的灰度值。YUV 颜色空间主要在多媒体流中使用较多。YUV 空间最大的特点就是图像的亮度 Y 和色度 UV 是分离的。通常人对色度 UV 的敏感性要小于对亮度 Y 的敏感性。所以通常都会对 UV 进行压缩，甚至没有UV分量一样可以显示完整的图像。当只有 Y 分量的时候，图像表示为灰度图。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111600892.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111605779.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111605795.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111600780.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-I-帧-P-帧-B-帧"><a href="#2-2-I-帧-P-帧-B-帧" class="headerlink" title="2.2 I 帧 P 帧 B 帧"></a>2.2 I 帧 P 帧 B 帧</h3><p>在 H264 协议中定义了三类帧</p>
+<p>I 帧：关键帧（包含完整的画面数据），仅由帧内预测的宏块组成，采用 <strong>帧内压缩</strong> 技术。<br>P 帧：预测帧，向前参考帧，在压缩时，只参考前面已经处理的帧。<br>B 帧：双向参考帧，在压缩时，它即参考前而的帧，又参考它后面的帧。采用帧间压缩技术。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111607020.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3-GOP-图像组"><a href="#2-3-GOP-图像组" class="headerlink" title="2.3 GOP 图像组"></a>2.3 GOP 图像组</h3><p>GOP（Group of picture）是指两个 IDR 帧之间的一组画面组。</p>
+<p>两个 I 帧之间是一个图像序列，在一个图像序列中只有一个I帧。如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111607297.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-4-IDR-立即刷新图像"><a href="#2-4-IDR-立即刷新图像" class="headerlink" title="2.4 IDR 立即刷新图像"></a>2.4 IDR 立即刷新图像</h3><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111608950.png" srcset="/img/loading.gif" lazyload></p>
+<p>在 H.264 中，图像以序列为单位进行组织。<strong>一个序列的第一个图像叫做 IDR 图像（立即刷新图像），IDR 图像都是 I 帧图像。H.264 引入 IDR 图像是为了解码的重同步，当解码器解码到 IDR 图像时，立即将参考帧队列清空，将已解码的数据全部输出或抛弃，重新查找参数集，开始一个新的序列。</strong>这样，如果前一个序列出现重大错误，在这里可以获得重新同步的机会。IDR 图像之后的图像永远不会使用IDR之前的图像的数据来解码。<strong>IDR 图像一定是 I 图像，但 I 图像不一定是 IDR 图像</strong>。I 帧之后的图像有可能会使用I帧之前的图像做运动参考。</p>
+<p>IDR 帧的性质是，比如第 1000 帧是 IDR 帧，那么这一帧相当于一个分水岭，从 1001 帧开始，所有的帧都不能再参照1000帧之前的帧。</p>
+<p>视频开头的 I 帧一定是 IDR 帧</p>
+<p>GOP 越大，编码的 I 帧就越少，相对而言 P、B 帧的压缩效率就越高。</p>
+<h3 id="2-5-H264-画质级别"><a href="#2-5-H264-画质级别" class="headerlink" title="2.5 H264 画质级别"></a>2.5 H264 画质级别</h3><p>H.264有四种画质级别,分别是baseline, extended, main, high：<br>　　1、Baseline Profile：基本画质。支持I&#x2F;P 帧，只支持无交错（Progressive）和CAVLC；<br>　　2、Extended profile：进阶画质。支持I&#x2F;P&#x2F;B&#x2F;SP&#x2F;SI 帧，只支持无交错（Progressive）和CAVLC；(用的少)<br>　　3、Main profile：主流画质。提供I&#x2F;P&#x2F;B 帧，支持无交错（Progressive）和交错（Interlaced），<br>　　　 也支持CAVLC 和CABAC 的支持；<br>　　4、High profile：高级画质。在main Profile 的基础上增加了8x8内部预测、自定义量化、 无损视频编码和更多的YUV 格式；<br>H.264 Baseline profile、Extended profile和Main profile都是针对8位样本数据、4:2:0格式(YUV)的视频序列。在相同配置情况下，High profile（HP）可以比Main profile（MP）降低10%的码率。<br>根据应用领域的不同，Baseline profile多应用于实时通信领域，Main profile多应用于流媒体领域，High profile则多应用于广电和存储领域。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111608540.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="三、H264-编码流程"><a href="#三、H264-编码流程" class="headerlink" title="三、H264 编码流程"></a>三、H264 编码流程</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111608684.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111608406.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111609032.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-1-宏块划分-x2F-扫描"><a href="#3-1-宏块划分-x2F-扫描" class="headerlink" title="3.1 宏块划分&#x2F; 扫描"></a>3.1 宏块划分&#x2F; 扫描</h3><ul>
+<li>视频以宏块为单元，宏块越大视频文件越小；</li>
+<li>视频的本质是宏块的运动；</li>
+<li>在H.264 中，句法元素共被组织成 序列、图像、片、宏块、子宏块五个层次</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111609781.png" srcset="/img/loading.gif" lazyload></p>
+<p>对一个 YUV 图像来说，可以划分为一个个 16x16 的宏块。</p>
+<p>H264 默认是使用 16X16 大小的区域作为一个宏块，也可以划分成 8X8 大小。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111609744.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111609472.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>划分好宏块后，计算宏块的象素值</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111610619.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111610376.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>划分子块</strong></p>
+<p>H264对比较平坦的图像使用 16X16 大小的宏块。但为了更高的压缩率，还可以在 16X16 的宏块上更划分出更小的子块。子块的大小可以是 8X16､ 16X8､ 8X8､ 4X8､ 8X4､ 4X4非常的灵活。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111611117.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-帧分组"><a href="#3-2-帧分组" class="headerlink" title="3.2 帧分组"></a>3.2 帧分组</h3><p>1、分组：把几帧图像分为一组（GOP，也就是一个序列），为防止运动变化，帧数不宜取多<br>2、定义帧：将每组内各帧图像定义为三种类型，即 I 帧、B帧和P帧<br>3、预测帧：以帧作为基础帧，以帧预测P帧，再由 I 帧和P帧预测B帧<br>4、数据传输：最后将 I 帧数据与预测的差值信息进行存储和传输</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111611732.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111611794.png" srcset="/img/loading.gif" lazyload></p>
+<p>通过宏块扫描与宏块搜索可以发现这两个帧的关联度是非常高的。进而发现这一组帧的关联度都是非常高的。因此，上面这几帧就可以划分为一组。其算法是：<strong>在相邻几幅图像画面中，一般有差别的像素只有10%以内的点,亮度差值变化不超过2%，而色度差值的变化只有1%以内，我们认为这样的图可以分到一组。</strong></p>
+<p>在这样一组帧中，经过编码后，<strong>我们只保留第一帖的完整数据</strong>，其它帧都通过参考上一帧计算出来。我们称第一帧为<strong>IDR／I帧</strong>，其它帧我们称为<strong>P／B帧</strong>，这样编码后的数据帧组我们称为 <strong>GOP</strong>。</p>
+<h3 id="3-3-帧间压缩（运动估计与补偿）"><a href="#3-3-帧间压缩（运动估计与补偿）" class="headerlink" title="3.3 帧间压缩（运动估计与补偿）"></a>3.3 帧间压缩（运动估计与补偿）</h3><p>帧间压缩(Interframe compression)也称为时间压缩(Temporal_compression)，是基于许多视频或动画的连续前后两帧具有很大的相关性(即连续的视频其相邻帧之间具有冗余信息)的特点来实现的；通过比较时间轴上不同帧之间的数据实施压缩，进一步提高压缩比。</p>
+<p>在视频中，帧内压缩就是压缩 GOP 图像组中的 B 帧与 P 帧。</p>
+<p>H264 编码器首先按顺序从缓冲区头部取出两帧视频数据，然后进行宏块扫描。当发现其中一幅图片中有物体时，就在另一幅图的邻近位置（搜索窗口中）进行搜索。如果此时在另一幅图中找到该物体，那么就可以计算出物体的运动矢量了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111612969.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111612601.png" srcset="/img/loading.gif" lazyload></p>
+<p>运动矢量计算出来后，将相同部分（也就是绿色部分）减去，就得到了补偿数据。我们最终只需要将补偿数据进行压缩保存，以后在解码时就可以恢复原图了。压缩补偿后的数据只需要记录很少的一点数据。</p>
+<p>我们把运动矢量与补偿称为<strong>帧间压缩技术</strong>，它解决的是视频帧在时间上的数据冗余。除了帧间压缩，帧内也要进行数据压缩，帧内数据压缩解决的是空间上的数据冗余。</p>
+<p>帧间压缩的主要过程先进行宏块查找，寻找出残差值，进行运动矢量计算，最后通过残差值和运动矢量推算出下一帧的数据。</p>
+<p>残差值是指帧之间有差别的部分；</p>
+<p>帧间压缩 (Interframe compression) 也称为时间压缩 (Temporal_compression)，是基于许多视频或动画的连续前后两帧具有很大的相关性(即连续的视频其相邻帧之间具有冗余信息)的特点来实现的；通过比较时间轴上不同帧之间的数据实施压缩，进一步提高压缩比。</p>
+<h3 id="3-4-帧内预测"><a href="#3-4-帧内预测" class="headerlink" title="3.4 帧内预测"></a>3.4 帧内预测</h3><p>人眼对图象都有一个识别度，对低频的亮度很敏感，对高频的亮度不太敏感。所以基于一些研究，可以将一幅图像中人眼不敏感的数据去除掉。这样就提出了帧内预测技术。</p>
+<p>H264的帧内压缩与JPEG很相似。一幅图像被划分好宏块后，对每个宏块可以进行 9 种模式的预测。找出与原图最接近的一种预测模式。</p>
+<p>帧内（Intraframe）压缩也称为空间压缩（Spatial compression）。当压缩一帧图像时，仅考虑本帧的数据而不考虑相邻帧之间的冗余信息，这实际上与静态图像压缩类似。帧内一般采用有损压缩算法，达不到很高的压缩比。</p>
+<p>在视频中，帧内压缩就是压缩 GOP 图像组中的 I 帧&#x2F; IDR帧(属于I帧)。</p>
+<p>帧内压缩是空域， 在空间XY轴进行压缩，进行压缩参考本帧数据，压缩率较小。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111612830.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111612901.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111612511.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111613081.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111613600.png" srcset="/img/loading.gif" lazyload></p>
+<p>帧内预测后的图像与原始图像的对比如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111613674.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后，将原始图像与帧内预测后的图像相减得残差值。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111613101.png" srcset="/img/loading.gif" lazyload></p>
+<p>再将我们之前得到的预测模式信息一起保存起来，这样我们就可以在解码时恢复原图了。效果如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111613601.png" srcset="/img/loading.gif" lazyload></p>
+<p>经过帧内与帧间的压缩后，虽然数据有大幅减少，但还有优化的空间。</p>
+<blockquote>
+<p>帧内压缩与帧间压缩都属于有损压缩。</p>
+<p>视频花屏的产生原因：一组 GOP 中有帧丢失，主要是 P 帧和 B 帧的丢失，这样残差值和运动矢量也会丢失，造成了当前帧解码失败，就会出现花屏。</p>
+<p>视频卡顿的原因：当有帧丢失，就丢弃 GOP 内所有帧，直到下一个 I 帧出现，重新刷新图像。I 帧是 GOP 的第一帧，时间周期可能长，等待下一个 I 帧来之前的这段时间，就会出现卡顿。</p>
+<p>这两者是不能同时兼顾的，比如微信视频通话没有花屏，但是会出现卡顿。一般视频录制的时候一般会有花屏，但不会出现卡顿。</p>
+</blockquote>
+<h3 id="3-5-DCT-和量化"><a href="#3-5-DCT-和量化" class="headerlink" title="3.5 DCT 和量化"></a>3.5 DCT 和量化</h3><p>对残差数据做 DCT</p>
+<p>可以将残差数据做整数离散余弦变换，去掉数据的相关性，进一步压缩数据</p>
+<p>将残差数据宏块进行 DCT 转换。</p>
+<p>变换是视频、图像编码的核心部分。目前所采用的变换算法都是从傅里叶变换演变而来。</p>
+<p>单纯的变换并不会导致视频（图像）的码率变小，反而会增大。</p>
+<p>但是非常巧妙的一点是：变换把图像从空域转换成的时域，把由色块组成的图像变为由基准色调与图像细节组成；低频代表图片的基准色调，高频代表图像细节，类比电路中的基频与谐波。变换会使得图像的低频系数集中于某一点（左上角），频率向右下角递增。</p>
+<p>一般来说，4x4大小的图像大多只是颜色平缓的色块，不会有太多的细节，因此低频系数会较大，而高频系数较小。另外，人的眼睛对于高频系数，即图像细节，并不会特别敏感。因此，通过量化可以去掉很大一部分小的高频系数。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111614106.png" srcset="/img/loading.gif" lazyload></p>
+<p>量化是使数据比特率下降的有效工具。量化过程的输入值动态范围很大，需要较多的比特才能表示一个数值，量化后的输出则只需要较小比特表示。<br>量化是不可逆过程，处理过程中有信息丢失，存在量化误差。</p>
+<p>H.264采用标量量化技术，它将每个图像样点编码映射成较小的数值。一般标量量化器的原理为：<br>F Q &#x3D; r o u n d ( y &#x2F; Q P ) FQ&#x3D;round(y&#x2F;QP)FQ&#x3D;round(y&#x2F;QP)<br>其中，y 为输入样本点编码，QP 为量化步长，FQ 为 y 的量化值，round()为取整函数（其输出为与输入实数最近的整数）</p>
+<p>在量化和反量化过程中，量化步长 QP 决定量化器的编码压缩率及图像精度。如果 QP 比较大，则量化值 FQ 动态范围较小，其相应的编码长度较小，数据压缩率高但会损失较多的图像细节信息；如果QP 比较小，则 FQ 动态范围较大，相应的编码长度也较大，但图像细节信息损失较少。编码器根据图像值实际动态范围自动改变 QP 值，在编码码率和图像精度之间折衷，达到整体最佳效果。</p>
+<h3 id="3-6-熵编码"><a href="#3-6-熵编码" class="headerlink" title="3.6 熵编码"></a>3.6 熵编码</h3><p>经过 ZigZag 扫描后，一连串的数字的最后大部分为 0，以及一些 +1,-1。针对这一系列的数字，从概率的角度，再进行一次编码，这个过程称之为熵编码。</p>
+<p>熵编码主要分为 CAVLC，和 CABAC，分别代表基于上下文的自适应可变长编码和基于上下文的自适应二进制算术编码。</p>
+<h4 id="3-6-1-CAVLC"><a href="#3-6-1-CAVLC" class="headerlink" title="3.6.1 CAVLC"></a>3.6.1 CAVLC</h4><p>请参考下述文章</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1612331?from=article.detail.1612330">编码原理（五）–熵编码–CAVLC</a></p>
+</blockquote>
+<ul>
+<li>非零系数的数目（TotalCoeffs）: 代表 ZigZag 扫描后序列中非 0 值的个数；         </li>
+<li>拖尾系数的数目（TrailingOnes）:指 Z 扫描后，末尾高频信号中出现连续1或-1的个数（中间可以隔任意多个0），拖尾系数最多有5个。当连续1或-1的个数超过3个，只有最后3个1或-1是拖尾系数，其他的当作普通的非零系数。</li>
+<li>TotalZeros: 最后一个非零系数前零的数目；        </li>
+<li>nC：用来决策 coeff 如何编码的变量；        </li>
+<li>ZerosLeft: 当前系数之前所有的 0 的个数；        </li>
+<li>RunBefore: 紧邻当前系数的0的个数；</li>
+</ul>
+<hr>
+<p>利用相邻已编码符号所提供的相关性，为索要编码的符号选择合适的上下文模型。</p>
+<p>利用合适的上下文模型，就可以大大降低符号间的冗余度。</p>
+<p>TotalCoeffs 和 TrailingOnes 通过查表方式进行编码，H.264 针对 TotalCoeffs 和 TrailingOnes，提供了 4 张变长表和 1 张定长表（部分见附表9-5）。</p>
+<p>编码表的选择是由NC确定的，NC的值是由上下文信息确定的。对于色度直流信号，NC&#x3D;-1；对于其他的NC，根据当前块左边4x4块和上面4x4块的非零系数的个数A和B决定。如表一：其中X表示该块与当前块属于同一slice且可用。根据NC选择编码表的策略如表二：</p>
+<blockquote>
+<p>非零系数主要集中在低频部分，高频系数大部分为零，量化后经过 zig-zag 编码。</p>
+<p>非零系数的幅值通常在靠近DC（即直流分量）部分较大，而在高频部分较小；</p>
+<p>上下文模型主要体现在：非零系数编码所需表格和拖尾系数后缀长度的更新。</p>
+<p>CAVLC 以 zig-zag 顺序用于对变换后的残差块进行编码。</p>
+<p>CAVLC 是 CABAC 的替代品，虽然其压缩效率不如 CABAC，但 CAVLC 实现简单，并且在所有的 H.264 profile 中都支持。</p>
+<p>通过 根据已编码句法元素的情况动态调整编码中使用的码表，取得了极高的压缩比。</p>
+</blockquote>
+<h4 id="3-6-2-CABAC"><a href="#3-6-2-CABAC" class="headerlink" title="3.6.2 CABAC"></a>3.6.2 CABAC</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://lazybing.github.io/blog/2017/09/12/video-coding/">http://lazybing.github.io/blog/2017/09/12/video-coding/</a></li>
+</ul>
+<h2 id="四、H-264-码流分层"><a href="#四、H-264-码流分层" class="headerlink" title="四、H.264 码流分层"></a>四、H.264 码流分层</h2><h3 id="4-1-VCL-amp-NAL"><a href="#4-1-VCL-amp-NAL" class="headerlink" title="4.1 VCL &amp; NAL"></a>4.1 VCL &amp; NAL</h3><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111614098.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111614769.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>H.264 的功能分为两层，即视频编码层（VCL）和网络提取层（NAL，Network Abstraction </p>
+<p>Layer）。</p>
+</li>
+<li><p>VCL Layer 將 vidoe image 分割為許多的 slices，這此slice在分成許多的NALU傳送出去</p>
+</li>
+<li><p>VCL 数据即编码处理的输出，它表示被压缩编码后的视频数据序列。在 VCL 数据传输或存</p>
+<p>储之前，这些编码的 VCL 数据，先被映射或封装进 NAL 单元中。</p>
+<p>每个 NAL 单元包括一个原始字节序列负荷（RBSP）、一组对应于视频编码数据的 NAL 头信息。</p>
+<p>NAL 单元序列的结构见图 6.6 </p>
+</li>
+<li><p><strong>切片头</strong>：包含了一组片的信息，比如片的数量，顺序等等</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111615356.png" srcset="/img/loading.gif" lazyload></p>
+<p>H.264从层次来看分为两层：视频编码层（VCL， Video Coding Layer）和网络提取层（NAL，Network Abstraction Layer）。VCL输出的是原始数据比特流（SODB，String of data bits），表示H.264的语法元素编码完成后的实际的原始二进制码流。</p>
+<p>SODB通常不能保证字节对齐,故需要补齐为原始字节序列负荷（RBSP，Raw Byte Sequence Payload）。NAL层实际上就是最终输出的H.264码流，它是由一个个NALU组成的，每个NALU包括一组对应于视频编码数据的NAL头信息和一个原始字节序列负荷（RBSP，Raw Byte Sequence Payload）。以上名词之间的关系如下：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">RBSP</span> = SODB + RBSP trailing bits<br><span class="hljs-attr">NALU</span> = NAL header(<span class="hljs-number">1</span> byte) + RBSP<br><span class="hljs-attr">H.264</span> = Start Code Prefix(<span class="hljs-number">3</span> bytes) + NALU + Start Code Prefix(<span class="hljs-number">3</span> bytes) + NALU +…<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>所以H.264码流的结构如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111615200.png" srcset="/img/loading.gif" lazyload></p>
+<p>NALU (Nal Unit) &#x3D; NALU头 + RBSP 在 VCL</p>
+<p>数据传输或存储之前，这些编码的 VCL 数据，先被映射或封装进 NAL 单元(以下简称 NALU，Nal Unit) 中。每个 NALU 包括一个原始字节序列负荷(RBSP, Raw Byte Sequence Payload)、一组 对应于视频编码的 NALU 头部信息。RBSP 的基本结构是:在原始编码数据的后面填加了结尾 比特。一个 bit“1”若干比特“0”，以便字节对齐。</p>
+<p>一个原始的 H.264 NALU 单元常由 [StartCode] [NALU Header] [NALU Payload] 三部分组成。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111615327.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>StartCode : Start Code 用于标示这是一个NALU 单元的开始，必须是”00 00 00 01” 或”00 00 01”（Annex B码流格式才必须是”00 00 00 01” 或”00 00 01”）</li>
+</ul>
+<p><strong>下表为 NAL Header Type</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211111615707.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-2-码流格式"><a href="#4-2-码流格式" class="headerlink" title="4.2 码流格式"></a>4.2 码流格式</h3><p>H.264 标准中指定了视频如何编码成独立的包，但如何存储和传输这些包却未作规范，虽然标准中包含了一个 Annex 附件，里面描述了一种可能的格式 Annex B，但这并不是一个必须要求的格式。<br>为了针对不同的存储传输需求，出现了两种打包方法。一种即 Annex B 格式，另一种称为 AVCC 格式。</p>
+<ul>
+<li>Annex B<br>从上文可知，一个 NALU 中的数据并未包含他的大小（长度）信息，因此我们并不能简单的将一个个 NALU 连接起来生成一个流，因为数据流的接收端并不知道一个 NALU 从哪里结束，另一个 NALU 从哪里开始。<br>Annex B格式用起始码（Start Code）来解决这个问题，它在每个 NALU 的开始处添加三字节或四字节的起始码 0x000001 或 0x00000001。通过定位起始码，解码器就可以很容易的识别NALU的边界。<br>当然，用起始码定位NALU边界存在一个问题，即NALU中可能存在与起始码相同的数据。为了防止这个问题，在构建 NALU时，需要将数据中的0x000000，0x000001,0x000002,0x000003 中插入防竞争字节（Emulation Prevention Bytes) 0x03，使其变为：<br>0x000000 &#x3D; 0x0000 03 00<br>0x000001 &#x3D; 0x0000 03 01<br>0x000002 &#x3D; 0x0000 03 02<br>0x000003 &#x3D; 0x0000 03 03<br>解码器在检测到 0x000003 时，将 0x03 抛弃，恢复原始数据。</li>
+</ul>
+<p>由于 Annex B 格式每个 NALU 都包含起始码，所以解码器可以从视频流随机点开始进行解码，常用于实时的流格式。在这种格式中通常会周期性的重复 SPS 和PPS，并且经常时在每一个关键帧之前。</p>
+<h3 id="4-3-H264的传输"><a href="#4-3-H264的传输" class="headerlink" title="4.3 H264的传输"></a>4.3 H264的传输</h3><p> <strong>H264是一种码流</strong> 类似与一种不见头，也不见尾的一条<strong>河流</strong>。如何从和流中取到自己想要的<strong>数据</strong>呢，</p>
+<p>在H264的标砖中有这样的一个封装格式叫做”Annex-B”的字节流格式。 它是H264编码的主要字节流格式。</p>
+<p>几乎市面上的编码器是以这种格式进行输出的。<strong>起始码 0x 00 00 00 01 或者 0x 00 00 01</strong> 作为<strong>分隔符</strong>。</p>
+<p>两个 0x 00 00 00 01之间的字节数据 是表示一个NAL Unit</p>
+<p>宏快作为压缩视频的最小的一部分，需要被组织，然后在网络之间做相互传输。</p>
+<p> 如果单纯的用 <strong>宏快</strong> 来发送数据是 <strong>杂乱无章</strong> 的，就好像在没有 <strong>集装箱</strong> 出现之前，货物总是随意被堆放到船上。</p>
+<p>上货（编码），下货是非常痛苦的。 当集装箱出现之后，一切都发生了改变，传输效率大大增高。</p>
+<p> 集装箱可以理解成 <strong>H264编码标准</strong>，他制定了相互传输的格式，将宏快 有组织，有结构，有顺序的形成一系列的码流。这种码流既可 通过 InputStream 网络流的数据进行传输，也可以封装成一个文件进行保存。</p>
+<h2 id="参考引用"><a href="#参考引用" class="headerlink" title="参考引用"></a>参考引用</h2><p>[1] <a target="_blank" rel="noopener" href="https://blog.csdn.net/LuohenYJ/article/details/84957101">YUV图像处理入门1</a></p>
+<p>[2] <a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15375308/4010325">H264编码(帧内预测)</a></p>
+<p>[3] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/Lxk0825/p/9927757.html">H.264编码profile &amp; level控制</a></p>
+<p>[4] <a target="_blank" rel="noopener" href="https://blog.csdn.net/wuqingsen1/article/details/118030223">帧内压缩与帧间压缩</a></p>
+<p>[5] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/Lxk0825/p/9925064.html">H.264分层结构与码流结构</a></p>
+<p>[6] <a target="_blank" rel="noopener" href="https://blog.csdn.net/Liu1314you/article/details/77185215">H.264中普通I帧和IDR帧究竟有什么区别</a></p>
+<p>[7] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/AndyJee/p/3724917.html">运动补偿与运动估计</a></p>
+<p>[8] <a target="_blank" rel="noopener" href="http://www.elkpi.com/topics/2016/04/color-formats-equasys-gmbh.html">Color Formats – equasys GmbH</a></p>
+<p>[9] <a target="_blank" rel="noopener" href="http://blog.gitdns.org/2017/03/14/h264/">h264</a></p>
+<p>[10] <a target="_blank" rel="noopener" href="https://yumichan.net/video-processing/video-compression/introduction-to-h264-2-sodb-vs-rbsp-vs-ebsp/">Introduction to H.264: (2) SODB vs RBSP vs EBSP</a></p>
+<p>[11] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/Lxk0825/p/9925041.html">H.264基本原理与编码流程</a></p>
+<p>[12] <a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15077549/3366546">【知识点】H264, H265硬件编解码基础及码流分析</a></p>
+<p>[13] <a target="_blank" rel="noopener" href="https://pjchender.dev/webdev/webrtc-media-basic/#%E4%BB%80%E9%BA%BC%E6%98%AF%E7%B7%A8%E8%A7%A3%E7%A2%BC%E5%99%A8">[Media] 影音傳輸-基礎知識_GOP&#x2F;视频基础</a></p>
+<p>[14] <a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15375308/5073333">深入讲解音视频编码原理，H264码流详解——手写H264编码器</a></p>
+<p>[15] <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1612330">编码原理（四）—ZIGZAG扫描</a></p>
+<p>[16] <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42139383/article/details/118334630">一文搞懂H264量化原理以及计算过程</a></p>
 
                 
               </div>
@@ -294,6 +515,27 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E6%B4%BE/" class="category-chain-item">学习派</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
 </div>
@@ -304,7 +546,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
+      <div>音视频学习笔记｜（一）H.264 基础原理介绍</div>
       <div>https://erenship.com/posts/undefined.html</div>
     </div>
     <div class="license-meta">
@@ -317,7 +559,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年4月14日</div>
+          <div>2022年11月11日</div>
         </div>
       
       
@@ -349,9 +591,21 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/posts/undefined.html" title="x264|运动估计 ME 模块简要分析之一">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">x264|运动估计 ME 模块简要分析之一</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/posts/ekff.html" title="DSP 学习笔记｜（七）HiFi 汇编说明">
+                        <span class="hidden-mobile">DSP 学习笔记｜（七）HiFi 汇编说明</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
@@ -359,6 +613,38 @@
             </div>
 
             
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.14.1/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.14.1/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://waline-8z7beifxu-erenlu.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
           </article>
         </div>
       </div>
@@ -457,6 +743,15 @@
   
   
   
+
+    <div class="text-center py-1">   
+    <div>
+      <span>Copyright © 2020-2023</span></a>
+      <a href="https://erenship.com/" target="_blank" rel="nofollow noopener">
+       <span>Eren の 宇宙船 </span></a>  <br>
+    </div>
+
+
 </div>
 
   </footer>
@@ -599,9 +894,15 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
+  <script defer src="/js/leancloud.js" ></script>
+
   <script  src="/js/local-search.js" ></script>
 
 
+
+
+  
+<script src="/css/iconfont_500px/iconfont.css.js"></script>
 
 
 

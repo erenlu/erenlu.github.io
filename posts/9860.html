@@ -1,0 +1,874 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" 
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
+  <link rel="icon" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="author" content="Eren">
+  <meta name="keywords" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具/资源,教程,分享,推荐,娱乐,摄影,文学">
+  
+    <meta name="description" content="本文笔记整理摘自《HiFi4 DSP User&#39;s Guide》。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DSP 学习笔记 |（五）HiFi 4 User&#39;s Guide 笔记">
+<meta property="og:url" content="https://erenship.com/posts/9860.html">
+<meta property="og:site_name" content="Eren の 宇宙船">
+<meta property="og:description" content="本文笔记整理摘自《HiFi4 DSP User&#39;s Guide》。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220723234dd157.png">
+<meta property="article:published_time" content="2022-07-24T01:49:09.000Z">
+<meta property="article:modified_time" content="2022-07-23T12:04:00.000Z">
+<meta property="article:author" content="Eren">
+<meta property="article:tag" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具&#x2F;资源,教程,分享,推荐,娱乐,摄影,文学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220723234dd157.png">
+  
+  
+  
+  <title>DSP 学习笔记 |（五）HiFi 4 User&#39;s Guide 笔记 - Eren の 宇宙船</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"erenship.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":"UA-176568792-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"jauMdl8cvkseHUDG81ucNoej-MdYXbMMI","app_key":"T7zcEHNEYGyPVNB8BW5A16TH","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('https://www.google-analytics.com/analytics.js', function() {
+          window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) };
+          ga.l = +new Date;
+          ga('create', 'UA-176568792-1', 'auto');
+          ga('send', 'pageview');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Eren の 宇宙船</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>朋友</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.jsdelivr.net/gh/erenlu/picgo/img/微信图片_20220723234157.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="DSP 学习笔记 |（五）HiFi 4 User&#39;s Guide 笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-24 09:49" pubdate>
+          2022年7月24日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">DSP 学习笔记 |（五）HiFi 4 User&#39;s Guide 笔记</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年7月23日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <div class="note note-success">
+            <p>本文笔记整理摘自《HiFi4 DSP User’s Guide》。</p>
+          </div>
+
+<blockquote>
+<p><strong>先导阅读手册</strong>：</p>
+<img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095009245.png" srcset="/img/loading.gif" lazyload alt="image-20220724095009245" style="zoom:80%;" />
+</blockquote>
+<h2 id="一、-HiFi-4-概述"><a href="#一、-HiFi-4-概述" class="headerlink" title="一、 HiFi 4 概述"></a>一、 HiFi 4 概述</h2><div class="note note-warning">
+            <ul><li>Cadence HiFi ：Cadence Tensilica HiFi DSP 架构，用于音频解码</li><li>Tensilica：嵌入式处理器公司，已被芯片 EDA 巨头 Cadence 收购</li><li>Xtensa：DSP 处理器核心，也是该系列的型号名称，也是该处理器中指令集架构的名称</li><li>HiFi：特指 32 位音频&#x2F;语音处理数字信号处理 (DSP) 核，基于 Xtensa® 架构</li></ul>
+          </div>
+
+<h3 id="1-1-HiFi-4-特点"><a href="#1-1-HiFi-4-特点" class="headerlink" title="1.1 HiFi 4 特点"></a>1.1 HiFi 4 特点</h3><p>HiFi 4 DSP 是一个高性能的嵌入式数字信号处理器，专门为音频和语音处理进行了优化。</p>
+<p>HiFi 4 DSP 由三个主要部件组成：</p>
+<ol>
+<li>一个 DSP 子系统；</li>
+<li>一个可选的单精度浮点单元；</li>
+<li>一个协助比特流访问和变长（Huffman）编解码的子系统。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095035434.png" srcset="/img/loading.gif" lazyload alt="image-20220724095035434"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095047136.png" srcset="/img/loading.gif" lazyload alt="image-20220724095047136"></p>
+<ul>
+<li>HiFi 4 DSP 是一个 VLIW 架构，支持并行执行四个操作。</li>
+<li>DSP 的读取、比特流和 Huffman 操作以及核心操作都可以在 VLIW 指令的 0 槽和 1 中，存储仅在槽 0 中可用。DSP MAC、ALU 和可选的浮点操作通常在槽 2 和槽 3 中进行。</li>
+<li>HiFi 4 DSP 是建立在 Xtensa RISC 架构的基础上，它实现了丰富的通用标量指令集，为高效的嵌入式处理进行了优化。</li>
+<li>由 Cadence 提供的音频包不使用 DMA。因此，大多数客户要么使用缓存，要么使本地存储器足够大以覆盖所需的应用。</li>
+</ul>
+<h3 id="1-2-寄存器"><a href="#1-2-寄存器" class="headerlink" title="1.2 寄存器"></a>1.2 寄存器</h3><p><strong>AE_DR 寄存器</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095058671.png" srcset="/img/loading.gif" lazyload alt="image-20220724095058671"></p>
+<ul>
+<li><p>HiFi 4 DSP 包含一个 16 进制 64 位寄存器 AE _ DR。</p>
+</li>
+<li><p>当寄存器被存储到内存中时，寄存器的较高一半总是存储在较低的内存地址中，并从较低的内存地址加载。寄存器的单独的一半或四分之一始终是单独的数据项。 例如，如果将 32 位元素向左移动，则 L 元素不会溢出到高位元素中</p>
+</li>
+</ul>
+<p><strong>AE_EP 寄存器</strong></p>
+<ul>
+<li>HiFi 4 DSP 支持一个 4 进制、8 位的额外精度寄存器 AE_EP。</li>
+<li>该寄存器的访问时间比 AE_D R寄存器晚一个周期。</li>
+</ul>
+<p><strong>AE_VALIGN 寄存器</strong></p>
+<ul>
+<li>HiFi 4 DSP 支持一个 4 进制、64 位的对齐寄存器 AE_VALIGN。</li>
+<li>使用这个寄存器允许硬件以每周期 64 位的速度加载或存储非 64 位对齐的 SIMD 流位&#x2F;周期。</li>
+<li>对齐的加载和存储只存在于槽0中，所以不可能同时发出这些指令。</li>
+</ul>
+<h3 id="1-3-操作助记符"><a href="#1-3-操作助记符" class="headerlink" title="1.3 操作助记符"></a>1.3 操作助记符</h3><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220720152135269.png" srcset="/img/loading.gif" lazyload alt="image-20220724095113577" style="zoom:150%;" />
+
+<img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095120543.png" srcset="/img/loading.gif" lazyload alt="image-20220724095120543" style="zoom:150%;" />
+
+<h3 id="1-4-定点数及其运算"><a href="#1-4-定点数及其运算" class="headerlink" title="1.4 定点数及其运算"></a>1.4 定点数及其运算</h3><p>一个定点数的数据类型 <em>m.n</em> 包含一个符号位，在小数点的左边有m-1位，在小数点的右边有n位。</p>
+<p>当表示为一个二进制的时候，最不重要的 n 位是小数部分，最重要的 m 位是整数部分。</p>
+<h3 id="1-5-VLIW-槽及格式"><a href="#1-5-VLIW-槽及格式" class="headerlink" title="1.5 VLIW 槽及格式"></a>1.5 VLIW 槽及格式</h3><p>HiFi 4 DSP 可以在一个 88 位的指令束中发出 4 个操作，或在一个 48 位的指令束中发出 2 个操作。使用 Xtensa LX FLIX (VLIW) 技术，HiFi 4 DSP 支持几种不同的格式，有不同的插槽限制。每条指令都属于一种格式，但不同的格式可以在一条指令中打包不同数量的操作。</p>
+<ul>
+<li>第一个插槽支持标量与矢量的 <strong>读取与写入</strong>，以及 <strong>标量 Xtensa 操作</strong>；</li>
+<li>第二个插槽支持标量与矢量的 <strong>读取与写入</strong>，以及 <strong>矢量 Xtensa 操作</strong>；</li>
+<li>最后两个插槽主要支持 <strong>矢量逻辑运算</strong> 与 <strong>矢量乘法运算</strong>。</li>
+</ul>
+<p>对于可选择的浮点单元来说，大多数浮点操作都可在 slot 3 和 slot 4 中进行。</p>
+<p><strong>在优化 HiFi 4 DSP 代码中理解开槽的概念是十分重要的。</strong>循环通常受到只能进入一个或另一个槽的操作的限制。例如，每个周期不可能发出一个以上的（可能的SIMD）存储。如果一个循环被一个槽中的操作所限制，那么试图优化另一个槽中的操作就没有意义了。 </p>
+<h2 id="二、DSP-编程"><a href="#二、DSP-编程" class="headerlink" title="二、DSP 编程"></a>二、DSP 编程</h2><div class="note note-info">
+            <ul><li>HiFi 4 DSP 每个周期提供四个 MAC。 它提供对整数和小数运算的等效支持。</li><li>不利用 SIMD 的应用程序的运行速度将比利用 SIMD 的应用程序慢 4 倍。</li><li>对于 24 位和 32x16 位的应用程序，编译器不会自动矢量化。应用程序编写器必须使用显示矢量数据类型或内部函数来编写代码。</li></ul>
+          </div>
+
+<h3 id="2-1-数据类型"><a href="#2-1-数据类型" class="headerlink" title="2.1 数据类型"></a>2.1 数据类型</h3><ul>
+<li>HiFi 4 DSP 支持 16、24、32 以及 64 位的数据类型。所有类型都包含整数与分数版本。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095144861.png" srcset="/img/loading.gif" lazyload alt="image-20220724095144861"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095156736.png" srcset="/img/loading.gif" lazyload alt="image-20220724095156736"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095206371.png" srcset="/img/loading.gif" lazyload alt="image-20220724095206371"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095217319.png" srcset="/img/loading.gif" lazyload alt="image-20220724095217319"></p>
+<h3 id="2-2-编码与解码"><a href="#2-2-编码与解码" class="headerlink" title="2.2 编码与解码"></a>2.2 编码与解码</h3><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095229654.png" srcset="/img/loading.gif" lazyload alt="image-20220724095229654"></p>
+<h3 id="2-3-基于内嵌函数编程"><a href="#2-3-基于内嵌函数编程" class="headerlink" title="2.3 基于内嵌函数编程"></a>2.3 基于内嵌函数编程</h3><p>每条 HiFi 4 DSP 指令都可以通过一个相同名称的内部函数直接访问，除了 “.” 需要全部变成 “_”。</p>
+<h2 id="三、HiFi-4-指令集"><a href="#三、HiFi-4-指令集" class="headerlink" title="三、HiFi 4 指令集"></a>三、HiFi 4 指令集</h2><ul>
+<li><p>对于矢量读取和写入，<strong>内存中的高位地址总是存储在寄存器中的最小有效位</strong>。</p>
+</li>
+<li><p>HiFi 4 DSP 还支持两个圆形缓冲区，可用于对齐或不对齐的数据。</p>
+</li>
+<li><p>虽然向量变量不需要被对齐到 64位，但它们仍然必须根据每个标量元素的要求进行对齐，例如32位的向量的 ints。</p>
+</li>
+<li><p>AE_LA64.PP 是一个特殊的初始化指令，这条指令将数据从数据流的起点加载到对齐寄存器中。对齐指令工作的具体细节与程序员无关。只要调用 AE_LA64_PP 引导内在的第一个要加载的地址（不管是否对齐），然后用适当的对齐加载继续加载。</p>
+</li>
+<li><p>大多数读取和写入操作的助记符包含一个尺寸，表示操作符的大小；</p>
+</li>
+<li><p>大多数加载和存储操作的助记符包含一个后缀，<strong>表示如何计算有效地址以及是否更新基址寄存器</strong>。</p>
+</li>
+<li><p>定点数 1.31, 是指令里面操作的数据类型，int 之后，还有按照指令规范的类型来转换。</p>
+<p>int &#x3D; 2, 在经过 1.31 后，二进制，000….10（32位）。如果是负数，第一位是符号位，补码形式。</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095242956.png" srcset="/img/loading.gif" lazyload alt="image-20220724095242956"></p>
+<h3 id="3-1-读取与写入操作"><a href="#3-1-读取与写入操作" class="headerlink" title="3.1 读取与写入操作"></a>3.1 读取与写入操作</h3><ul>
+<li><p>load 是将内存里面的值读取到寄存器（CPU 内部的存储单元）。如果都是放在寄存器的，寄存器哪有那么多地方给你存东西？</p>
+</li>
+<li><p>store 是将寄存器里面的值写入到内存。</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095252488.png" srcset="/img/loading.gif" lazyload alt="image-20220724095252488"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//将数组a的值赋值给数字b，分别使用load和store指令</span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> ** argv)</span><br>&#123;<br>	<span class="hljs-comment">// 初始化数据</span><br>	<span class="hljs-type">short</span> a[<span class="hljs-number">4</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;;<br>	<span class="hljs-type">short</span> b[<span class="hljs-number">4</span>];<br>	ae_int16x4 *ap = (ae_int16x4 *) &amp;a[<span class="hljs-number">0</span>];<br>	ae_int16x4 *bp = (ae_int16x4 *) &amp;b[<span class="hljs-number">0</span>];<br>	ae_int16x4 src;<br>	<span class="hljs-comment">// load：先读取内存中的值到寄存器</span><br>	AE_L16X4_IP(src, ap, <span class="hljs-number">8</span>);<br>	<span class="hljs-comment">// store: 将数组a中的值存到数组b中</span><br>	<span class="hljs-comment">//AE_SA16x4_IP (src, ae_valign u, *ap);</span><br>	AE_S16X4_IP(src, bp, <span class="hljs-number">8</span>);<br><br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++)<br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, a[i]);<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, b[i]);<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-2-乘积累加操作"><a href="#3-2-乘积累加操作" class="headerlink" title="3.2 乘积累加操作"></a>3.2 乘积累加操作</h3><p>乘积累加运算 （ 英语：Multiply Accumulate, MAC,）。</p>
+<p>乘法 multiplication、加法 adder、周期 cycle 就是 mac，乘加器，表示一个周期完成一次乘法和加法运算。DSP 的重要性能指标。DSP 的主要工作就是大量的乘加器运算。</p>
+<p>DSP 一个机器指令周期能实现乘加运算，这是 DSP 的精髓。 实现这个运算的内核就是 MAC。 </p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095327286.png" srcset="/img/loading.gif" lazyload alt="image-20220724095327286"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095339843.png" srcset="/img/loading.gif" lazyload alt="image-20220724095339843"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095352754.png" srcset="/img/loading.gif" lazyload alt="image-20220724095352754"></p>
+<p><strong>MAC:</strong></p>
+<p>两个和四个 MAC 操作有两种形式——双 MAC 取两个 MAC 的结果，并将它们加或减，如下示例所示。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">acc = acc – d0.L*d1.L + d0.H*d1.H<br></code></pre></td></tr></table></figure>
+
+<p><strong>MACs:</strong><br>SIMD MACs 不结合不同乘数的结果。相反，它们对数据的不同部分执行示例乘法操作，如下示例所示。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++">acc.h = acc.h – d0.h*d1.h<br>acc.l = acc.l – d0.l*d1.l<br></code></pre></td></tr></table></figure>
+
+<p>高位和低位各算各的，SIMD MACs 将其结果打包为 32 位或 16 位，因此在其名称中使用 P。通过同时添加或减去两个乘法结果，双 MAC 指令能够保持它们的累积精度，而不需要写入多个输出寄存器。</p>
+<ul>
+<li>在单乘法和 SIMD 乘法运算中，每个乘法&#x2F;累加操作系列都有一个仅乘法变体，即乘法&#x2F;加法变体和乘法&#x2F;减法变体，通过将 accum_type 设置为空、A 或 S 来表示分别。 </li>
+<li>使用 MUL 变体，累加器内容会被以下结果覆盖乘法。 使用 MULA 变体，乘法的结果被添加到累加器内容并写回累加器。 使用 MULS 变体，结果从累加器的内容中减去乘法的值并写回累加器。</li>
+<li>accum_type 以 Z 开头的双 MAC 操作是对零进行累加的。换句话说，累积器的初始内容被丢弃。那些没有 Z的操作则是针对累加器的初始内容进行累加。在可选的 Z 后面，有两个字母表示加法或减法，两个乘法结果各一个。</li>
+<li>小数乘法指令在 accum_type 后面有一个 F。</li>
+</ul>
+<p><strong>对称 &amp; 非对称四舍五入</strong></p>
+<ul>
+<li>整数 SIMD 乘法指令扔掉了其结果的高位，就像标准的 C&#x2F;C++乘法。小数 SIMD 乘法指令使用对称或不对称的四舍五入方法，将低位舍去。</li>
+<li>在非对称四舍五入的情况下，两半被向上舍入，即 0.5 倍的最小有效结果位被舍入为 1.0，-0.5 倍的最小有效结果位被舍入为 1.0。即 0.5 倍的最小有效结果位被向上舍入为 1.0，-0.5 倍的最小有效结果位被向上舍入为 0。</li>
+<li>在对称四舍五入的情况下，两个半数从零开始四舍五入，即 -0.5 倍的最小有效结果位四舍五入到 -1.0。</li>
+<li>在指令描述中，对称舍入被称为 round，而非对称舍入被称为 round+∞。</li>
+</ul>
+<p><strong>饱和 &amp; 非饱和乘法</strong></p>
+<p>​	执行操作时，某个中间变量的值的范围大于了最终结果的值的类型范围。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c">eg. <br>（中间变量值）int32 <span class="hljs-type">int</span> <span class="hljs-number">129</span><br>（最终值）int8 <span class="hljs-title function_">char</span> <span class="hljs-params">(范围：<span class="hljs-number">-128</span> - <span class="hljs-number">127</span>)</span><br> 此时最终值就会溢出，变成 -127，此时与实际值相差很远了。<br> <br>饱和：先做一个判断<br> <span class="hljs-title function_">if</span><span class="hljs-params">(<span class="hljs-type">int</span> &gt; <span class="hljs-number">128</span>)</span><br>     <span class="hljs-type">int</span> = <span class="hljs-number">128</span>;<br> 这样就避免了最后结果会相差很大。<br>    <br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>没有保护位的小数 MAC 运算，1.31x1.31 到 1.63 或 1.31，1.31x1.15 到 1.31 和 1.15x1.15 到 1.15 或 1.31，使它们的结果饱和。 所有其他 MAC 操作都是完整的或具有保护位且不会饱和。</li>
+<li>饱和乘法有一个 S 跟在大小或四舍五入的名称后面。</li>
+<li>一些 16x16 位乘法器被设计为与 ITU-T&#x2F;ETSI 内在函数，因此串联进行多次饱和。 这些指令的名称中有 SS。</li>
+</ul>
+<p><strong>其他</strong></p>
+<ul>
+<li>无符号乘以无符号的乘法，在其前面有一个 U。无符号乘以有符号 的乘法，在指定符前有一个 US。利用 AE_EP 寄存器文件产生 72 位累加器的乘法运算，在指令前有一个 EP。</li>
+<li><strong>所有 MAC 操作都出现在第三个或第四个插槽中</strong>。 出现在第三个插槽中的任何乘法运算都将具有后缀  _S2。 C&#x2F;C++ 程序员可以忽略后缀。 编译器会在需要时自动将普通乘法转换为 _S2 乘法。</li>
+</ul>
+<h3 id="3-3-加、减与比较操作"><a href="#3-3-加、减与比较操作" class="headerlink" title="3.3 加、减与比较操作"></a>3.3 加、减与比较操作</h3><p>Add, Subtract and Compare Operations</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095415682.png" srcset="/img/loading.gif" lazyload alt="image-20220724095415682"></p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095438397.png" srcset="/img/loading.gif" lazyload alt="image-20220724095438397"></div><div class="group-image-wrap"><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095454559.png" srcset="/img/loading.gif" lazyload alt="image-20220724095454559"></div><div class="group-image-wrap"><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095517115.png" srcset="/img/loading.gif" lazyload alt="image-20220724095517115"></div></div><div class="group-image-row"></div></div>
+
+<h3 id="3-4-移位操作"><a href="#3-4-移位操作" class="headerlink" title="3.4 移位操作"></a>3.4 移位操作</h3><p>Shift Operations 移位操作</p>
+<p><strong>所有移位操作都以前缀 AE_S 开始。</strong>下面的字母是 L 或 R，表示主要移位方向是左还是右。下一个字母是 L或 A，表示是逻辑移位（在右移时填入0）还是算术移位（在右移时符号扩展）。下一个字母 I 表示立即移位，A 表示 AR 移位，S 表示 AE_SAR 移位。后面是一个数字，表示被移位的元素的大小，还有一个可选的R表示右移位而不是截断的右移，以及一个可选的 S 表示饱和的左移。</p>
+<h3 id="3-5-归一化操作"><a href="#3-5-归一化操作" class="headerlink" title="3.5 归一化操作"></a>3.5 归一化操作</h3><h3 id="3-6-Divide-Step-操作"><a href="#3-6-Divide-Step-操作" class="headerlink" title="3.6 Divide Step 操作"></a>3.6 Divide Step 操作</h3><h3 id="3-7-截断操作"><a href="#3-7-截断操作" class="headerlink" title="3.7 截断操作"></a>3.7 截断操作</h3><p>Truncate Operations</p>
+<p>AE_TRUNC16X4F32 Operation</p>
+<h3 id="3-8-移动操作"><a href="#3-8-移动操作" class="headerlink" title="3.8 移动操作"></a>3.8 移动操作</h3><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724095531219.png" srcset="/img/loading.gif" lazyload alt="image-20220724095531219"></p>
+<h2 id="四、-HiFi-4-备忘录"><a href="#四、-HiFi-4-备忘录" class="headerlink" title="四、 HiFi 4 备忘录"></a>四、 HiFi 4 备忘录</h2><h3 id="4-1-HiFi-4-的头文件"><a href="#4-1-HiFi-4-的头文件" class="headerlink" title="4.1 HiFi 4 的头文件"></a>4.1 <strong>HiFi 4 的头文件</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;xtensa/tie/xt_hifi4.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;xtensa/hal.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;xtensa/xtruntime.h&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E6%B4%BE/" class="category-chain-item">学习派</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>DSP 学习笔记 |（五）HiFi 4 User&#39;s Guide 笔记</div>
+      <div>https://erenship.com/posts/9860.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Eren</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/f86f.html" title="关于 valine 评论插件失效记录">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">关于 valine 评论插件失效记录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/6ba9.html" title="DSP 学习笔记 |（四）Xtensa ISA 笔记">
+                        <span class="hidden-mobile">DSP 学习笔记 |（四）Xtensa ISA 笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.14.1/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.14.1/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://waline-8z7beifxu-erenlu.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+    <div class="text-center py-1">   
+    <div>
+      <span>Copyright © 2020-2023</span></a>
+      <a href="https://erenship.com/" target="_blank" rel="nofollow noopener">
+       <span>Eren の 宇宙船 </span></a>  <br>
+    </div>
+
+
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/css/iconfont_500px/iconfont.css.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

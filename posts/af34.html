@@ -1,0 +1,813 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" 
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
+  <link rel="icon" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="author" content="Eren">
+  <meta name="keywords" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具/资源,教程,分享,推荐,娱乐,摄影,文学">
+  
+    <meta name="description" content="记录在学习过程中所需的 C 语言与 DSP 相关基础知识补充。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DSP 学习笔记 |（三）C &amp; DSP 基础概念">
+<meta property="og:url" content="https://erenship.com/posts/af34.html">
+<meta property="og:site_name" content="Eren の 宇宙船">
+<meta property="og:description" content="记录在学习过程中所需的 C 语言与 DSP 相关基础知识补充。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220723234203.jpg">
+<meta property="article:published_time" content="2022-07-23T16:00:38.000Z">
+<meta property="article:modified_time" content="2022-07-23T11:49:46.000Z">
+<meta property="article:author" content="Eren">
+<meta property="article:tag" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具&#x2F;资源,教程,分享,推荐,娱乐,摄影,文学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220723234203.jpg">
+  
+  
+  
+  <title>DSP 学习笔记 |（三）C &amp; DSP 基础概念 - Eren の 宇宙船</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"erenship.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":"UA-176568792-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"jauMdl8cvkseHUDG81ucNoej-MdYXbMMI","app_key":"T7zcEHNEYGyPVNB8BW5A16TH","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('https://www.google-analytics.com/analytics.js', function() {
+          window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) };
+          ga.l = +new Date;
+          ga('create', 'UA-176568792-1', 'auto');
+          ga('send', 'pageview');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Eren の 宇宙船</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>朋友</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.jsdelivr.net/gh/erenlu/picgo/img/微信图片_20220723234203.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="DSP 学习笔记 |（三）C &amp; DSP 基础概念"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-24 00:00" pubdate>
+          2022年7月24日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          6 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">DSP 学习笔记 |（三）C &amp; DSP 基础概念</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年7月23日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <div class="note note-success">
+            <p>记录在学习过程中所需的 C 语言与 DSP 相关基础知识补充。</p>
+          </div>
+
+<h2 id="一、C-语言基础"><a href="#一、C-语言基础" class="headerlink" title="一、C 语言基础"></a>一、C 语言基础</h2><h3 id="1-1-零碎"><a href="#1-1-零碎" class="headerlink" title="1.1 零碎"></a>1.1 零碎</h3><ol>
+<li><p><strong>const</strong> 修饰：用 const 修饰过的指针变量 p 不能修改 a 中的内容，而没有用 const 修饰过的指针变量 q 照样可以修改 a 中的内容，而且 a 自己也可以重新给自己赋值。它用来 <strong>告诉编译器， 被修饰的这些东西，具有“只读”的特点</strong> 。</p>
+</li>
+<li><p>C 语言中 “ ! ” 是对<strong>立面的意思</strong>。例如 ！ &#x3D; 就是不等于的意思，常用在循环条件判断中，或者逻辑运算中，例如 x&#x3D;! (1&#x3D;&#x3D;1),（1&#x3D;&#x3D;1）的结果为1，但有！ X的结果从1变为0。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220706163451150.png" srcset="/img/loading.gif" lazyload alt="image-20220706163451150"></p>
+</li>
+<li><p><strong>字节对齐</strong>：计算机中内存大小的基本单位是字节（byte），理论上来讲，可以从任意地址访问某种基本数据类型，但是实际上，计算机并非逐字节大小读写内存，而是以 2,4,或 8 的 倍数的字节块来读写内存，如此一来就会对基本数据类型的合法地址作出一些限制，即它的地址必须是 2，4 或 8 的倍数。那么就要求各种数据类型按照一定的规则在空间上排列，这就是对齐。</p>
+<p><strong>对齐原因</strong>：根本在于 CPU 访问数据的效率问题。</p>
+<img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220708153912242.png" srcset="/img/loading.gif" lazyload alt="image-20220708153912242" style="zoom:80%;" />
+
+<p><strong>对齐准则</strong>：总的来说，字节对齐有以下准则：</p>
+<ul>
+<li><strong>结构体变量的首地址能够被其对齐字节数大小所整除</strong>。</li>
+<li><strong>结构体每个成员相对结构体首地址的偏移都是成员大小的整数倍</strong>，如不满足，对前一个成员填充字节以满足。</li>
+<li><strong>结构体的总大小为结构体对最大成员大小的整数倍</strong>，如不满足，最后填充字节以满足。</li>
+</ul>
+</li>
+<li><p><strong>寄存器</strong>：CPU 内部的存储单元，寄存器是 CPU 内部用来创建和储存 CPU 运算结果和其它运算结果的地方。</p>
+</li>
+<li><p><strong>计算机字长（机器字长）</strong>：计算机字长（机器字长）取决于数据总线的宽度，通常就是CPU一次能处理的数据的位数（CPU位数）。</p>
+</li>
+<li><p><strong>argc &amp; argv</strong>:</p>
+<p>argc 是 argument count 的缩写，表示传入 main 函数中的参数个数，包括这个程序本身；</p>
+<p>argv 是 argument vector 的缩写，表示传入 main 函数中的参数列表，其中 argv[0] 表示这个程序的名字。</p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220708165617659.png" srcset="/img/loading.gif" lazyload alt="image-20220708165617659"></p>
+<ol start="7">
+<li><ul>
+<li>二进制的【或】运算：遇1得1<br>参加运算的两个对象，按二进制位进行“或”运算。<br>运算规则：0|0&#x3D;0； 0|1&#x3D;1； 1|0&#x3D;1； 1|1&#x3D;1；<br>参加运算的两个对象只要有一个为1，其值为1。</li>
+<li>二进制的【与】运算：遇0得0<br>运算规则：0&amp;0&#x3D;0; 0&amp;1&#x3D;0; 1&amp;0&#x3D;0; 1&amp;1&#x3D;1;<br>即：两位同时为“1”，结果才为“1”，否则为0</li>
+<li>二进制的【非】运算：各位取反<br>运算规则：~1&#x3D;0； ~0&#x3D;1；<br>对一个二进制数按位取反，即将0变1，1变0。</li>
+<li>二进制的【异或】运算符 “^”：相同为0 ，不同为1”<br>参加运算的两个数据，按二进制位进行“异或”运算。<br>运算规则：0^0&#x3D;0；   0^1&#x3D;1；   1^0&#x3D;1；   1^1&#x3D;0；<br>参加运算的两个对象，如果两个相应位为“异”（值不同），则该位结果为1，否则为0。</li>
+</ul>
+</li>
+<li><p><strong>有符号位 &amp; 无符号位</strong><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220712164201496.png" srcset="/img/loading.gif" lazyload alt="image-20220712164201496"></p>
+</li>
+<li><p><strong>浮点数标准</strong></p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220712172111112.png" srcset="/img/loading.gif" lazyload alt="image-20220712172111112"></p>
+<p>​		<img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/v2-f7561bf6717325ea710620df172ff528_r.jpg" srcset="/img/loading.gif" lazyload alt="v2-f7561bf6717325ea710620df172ff528_r"></p>
+<p>​		<img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220712175656905-16586252982787.png" srcset="/img/loading.gif" lazyload alt="image-20220712175656905"></p>
+<ol start="10">
+<li><p><strong>小数的二进制计算</strong></p>
+<p>采用 “乘 2 取整，顺序排列” 法，用 2 乘十进制小数，可以得出积，将积的整数部分取出，再用 2 乘余下的小数部分，又得到一个积，再将积的整数部分取出，如此进行，直到积中的小数部分为零，或者达到所要求的<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%B2%BE%E5%BA%A6&spm=1001.2101.3001.7020">精度</a>为止。然后把取出的整数部分按顺序排列起来。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/20190601082719128.png" srcset="/img/loading.gif" lazyload alt="20190601082719128"></p>
+</li>
+<li><p>内联函数能提高程序运行效率（inline)</p>
+</li>
+<li><p>正数的补码是其本身，负数是除最高位（符号位）保留外，其余取反，末位加一。</p>
+</li>
+<li><p><strong>宏函数</strong>：宏函数是在 <strong>程序编译时进行简单的字符替换</strong>，而函数是在程序生成后才进行调用，这时会占用开销时间（主程序函数保留现场，在子函数体中需要进行参数的传递 – 实参传递给形参以及调用完后形参的销毁等步骤 ），因此宏函数占用的编译时的时间，而函数占用的是执行时的时间。</p>
+<p>注意宏函数在调用时只是对函数中的变量做简单的 <strong>替换</strong>，注意这里的替换真的是替换，非常死板的那种！！！所以在宏函数中经常看到（）</p>
+<img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220721114507999.png" srcset="/img/loading.gif" lazyload alt="image-20220721114507999" style="zoom:80%;" />
+
+<img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220721114522687.png" srcset="/img/loading.gif" lazyload alt="image-20220721114522687" style="zoom:80%;" /></li>
+</ol>
+<h3 id="1-2-汇编-amp-反汇编"><a href="#1-2-汇编-amp-反汇编" class="headerlink" title="1.2 汇编 &amp; 反汇编"></a>1.2 汇编 &amp; 反汇编</h3><div class="note note-primary">
+            <p>汇编语言是高级语言转换成机器码的桥梁，通过汇编语言的编译转换成机器码，计算机就可以执行程序。</p><p>因为在计算机中，所有的程序都是按照机器码执行的，所以对汇编语言的理解，能够增加对底层执行的认识。</p>
+          </div>
+
+<p>下图为一个 c 程序变成一个可执行程序的过程：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/20161106180515946.png" srcset="/img/loading.gif" lazyload alt="20161106180515946"></p>
+<p><strong>汇编</strong>：</p>
+<ol>
+<li>动词，指的是把 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80&spm=1001.2101.3001.7020">汇编语言 </a>翻译成机器语言的过程。<br>就是图中 hello.s 文件经过汇编器变成二进制 hello.o 文件的过程。</li>
+<li>名词，指的便是汇编语言<br>就是 hello.c 经过预处理器，再经过编译器生成的 hello.s 文件。这个文件里的东西就叫汇编程序（汇编语言）。</li>
+</ol>
+<p>汇编指令一般都是由操作符和操作数组成，操作符也被称为指令助记符，它是指令中的关键字，表示本条指令操作类型，不能省略。操作数可以省略，也可以有很多，但各操作数之间要用 “，”分开。指令助记符与操作符之间要用空格分开。</p>
+<p><strong>反汇编：</strong></p>
+<ol>
+<li>动词，指的是由已生成的机器语言（二进制语言）转化为汇编语言的过程，也可以说是汇编的逆向过程。</li>
+<li>名词，指的是有机器语言经过反汇编过程生成的汇编语言。</li>
+<li>反汇编生成的汇编代码，每一行前面都有一串16进制的数字。这些数字就是每一行汇编代码对应的机器代码。</li>
+<li><strong>反汇编就是我们把一系列的机器码转换成改程序的助记符</strong>。如果我们拿到一份机器码程序，而我们想要知道他的功能和工作方式，可以对机器码进行反汇编。</li>
+</ol>
+<h2 id="二、DSP-基础"><a href="#二、DSP-基础" class="headerlink" title="二、DSP 基础"></a>二、DSP 基础</h2><h3 id="2-1-定点数与浮点数"><a href="#2-1-定点数与浮点数" class="headerlink" title="2.1 定点数与浮点数"></a>2.1 定点数与浮点数</h3><p>首先我们要认清一个概念，定点数不一定是整数，浮点数不一定是小数。</p>
+<p>为了轻松指定使用多少位来表示数字的整数和小数部分，我们使用称为Q格式的表示法。例如，<strong>要指定我们对整数部分使用三位，对小数部分使用四位，我们可以说数字采用 Q3.4 格式。</strong></p>
+<p>如其名，浮点数和定点数的区别就在于浮点和定点上，点就是指小数点。浮点数就是小数点是浮动的，定点数就是小数点是固定不动的。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220712174207897.png" srcset="/img/loading.gif" lazyload alt="image-20220712174207897"></p>
+<p>数字信号处理可以分为两类：定点和浮点。 区分依据是用于存储和操纵数据数字表示的格式。 定点 DSP 设计用于表示和操控整数，包括正整数和负整数，最低为 16 位，因而可能的位模式有 65,536 种 (2^16 浮点 DSP 用于表示和操控有理数，最低为 32 位，与科学计数法相似，数值用尾数和指数表示（例如 A x 2B， A 为尾数，B 为指数)，因而可能的位模式有 4,294,967,296种 (2^32).</p>
+<p><strong>对定点数而言，数值范围与精度是一对矛盾，一个变量要想能够表示比较大的数值范围，必须以牺牲精度为代价；而想提高精度，则数的表示范围就相应地减小。</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220712173606593.png" srcset="/img/loading.gif" lazyload alt="image-20220712173606593"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220712170135724.png" srcset="/img/loading.gif" lazyload alt="image-20220712170135724"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220712165740026.png" srcset="/img/loading.gif" lazyload alt="image-20220712165740026"></p>
+<h3 id="2-2-饱和运算"><a href="#2-2-饱和运算" class="headerlink" title="2.2 饱和运算"></a>2.2 饱和运算</h3><p>所谓饱和运算，就是当运算结果大于一个上限或小于一个下限时，结果就等于上限或是下限。例如：BYTE 运算，最大值是 255，0xF1+0x35 应该是等于 0x26，但由于结果大于 255，那么饱和运算的结果就是 0xFF。在图像处理里经常有（比如说增加亮度）两种灰度值运算后要判断值是否大于 255 或小于 0，根据结果再取 255 或 0。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E6%B4%BE/" class="category-chain-item">学习派</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>DSP 学习笔记 |（三）C &amp; DSP 基础概念</div>
+      <div>https://erenship.com/posts/af34.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Eren</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/6ba9.html" title="DSP 学习笔记 |（四）Xtensa ISA 笔记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">DSP 学习笔记 |（四）Xtensa ISA 笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/847f.html" title="DSP 学习笔记 |（二） 指令集架构">
+                        <span class="hidden-mobile">DSP 学习笔记 |（二） 指令集架构</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.14.1/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.14.1/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://waline-8z7beifxu-erenlu.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+    <div class="text-center py-1">   
+    <div>
+      <span>Copyright © 2020-2023</span></a>
+      <a href="https://erenship.com/" target="_blank" rel="nofollow noopener">
+       <span>Eren の 宇宙船 </span></a>  <br>
+    </div>
+
+
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/css/iconfont_500px/iconfont.css.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

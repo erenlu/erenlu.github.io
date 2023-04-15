@@ -1,0 +1,884 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" 
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
+  <link rel="icon" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="author" content="Eren">
+  <meta name="keywords" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具/资源,教程,分享,推荐,娱乐,摄影,文学">
+  
+    <meta name="description" content="CS50 第二周学习笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS50 | Week 2 Arrays &amp; Sorts">
+<meta property="og:url" content="https://erenship.com/posts/3291.html">
+<meta property="og:site_name" content="Eren の 宇宙船">
+<meta property="og:description" content="CS50 第二周学习笔记。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/CS50.png">
+<meta property="article:published_time" content="2020-07-14T08:00:21.000Z">
+<meta property="article:modified_time" content="2020-09-28T00:42:34.000Z">
+<meta property="article:author" content="Eren">
+<meta property="article:tag" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具&#x2F;资源,教程,分享,推荐,娱乐,摄影,文学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/CS50.png">
+  
+  
+  
+  <title>CS50 | Week 2 Arrays &amp; Sorts - Eren の 宇宙船</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"erenship.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":"UA-176568792-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"jauMdl8cvkseHUDG81ucNoej-MdYXbMMI","app_key":"T7zcEHNEYGyPVNB8BW5A16TH","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('https://www.google-analytics.com/analytics.js', function() {
+          window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) };
+          ga.l = +new Date;
+          ga('create', 'UA-176568792-1', 'auto');
+          ga('send', 'pageview');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Eren の 宇宙船</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>朋友</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/Code.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="CS50 | Week 2 Arrays &amp; Sorts"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-07-14 16:00" pubdate>
+          2020年7月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CS50 | Week 2 Arrays &amp; Sorts</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2020年9月28日 早上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <div class="note note-success">
+            <p>提示：在此只是将零散的、个人化的知识点记录下来，完整笔记查看官方 <a target="_blank" rel="noopener" href="https://cs50.harvard.edu/x/2020/notes/2/">Notes</a> 即可。 </p>
+          </div> 
+
+<h2 id="零散知识点"><a href="#零散知识点" class="headerlink" title="零散知识点"></a>零散知识点</h2><ul>
+<li><p>CPU 只懂得低级别的汇编语言</p>
+</li>
+<li><p>C language → assembly language → machine language (zeros and ones)     </p>
+</li>
+<li><p>Compiling 包含以下过程：</p>
+</li>
+<li><p>preprocessing:  预处理，包括查看以 <code>#</code>开头的行，如 <code>#include</code>，然后再看其他所有的行；</p>
+<p>​         ↓ </p>
+</li>
+<li><p>compiling:  将我们用C语言写的源代码转换为汇编代码；</p>
+<p>​         ↓</p>
+</li>
+<li><p>assembling:  将汇编代码转换为二进制的代码（0和1）；</p>
+<p>​         ↓</p>
+</li>
+<li><p>linking: 链接到以前编译的库里面的内容。如： <code>cs50.c</code>。</p>
+</li>
+<li><p>调试（Debugging）是发现和修复错误的过程。</p>
+<p>可以使用一些计数、赋值的 <code>printf</code> 来查验代码的错误，最后再删除即可。也就是说如果存在疑问，就在这行或次行加上 printf，来打印出变量中的字符串就可以查出问题所在。    </p>
+</li>
+<li><p>注意代码的风格和美观。</p>
+</li>
+<li><p>CS50 常用的三个工具：</p>
+<ul>
+<li><code>help50</code>: 用于解释你不理解的报错信息；<code>help50 make buggy</code></li>
+<li><code>printf</code>: 当程序出现bug无法正常运行，用 <code>printf</code> 检查；<code>printf(&quot;i is %i\n&quot;, i)</code></li>
+<li><code>style50</code>: 代码格式检查。<code>style50 make buggy2</code></li>
+</ul>
+</li>
+<li><p>RAM（Radom Access Memory）是比较短暂的，文件和应用放在 RAM 中会更加高效。</p>
+</li>
+<li><p><code>const int COUNT = 3</code>;</p>
+</li>
+<li><p>Encryption:</p>
+<ul>
+<li>明文（plaintext ）+密钥（key，a kind of algorithm）→ 【Black box】 → 密文（ciphertext）</li>
+</ul>
+</li>
+<li><p>关于返回值：当不设置返回值时，main 自动返回 0。当程序变得复杂时，返回值变得非常有用，因为可以查看程序是否有错。e.g. 404 error，system error 29.</p>
+</li>
+</ul>
+<h2 id="数据类型（Data-Types）"><a href="#数据类型（Data-Types）" class="headerlink" title="数据类型（Data Types）"></a>数据类型（Data Types）</h2><p>In C, we have different types of variables we can use for storing data:</p>
+<ul>
+<li>bool 1 byte</li>
+<li>char 1 byte</li>
+<li>int 4 bytes</li>
+<li>float 4 bytes</li>
+<li>long 8 bytes</li>
+<li>double 8 bytes</li>
+<li>string ? bytes</li>
+</ul>
+<h2 id="数组（Arrays）"><a href="#数组（Arrays）" class="headerlink" title="数组（Arrays）"></a>数组（Arrays）</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cs50.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">3</span>;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// Scores</span><br>    <span class="hljs-type">int</span> scores[N];<br>    scores[<span class="hljs-number">0</span>] = <span class="hljs-number">72</span>;<br>    scores[<span class="hljs-number">1</span>] = <span class="hljs-number">73</span>;<br>    scores[<span class="hljs-number">2</span>] = <span class="hljs-number">33</span>;<br><br>    <span class="hljs-comment">// Print average</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Average: %i\n&quot;</span>, (scores[<span class="hljs-number">0</span>] + scores[<span class="hljs-number">1</span>] + scores[<span class="hljs-number">2</span>]) / N);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>数组是连续储存的。在内存中，我们的数组现在是这样存储的，其中每个值占用的不是一个而是四个字节：</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004016.png" srcset="/img/loading.gif" lazyload alt="memory_with_array"></p>
+<ul>
+<li><p>你必须把数组长度告诉所有使用他的人，因为它没有 <code>length</code> 的属性。e.g. <code>int socres[N];</code></p>
+</li>
+<li><p>数组像美国高中学校里的大柜子，并且电脑一次只能打开一个柜子来看。</p>
+</li>
+</ul>
+<h2 id="字符串（Strings）"><a href="#字符串（Strings）" class="headerlink" title="字符串（Strings）"></a>字符串（Strings）</h2><ul>
+<li><p>字符串其实只是字符的数组。如果我们有一个字符串s，每个字符都可以用 <code>s[0]</code>、<code>s[1]</code> 来访问，以此类推。</p>
+</li>
+<li><p>而事实证明，一个字符串的结尾有一个特殊的字符，’&#x2F;0’，或者说是一个所有位都设置为0的字节，这个字符被称为空字符，或者说空终止字符。所以我们实际上需要四个字节来存储我们的字符串 “HI！”：</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004033.png" srcset="/img/loading.gif" lazyload alt="memory_with_string"></p>
+<ul>
+<li>现在让我们看看数组中的四个字符串可能是什么样子：</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">string</span> names[<span class="hljs-number">4</span>];<br><span class="hljs-attribute">names</span>[<span class="hljs-number">0</span>] = <span class="hljs-string">&quot;EMMA&quot;</span>;<br><span class="hljs-attribute">names</span>[<span class="hljs-number">1</span>] = <span class="hljs-string">&quot;RODRIGO&quot;</span>;<br><span class="hljs-attribute">names</span>[<span class="hljs-number">2</span>] = <span class="hljs-string">&quot;BRIAN&quot;</span>;<br><span class="hljs-attribute">names</span>[<span class="hljs-number">3</span>] = <span class="hljs-string">&quot;DAVID&quot;</span>;<br><br><span class="hljs-attribute">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, names[<span class="hljs-number">0</span>]);<br><span class="hljs-attribute">printf</span>(<span class="hljs-string">&quot;%c%c%c%c\n&quot;</span>, names[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>], names[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>], names[<span class="hljs-number">0</span>][<span class="hljs-number">2</span>], names[<span class="hljs-number">0</span>][<span class="hljs-number">3</span>]);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>我们可以将 <code>names</code> 中的第一个值打印成一个字符串，或者我们可以得到第一个字符串，并再次使用 <code>[]</code> 得到该字符串中的每一个字符。(我们可以把它看作是 <code>(names[0])[0]</code>，尽管我们不需要括号。)</li>
+<li>虽然我们知道第一个名字有四个字符，但 <code>printf</code> 可能使用了一个循环来查看字符串中的每一个字符，每次打印一个，直到到达标志着字符串结束的空字符。而事实上，我们可以将 <code>names[0][4]</code> 作为 <code>int</code> 与 <code>%i</code> 一起打印，看到的是一个 <code>0</code> 被打印出来。</li>
+<li>我们可以在记忆中直观地看到每个字符都有自己的标签:</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004046.png" srcset="/img/loading.gif" lazyload alt="memory_with_string_array"></p>
+<ul>
+<li><p>比较经典的小写字母变成大写字母的例子：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cs50.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>    string s = <span class="hljs-built_in">get_string</span>(<span class="hljs-string">&quot;Before: &quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;After:  &quot;</span>);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, n = <span class="hljs-built_in">strlen</span>(s); i &lt; n; i++)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (s[i] &gt;= <span class="hljs-string">&#x27;a&#x27;</span> &amp;&amp; s[i] &lt;= <span class="hljs-string">&#x27;z&#x27;</span>)<br>        &#123;<br>        	<span class="hljs-comment">//在ASCII码中，小写字母比大写字母大32，a = 97,A = 65</span><br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>, s[i] - <span class="hljs-number">32</span>); <br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>, s[i]);<br>        &#125;<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>可以使用 <code>strlen(name)</code> 来得到字符串长度。e.g. strlen(“Erenlu”), 结果就是 6。</p>
+<ul>
+<li>要记得在顶部先引用 <code>#include &lt;string.h&gt;</code> 才能使用</li>
+</ul>
+</li>
+</ul>
+<h2 id="排序（Sort）"><a href="#排序（Sort）" class="headerlink" title="排序（Sort）"></a>排序（Sort）</h2><p>时时刻刻我们都应该问算法是否高效。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004059.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-07-13_16-50-47"></p>
+<h3 id="冒泡排序（Bubble-sort）"><a href="#冒泡排序（Bubble-sort）" class="headerlink" title="冒泡排序（Bubble sort）"></a>冒泡排序（Bubble sort）</h3><ul>
+<li><p>一种比较排序法。两两对比，将更小的交换到左边。每次解决一个小问题，但需要反反复复地去做。</p>
+</li>
+<li><p>伪代码（pseudocode）：</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs oxygene"><span class="hljs-keyword">repeat</span> <span class="hljs-keyword">until</span> no swaps<br>	<span class="hljs-keyword">for</span> i <span class="hljs-keyword">from</span> n-<span class="hljs-number">2</span>  <span class="hljs-comment">//倒数第二个，避免倒数第一个右边没有可比的</span><br>		<span class="hljs-keyword">if</span> i<span class="hljs-string">&#x27;th and i+1&#x27;</span>th elements <span class="hljs-keyword">out</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">order</span>  <span class="hljs-comment">//判断是否排序混乱</span><br>			swap them<br></code></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li>假如有 8 个数字，由以下步骤进行排序：<ul>
+<li>第一次：比较 7 次，[0,1] [1,2] [2,3]….[6,7]</li>
+<li>第二次：比较 6 次，，[0,1]….[6,7]，（最后一个已经排序好了)</li>
+<li>….</li>
+<li>第七次：比较1 次，[0,1] （后面六个都排序好了）</li>
+</ul>
+</li>
+<li>优点：最右边已经确定，每次比较都可以少一个。</li>
+</ul>
+<h3 id="选择排序（Selection-sort）"><a href="#选择排序（Selection-sort）" class="headerlink" title="选择排序（Selection sort）"></a>选择排序（Selection sort）</h3><ul>
+<li><p>每一次都选择剩下中数字最小的人，丢到左边去交换，这样每一次排序后就不用管之前的情况。所以剩下的工作会原来越少。</p>
+</li>
+<li><p>伪代码：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs applescript">For i <span class="hljs-keyword">from</span> <span class="hljs-number">0</span> <span class="hljs-keyword">to</span> n–<span class="hljs-number">1</span><br>    Find smallest <span class="hljs-built_in">item</span> <span class="hljs-keyword">between</span> i&#x27;th <span class="hljs-built_in">item</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">last</span> <span class="hljs-built_in">item</span><br>    Swap smallest <span class="hljs-built_in">item</span> <span class="hljs-keyword">with</span> i&#x27;th <span class="hljs-built_in">item</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>进行的次数为: (n - 1) + (n - 2) + … + 1 &#x3D; n(n - 1) &#x2F; 2 &#x3D; n² &#x2F; 2 - n &#x2F; 2</p>
+</li>
+<li><p>假如有 8 个数字，由以下步骤进行排序：</p>
+<ul>
+<li>第一次：找出最小的数字，把 1 交换到最左边<br>第二次：找出剩下最小的数字，把 2 交换到左边<br>…<br>第七次：找出剩下最小的数字，把 7 交换到左边</li>
+</ul>
+</li>
+<li><p>优点：最左边已经确定，每次比较都可以少一个人 缺点：每次都要搜寻一遍最小数，即使一开始顺序就是对的。</p>
+</li>
+</ul>
+<h3 id="归并排序（Merge-sort）"><a href="#归并排序（Merge-sort）" class="headerlink" title="归并排序（Merge sort）"></a>归并排序（Merge sort）</h3><ul>
+<li><p>不断地进行二等分，直到最小单位再开始进行比较，再最后进行合并比较。</p>
+</li>
+<li><p>伪代码：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql">If <span class="hljs-keyword">only</span> <span class="hljs-keyword">one</span> item<br>  <span class="hljs-keyword">Return</span><br><span class="hljs-keyword">Else</span><br>    Sort <span class="hljs-keyword">left</span> half <span class="hljs-keyword">of</span> items<br>    Sort <span class="hljs-keyword">right</span> half <span class="hljs-keyword">of</span> items<br>    <span class="hljs-keyword">Merge</span> sorted halves<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>假如有 8 个数字，由以下步骤进行排序：</p>
+<ul>
+<li><p>先一直二等分成最小数字，再进行合併</p>
+<p>第一次：合併成 4 组 2 个数字<br>第二次：合併成 2 组 4 个数字<br>第三次：合併成 1 组 8 个数字</p>
+</li>
+</ul>
+</li>
+<li><p>优点：移动的次数比泡沫跟选择更有效率，每个数字只移动了 3 次，8 * 3 共 24 次 缺点：需要用到额外记忆体。</p>
+</li>
+</ul>
+<h3 id="算法的时间复杂度"><a href="#算法的时间复杂度" class="headerlink" title="算法的时间复杂度"></a>算法的时间复杂度</h3><ul>
+<li><p>由最高次幂决定。</p>
+</li>
+<li><p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004124.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-07-14_18-50-49"></p>
+<p>时间复杂度由最差 → 最优</p>
+</li>
+<li><p>由以下这张 gif 可以看出三种排序法明显的差别，以时间复杂度来说，Merge 优于 Bubble 优于 Selection：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200812004137.gif" srcset="/img/loading.gif" lazyload alt="WPxq5w6"></p>
+</li>
+<li><p>同时运行的具有大量输入的排序算法的 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ZZuD6iUe3Pc">最终可视化</a> 视频。</p>
+</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://yakimhsu.com/cs50/CS50_week2.html">【筆記】CS50 - week 2 編譯、陣列、加密、排序法 ( 2019年更新 )</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/appworks-school/%E5%88%9D%E5%AD%B8%E8%80%85%E5%AD%B8%E6%BC%94%E7%AE%97%E6%B3%95-%E8%AB%87%E4%BB%80%E9%BA%BC%E6%98%AF%E6%BC%94%E7%AE%97%E6%B3%95%E5%92%8C%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6-b1f6908e4b80">初學者學演算法-談什麼是演算法和時間複雜度</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E6%B4%BE/" class="category-chain-item">学习派</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>CS50 | Week 2 Arrays &amp; Sorts</div>
+      <div>https://erenship.com/posts/3291.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Eren</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年7月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/bea6.html" title="CS50 | pset 2">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CS50 | pset 2</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/b465.html" title="CS50 | pset 1">
+                        <span class="hidden-mobile">CS50 | pset 1</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.14.1/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.14.1/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://waline-8z7beifxu-erenlu.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+    <div class="text-center py-1">   
+    <div>
+      <span>Copyright © 2020-2023</span></a>
+      <a href="https://erenship.com/" target="_blank" rel="nofollow noopener">
+       <span>Eren の 宇宙船 </span></a>  <br>
+    </div>
+
+
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/css/iconfont_500px/iconfont.css.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

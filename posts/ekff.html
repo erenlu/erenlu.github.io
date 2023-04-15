@@ -1,0 +1,867 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" 
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
+  <link rel="icon" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="author" content="Eren">
+  <meta name="keywords" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具/资源,教程,分享,推荐,娱乐,摄影,文学">
+  
+    <meta name="description" content="笔者将学习 HiFi 4 汇编的过程记录于本文。文中内容主要参考 Cadence 官方文档。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DSP 学习笔记｜（七）HiFi 汇编说明">
+<meta property="og:url" content="https://erenship.com/posts/ekff.html">
+<meta property="og:site_name" content="Eren の 宇宙船">
+<meta property="og:description" content="笔者将学习 HiFi 4 汇编的过程记录于本文。文中内容主要参考 Cadence 官方文档。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062049737.jpg">
+<meta property="article:published_time" content="2022-11-06T12:17:38.000Z">
+<meta property="article:modified_time" content="2022-11-06T13:16:27.716Z">
+<meta property="article:author" content="Eren">
+<meta property="article:tag" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具&#x2F;资源,教程,分享,推荐,娱乐,摄影,文学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062049737.jpg">
+  
+  
+  
+  <title>DSP 学习笔记｜（七）HiFi 汇编说明 - Eren の 宇宙船</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"erenship.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":"UA-176568792-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"jauMdl8cvkseHUDG81ucNoej-MdYXbMMI","app_key":"T7zcEHNEYGyPVNB8BW5A16TH","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('https://www.google-analytics.com/analytics.js', function() {
+          window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) };
+          ga.l = +new Date;
+          ga('create', 'UA-176568792-1', 'auto');
+          ga('send', 'pageview');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Eren の 宇宙船</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>朋友</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062049737.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="DSP 学习笔记｜（七）HiFi 汇编说明"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-06 20:17" pubdate>
+          2022年11月6日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">DSP 学习笔记｜（七）HiFi 汇编说明</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年11月6日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="一、储备知识"><a href="#一、储备知识" class="headerlink" title="一、储备知识"></a>一、储备知识</h2><h3 id="汇编构成"><a href="#汇编构成" class="headerlink" title="汇编构成"></a>汇编构成</h3><p>基本上 assembly source 由以下三个部分組成，</p>
+<ul>
+<li>instruction set</li>
+<li>assembler syntax</li>
+<li>directive</li>
+</ul>
+<p>Instruction set 基本上对于相同的 CPU 来说是固定的，比较不会随着 assembler 不同。</p>
+<p>每個 CPU 可能會有不同 version 的 <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/List_of_instruction_sets">instruction set architecture (ISA) </a>如，</p>
+<ul>
+<li>ARMv6</li>
+<li>ARMv7-A</li>
+<li>ARMv7-M</li>
+<li>MIPS32r2 等等，及每一個 version 可能有不同的 extension 如，</li>
+<li>Thumb2</li>
+<li>Neon</li>
+</ul>
+<p>Assembler syntax 每個不同的 assembler 會有一些自訂的語法，如 symbol 的標記方式、 include header 、如何宣告資料、 註解格式等，請參閱各自的 toolchain 的說明文件。</p>
+<h3 id="调用约定"><a href="#调用约定" class="headerlink" title="调用约定"></a>调用约定</h3><p>理解汇编首先且最重要的事就是明白汇编代码与代码之间是如何交互的。函数如何调用其他函数。包括参数是如何传递给函数，及函数返回值是如何返回的。</p>
+<p>这些事情执行的过程与实现被称为调用约定（Calling Conventions）。编译器必须遵循它预定义的标准，这样才能让编译后的代码能和其他不同编译器编译出的代码能够交互。没有标准，编译器能编译出不相配的代码。</p>
+<p>如上讨论，寄存器是和 CPU 联系非常紧密的一小块内存，经常用于存储一些正在使用的数据。</p>
+<blockquote>
+<p>函数的调用过程中有两个参与者，一个是调用方 caller，另一个是被调用方 callee。</p>
+<p>调用约定规定了 caller 和 callee 之间如何相互配合来实现函数调用，具体包括的内容如下：</p>
+<p>函数的参数存放在哪的问题。是放在寄存器中？还是放在栈中？放在哪个寄存器中？放在栈中的哪个位置？<br>函数的参数按何种顺序传递的问题。是从左到右将参数入栈，还是从右到左将参数入栈？<br>返回值如何传递给 caller 的问题。是放在寄存器里面，还是放在其他地方？</p>
+</blockquote>
+<p>ARM处理器有16个寄存器，从r0到r15，每一个都是32位比特。调用约定指定他们其中的一些寄存器有特殊的用途，例如：</p>
+<ul>
+<li>r0-r3：用于存放传递给函数的参数；</li>
+<li>r4-r11：用于存放函数的本地参数；</li>
+<li>r12：是内部程序调用暂时寄存器。这个寄存器很特别是因为可以通过函数调用来改变它；</li>
+<li>r13：栈指针sp(stack pointer)。在计算机科学内栈是非常重要的术语。寄存器存放了一个指向栈顶的指针。看这里了解更多关于栈的信息；</li>
+<li>r14：是链接寄存器lr(link register)。它保存了当目前函数返回时下一个函数的地址；</li>
+<li>r15：是程序计数器pc(program counter)。它存放了当前执行指令的地址。在每个指令执行完成后会自动增加；</li>
+</ul>
+<p>你可以在 ARM 文档里了解更多关于 ARM 调用约定的信息。苹果也在文档【iOS开发调用约定】内有做过详细描述。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062022892.png" srcset="/img/loading.gif" lazyload alt="image-20220818201922094"></p>
+<h2 id="二、汇编指示（assembly-directive）"><a href="#二、汇编指示（assembly-directive）" class="headerlink" title="二、汇编指示（assembly directive）"></a>二、汇编指示（assembly directive）</h2><ul>
+<li>类似 <code>_main:</code> 或<code>Ltmp0: </code> 的形式被称之为标签（label）, 用于辅助定位代码或者资源地址, 便于开发者理解和记忆；</li>
+<li>类似 <code>pushq </code>或 <code>movq</code>的形式被称之为汇编指令, 它们会被汇编器编译为机器代码, 最终被 CPU 所执行；</li>
+<li>类似 <code>.section</code> 或 <code>.globl </code> 等以 <code>.</code> 开头的形式被称之为编译器指令（assembly directive）, 用于告知编译器相关的信息或者进行特定操作。他们不是汇编指令而是作用于汇编器的，可以忽略所有这样的代码；</li>
+<li>关于 directive 和 instruction 这两个词的区别，前者翻译为指示，后者翻译成指令。因为一般 directive 并不会产生代码而是指示编译器的一些行为，而 instruction 则会产生实际的代码；</li>
+</ul>
+<h3 id="loc-5-76-49"><a href="#loc-5-76-49" class="headerlink" title=".loc	 5 76 49"></a>.loc	 5 76 49</h3><p>**eg. **</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062024593.png" srcset="/img/loading.gif" lazyload alt="image-20221106202447549"></p>
+<p><strong>说明：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062025851.png" srcset="/img/loading.gif" lazyload alt="image-20221106202535805"></p>
+<ul>
+<li>fileno : 文件描述符</li>
+<li>lineno : 行号</li>
+<li>colum：列数（操作符的位置）</li>
+</ul>
+<h3 id="literal-position"><a href="#literal-position" class="headerlink" title=".literal_position"></a>.literal_position</h3><p><strong>eg.</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062026045.png" srcset="/img/loading.gif" lazyload alt="image-20221106202654001"></p>
+<p><strong>说明：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062027133.png" srcset="/img/loading.gif" lazyload alt="image-20221106202729103"></p>
+<h3 id="p2align"><a href="#p2align" class="headerlink" title=".p2align"></a>.p2align</h3><p><strong>eg.</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062027550.png" srcset="/img/loading.gif" lazyload alt="image-20221106202759522"></p>
+<p><strong>说明：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062028692.png" srcset="/img/loading.gif" lazyload alt="image-20221106202825671"></p>
+<p>p2align 3 表示 2 的 3 次幂 &#x3D; 8</p>
+<p>p2align 2 表示 2 的  2 次幂 &#x3D; 4</p>
+<h3 id="函数名"><a href="#函数名" class="headerlink" title="函数名_"></a><em>函数名</em>_</h3><p><strong>eg.</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062028708.png" srcset="/img/loading.gif" lazyload alt="image-20221106202846674"></p>
+<p>编译器通常在函数名的前面添加一个下划线。</p>
+<h3 id="cfi-startproc"><a href="#cfi-startproc" class="headerlink" title=".cfi_startproc"></a>.cfi_startproc</h3><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062029324.png" srcset="/img/loading.gif" lazyload alt="image-20221106202911293"></p>
+<p><strong>eh_frame：</strong>GCC Exception <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Frame&spm=1001.2101.3001.7020">Frame</a>，也就是eh_frame。这里提到 eh_frame 是 dwarf 调试信息的变体（variant）。eh_frame 段中存储着跟函数入栈相关的关键数据。当函数执行入栈指令后，在该段会保存跟入栈指令一一对应的编码数据，根据这些编码数据，就能计算出当前函数栈大小和cpu的哪些寄存器入栈了，在栈中什么位置。</p>
+<h3 id="cfi-def-cfa"><a href="#cfi-def-cfa" class="headerlink" title=".cfi_def_cfa"></a>.cfi_def_cfa</h3><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062029324.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="cfi-def-cfa-offset"><a href="#cfi-def-cfa-offset" class="headerlink" title=".cfi_def_cfa_offset"></a>.cfi_def_cfa_offset</h3><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062029935.png" srcset="/img/loading.gif" lazyload alt="image-20221106202947900"></p>
+<h3 id="prologue-end"><a href="#prologue-end" class="headerlink" title="prologue_end"></a>prologue_end</h3><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062030883.png" srcset="/img/loading.gif" lazyload alt="image-20221106203003854"></p>
+<h3 id="type"><a href="#type" class="headerlink" title=".type"></a>.type</h3><p><strong>eg.</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062030101.png" srcset="/img/loading.gif" lazyload alt="image-20221106203029065"></p>
+<p>汇编里面所有以 <code>:</code> 结尾的都会视为标签 ( <code>label</code> )，在这里我们定义一个叫做 <code>main</code> 的标签，并且使用 <code>.type</code> 伪指令定义这个标签的类型是一个函数(<code>function</code>)，到此我们就定义了我们的 <code>main</code> 函数。</p>
+<p><strong>说明：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062030010.png" srcset="/img/loading.gif" lazyload alt="image-20221106203044974"></p>
+<h3 id="Ltmp："><a href="#Ltmp：" class="headerlink" title=".Ltmp："></a>.Ltmp：</h3><p>标签，不是指令。是这部分的汇编代码名字。</p>
+<h3 id="is-stmt"><a href="#is-stmt" class="headerlink" title="is_stmt"></a>is_stmt</h3><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062031682.png" srcset="/img/loading.gif" lazyload alt="image-20221106203108647"></p>
+<p>此选项会将 .debug_line 状态机中的 is_stmt 寄存器设置为 value，该值必须为 0 或 1。</p>
+<h3 id="L32R"><a href="#L32R" class="headerlink" title="L32R"></a>L32R</h3><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062031375.png" srcset="/img/loading.gif" lazyload alt="image-20221106203139344"></p>
+<p>L32R 指令从指定地址加载 32 位值。因此，“l32r a2，2ec8” 将地址 0x2ec8 处的 32 位值加载到寄存器 a2 中。</p>
+<h3 id="L-本地标签"><a href="#L-本地标签" class="headerlink" title="L. 本地标签"></a>L. 本地标签</h3><p><strong>eg.</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062032854.png" srcset="/img/loading.gif" lazyload alt="image-20221106203207817"></p>
+<p>所有以 <code>L.</code> 开头的都为本地标签，这些标签只能用于函数内部。</p>
+<h3 id="Ⅱ-1-0"><a href="#Ⅱ-1-0" class="headerlink" title="[Ⅱ *1+0]"></a>[Ⅱ *1+0]</h3><p><strong>eg.</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062033476.png" srcset="/img/loading.gif" lazyload alt="image-20221106203305432"></p>
+<p>[Ⅱ * 1 + 0]</p>
+<p><strong>Ⅱ</strong>：数字乘以 II 符号表示正在执行的迭代；</p>
+<p><strong>1</strong>：乘 1 代表在第二次迭代中的运算，乘 0 就代表在第一次迭代中的运算；</p>
+<p><strong>0</strong>：最后的数字代表该指令处于第几个 cycle 中。</p>
+<h3 id="指示参考表（节选）"><a href="#指示参考表（节选）" class="headerlink" title="指示参考表（节选）"></a>指示参考表（节选）</h3><table>
+<thead>
+<tr>
+<th>GNU Assembler Directive</th>
+<th align="center">Note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.text</td>
+<td align="center">Tells <code>as</code> to assemble the following statements onto the end of the text subsection numbered subsection, which is an absolute expression. If subsection is omitted, subsection number zero is used.</td>
+</tr>
+<tr>
+<td>.file</td>
+<td align="center"><code>.file</code> (which may also be spelled <code>.app-file&#39;) tells </code>as<code>that we are about to start a new logical file. string is the new file name. In general, the filename is recognized whether or not it is surrounded by quotes</code>“‘;</td>
+</tr>
+<tr>
+<td>.globl</td>
+<td align="center"><code>.global</code> makes the symbol visible to <code>ld</code>. If you define symbol in your partial program, its value is made available to other partial programs that are linked with it. Otherwise, symbol takes its attributes from a symbol of the same name from another file linked into the same program.</td>
+</tr>
+<tr>
+<td>.p2align</td>
+<td align="center">Pad the location counter (in the current subsection) to a particular storage boundary. The first expression (which must be absolute) is the number of low-order zero bits the location counter must have after advancement. For example &#96;.p2align 3’ advances the location counter until it a multiple of 8. If the location counter is already a multiple of 8, no change is needed.</td>
+</tr>
+<tr>
+<td>.section</td>
+<td align="center">Use the <code>.section</code> directive to assemble the following code into a section named name.</td>
+</tr>
+<tr>
+<td>.asciz</td>
+<td align="center"><code>.asciz</code> is just like <code>.ascii</code>, but each string is followed by a zero byte. The “z” in &#96;.asciz’ stands for “zero”.</td>
+</tr>
+</tbody></table>
+<h2 id="三、调用约定"><a href="#三、调用约定" class="headerlink" title="三、调用约定"></a>三、调用约定</h2><blockquote>
+<p>调用约定，即调用 Call0 ABI 和窗口 ABI，在 <em>Xtensa Instruction Set Architecture (ISA) Reference Manual</em> 中进行了更广泛的描述。</p>
+</blockquote>
+<ul>
+<li><p>Application Binary Interface (ABI) 应用程序二进制接口；</p>
+</li>
+<li><p>对于窗口 ABI，入口点上的第一个指令是一个入口指令，它被一个 CALL<em>N</em> 或 CALLX<em>N</em> 指令调用（其中 N 是 4、8 或 12）；</p>
+</li>
+<li><p>第二个入口点总是实现调用 call0 ABI，入口点将用 CALL0 指令调用，并将使用 RET 指令返回。</p>
+</li>
+</ul>
+<p><strong>eg.</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062033682.png" srcset="/img/loading.gif" lazyload alt="image-20221106203349642"></p>
+<p><strong>👇 call4，call8，call12 列对应窗口 ABI</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202211062034087.png" srcset="/img/loading.gif" lazyload alt="image-20221106203416052"></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1] Optimizing Code for HiFi Audio Engines</p>
+<p>[2] Using as（The GNU Assembler）</p>
+<p>[3] Xtensa® System Software Reference Manual</p>
+<p>[4] <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39822728/article/details/111197567?utm_term=%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81Ltmp%E6%A0%87%E7%AD%BE&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-111197567-null-null&spm=3001.4430">arm汇编指令_iOS汇编ARM教程</a></p>
+<p>[5] <a target="_blank" rel="noopener" href="https://blog.csdn.net/W15242345526/article/details/126127334?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166080560516781685398459%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=166080560516781685398459&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-2-126127334-null-null.142%5Ev41%5Econtrol,185%5Ev2%5Econtrol&utm_term=%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81Ltmp%E6%A0%87%E7%AD%BE&spm=1018.2226.3001.4187">C程序设计语言的汇编解释（第一章节，一些实例）</a></p>
+<p>[6] <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/388683540">ARM汇编入门指南</a></p>
+<p>[7] <a target="_blank" rel="noopener" href="https://www.quora.com/What-is-the-difference-between-an-instruction-and-a-directive-in-assembly-language">What is the difference between an instruction and a directive in assembly language?</a></p>
+<p>[8] <a target="_blank" rel="noopener" href="https://www.cntofu.com/book/46/assembly/yue_du_assembly_code.md">Reading assembly code</a></p>
+<p>[9] <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29328443/article/details/107232025">x86_64汇编之四：函数调用、调用约定</a></p>
+<p>[10] <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg5ODUxNDMxMA==&mid=2247488571&idx=1&sn=452d68c7a3ea182666e1f913e2f3e62d&chksm=c06038d2f717b1c4b078784ca0d911ac97cc0b75539755c00a4ccc7c74e1b6d5336289ae9989&token=570592262&lang=zh_CN#rd">函数调用时栈是如何变化的？</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E6%B4%BE/" class="category-chain-item">学习派</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>DSP 学习笔记｜（七）HiFi 汇编说明</div>
+      <div>https://erenship.com/posts/ekff.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Eren</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年11月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/undefined.html" title="音视频学习笔记｜（一）H.264 基础原理介绍">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">音视频学习笔记｜（一）H.264 基础原理介绍</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/awfs.html" title="DSP 学习笔记｜（六）DSP 中的定点 &amp; 浮点">
+                        <span class="hidden-mobile">DSP 学习笔记｜（六）DSP 中的定点 &amp; 浮点</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.14.1/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.14.1/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://waline-8z7beifxu-erenlu.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+    <div class="text-center py-1">   
+    <div>
+      <span>Copyright © 2020-2023</span></a>
+      <a href="https://erenship.com/" target="_blank" rel="nofollow noopener">
+       <span>Eren の 宇宙船 </span></a>  <br>
+    </div>
+
+
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/css/iconfont_500px/iconfont.css.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,854 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" 
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
+  <link rel="icon" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="author" content="Eren">
+  <meta name="keywords" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具/资源,教程,分享,推荐,娱乐,摄影,文学">
+  
+    <meta name="description" content="CS50 Problem Set 2 (Fall 2020). Readability, Caesar Solutions. (missing Substitution)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS50 | pset 2">
+<meta property="og:url" content="https://erenship.com/posts/bea6.html">
+<meta property="og:site_name" content="Eren の 宇宙船">
+<meta property="og:description" content="CS50 Problem Set 2 (Fall 2020). Readability, Caesar Solutions. (missing Substitution)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/cs50pset.png">
+<meta property="article:published_time" content="2020-07-22T03:04:25.000Z">
+<meta property="article:modified_time" content="2020-09-28T00:43:10.000Z">
+<meta property="article:author" content="Eren">
+<meta property="article:tag" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具&#x2F;资源,教程,分享,推荐,娱乐,摄影,文学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/cs50pset.png">
+  
+  
+  
+  <title>CS50 | pset 2 - Eren の 宇宙船</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"erenship.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":"UA-176568792-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"jauMdl8cvkseHUDG81ucNoej-MdYXbMMI","app_key":"T7zcEHNEYGyPVNB8BW5A16TH","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('https://www.google-analytics.com/analytics.js', function() {
+          window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) };
+          ga.l = +new Date;
+          ga('create', 'UA-176568792-1', 'auto');
+          ga('send', 'pageview');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Eren の 宇宙船</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>朋友</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/CS50pSet_homework.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="CS50 | pset 2"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-07-22 11:04" pubdate>
+          2020年7月22日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CS50 | pset 2</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2020年9月28日 早上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <div class="note note-success">
+            <p>本文仅记录笔者在 CS50 Problem Set 2 (Fall 2020) 中的解题思路和过程。如有错误或疏漏欢迎留言指正！</p>
+          </div>
+
+<h2 id="Readability"><a href="#Readability" class="headerlink" title="Readability"></a>Readability</h2><p>设计一个程序，计算理解某些文本所需的大致等级，如下所示。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">$ ./readability<br>Text: Congratulations! Today <span class="hljs-keyword">is</span> your day. Yo<span class="hljs-string">u&#x27;re off to Great Places! You&#x27;</span>re off <span class="hljs-keyword">and</span> away!<br>Grade <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+
+<p>根据 <a target="_blank" rel="noopener" href="https://www.scholastic.com/teachers/teaching-tools/collections/guided-reading-book-lists-for-every-level.html">Scholastic </a>的说法，<a target="_blank" rel="noopener" href="https://www.scholastic.com/teachers/teaching-tools/collections/guided-reading-book-lists-for-every-level.html">艾伯特·怀特</a>（EB White）的“夏洛特之网”介于二年级和四年级之间，而洛依·劳瑞（Lois Lowry）的“赐予者”介于八年级和十二年级之间。但是，一本书达到“四年级阅读水平”是什么意思？</p>
+<p>好吧，在许多情况下，人类专家可能会读一本书，并决定他们认为该书最适合的等级。但是您也可以想象有一种算法试图弄清楚什么是文本阅读水平。</p>
+<p>那么，较高的阅读水平具有哪些特征呢？好吧，更长的单词可能与更高的阅读水平相关。同样，较长的句子也可能与较高的阅读水平相关。多年来，已经开发了许多“可读性测试”，以提供一种公式化的过程来计算文本的阅读水平。</p>
+<p>文本的阅读等级由 Coleman-Liau 索引来判断。其公式为：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">index</span> = <span class="hljs-number">0</span>.<span class="hljs-number">0588</span> * L - <span class="hljs-number">0</span>.<span class="hljs-number">296</span> * S - <span class="hljs-number">15</span>.<span class="hljs-number">8</span><br></code></pre></td></tr></table></figure>
+
+<p>此处，<code>L</code> 是文本中每100个单词的平均字母数，也是文本中每100个单词 <code>S</code> 的平均句子数。</p>
+<h3 id="Puprose"><a href="#Puprose" class="headerlink" title="Puprose"></a>Puprose</h3><p>设计并实现一个程序，该程序 <code>readability</code> 可计算文本的Coleman-Liau 索引。</p>
+<ul>
+<li>在一个名为文件实现程序 <code>readability.c</code> 的<code>~/pset2/readability</code> 目录。</li>
+<li>您的程序必须提示用户输入 <code>string</code> 文字（使用<code>get_string</code>）。</li>
+<li>您的程序应计算文本中字母，单词和句子的数量。你可以假设一个字母是任何小写字符 <code>a </code>来 <code>z</code> 或从任何大写字符 <code>A</code> 到 <code>Z</code>，任何字符序列分离用空格应该算作一个字，并经过一段时间的任何事件，感叹号或问号表示结束一句话。</li>
+<li>您的程序应打印为输出 <code>&quot;Grade X&quot;</code>，其中 <code>X</code> 是由 Coleman-Liau 公式计算的等级级别，四舍五入到最接近的整数。</li>
+<li>如果得到的索引号是16或更高（等于或大于高年级本科生的阅读水平），则程序应输出 <code>&quot;Grade 16+&quot;</code> 而不是给出确切的索引号。如果索引号小于1，则程序应输出 <code>&quot;Before Grade 1&quot;</code>。</li>
+</ul>
+<h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><ul>
+<li>让用户输入一串文本。</li>
+<li>计算字母（letters）数量，计算方法为：判断所输入字符串的范围是否在 ‘a’ ~ ‘z’ 或者 ‘A’ ~ ‘Z’ 中。计算在范围内的所有字母数量。</li>
+<li>计算单词（words）数量，计算方法为：判断字符串的值为 <code>空格</code> 时则记为一个单词，单词数+1。等于是计算文本中有多少个空格（默认文本中只会出现一个空格的情况），就求出有多少个单词数。</li>
+<li>计算句子（sentences）的数量，计算方法为：判断字符串的值为 <code>!</code> , <code>.</code> 或 <code>?</code> 时则记作一个句子。</li>
+<li>将上述结果带入 index 的公式中求的阅读等级。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822113122.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-08-21_12-47-37"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822113124.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-08-21_12-48-11"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822150.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-08-21_12-48-54"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822113123.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/2020082251.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-08-21_12-49-08"></p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-comment">/********************************************************</span><br><span class="hljs-comment">*   This is a simple C program that computes the        *</span><br><span class="hljs-comment">*   approximate grade level needed to comprehend        *</span><br><span class="hljs-comment">*   some text.                                          *</span><br><span class="hljs-comment">*                                                       *</span><br><span class="hljs-comment">*   Eren Lu                                             *</span><br><span class="hljs-comment">*   Fall 2020 CS50  pSet2 Readability                   *</span><br><span class="hljs-comment">*********************************************************/</span><br><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cs50.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;math.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> letterscount = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> wordscount = <span class="hljs-number">1</span>;<br>    <span class="hljs-type">int</span> sentscount = <span class="hljs-number">0</span>;<br>    string text = <span class="hljs-built_in">get_string</span>(<span class="hljs-string">&quot;Text: &quot;</span>);<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">strlen</span>(text); i++)<br>    <br>        <span class="hljs-comment">//要用单引号，不要用双引号！，是把字符括起来</span><br>        <span class="hljs-keyword">if</span>((text[i] &gt;= <span class="hljs-string">&#x27;a&#x27;</span> &amp;&amp; text[i] &lt;= <span class="hljs-string">&#x27;z&#x27;</span>) || (text[i] &gt;= <span class="hljs-string">&#x27;A&#x27;</span> &amp;&amp; text[i] &lt;= <span class="hljs-string">&#x27;Z&#x27;</span>))<br>        &#123;<br>            letterscount++;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(text[i] == <span class="hljs-string">&#x27; &#x27;</span>)<br>        &#123;<br>            wordscount++;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(text[i] == <span class="hljs-string">&#x27;.&#x27;</span> || text[i] == <span class="hljs-string">&#x27;!&#x27;</span> || text[i] == <span class="hljs-string">&#x27;?&#x27;</span>)<br>        &#123;<br>            sentscount++;<br>        &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d letter(s);\n%d word(s);\n%d sentence(s);\n&quot;</span>, letterscount, wordscount, sentscount);<br>    <br>    <span class="hljs-comment">//letterscount 等要用 float 强制转换,不然会计算错误</span><br>    <span class="hljs-type">float</span> L = ((<span class="hljs-type">float</span>)letterscount / (<span class="hljs-type">float</span>)wordscount) * <span class="hljs-number">100</span>, S = ((<span class="hljs-type">float</span>)sentscount / (<span class="hljs-type">float</span>)wordscount) * <span class="hljs-number">100</span>;<br>    <span class="hljs-type">float</span> grade = <span class="hljs-number">0.0588</span> * L - <span class="hljs-number">0.296</span> * S <span class="hljs-number">-15.8</span>;<br><br>    <span class="hljs-keyword">if</span>(grade &lt;= <span class="hljs-number">16</span> &amp;&amp; grade &gt; <span class="hljs-number">0</span>)<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Grade %i\n&quot;</span>, (<span class="hljs-type">int</span>) <span class="hljs-built_in">round</span>(grade));<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(grade &gt; <span class="hljs-number">16</span>)<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Grade 16+\n&quot;</span>);<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(grade &lt; <span class="hljs-number">1</span>)<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Before Grade 1\n&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><ul>
+<li>要对数组的概念有一定的认识。把数组想成一串箱子，每个箱子里面放了对应的一个字符。</li>
+<li>在使用 ASCII 码进行比较时使用 ‘a’ 单引号。</li>
+<li>在类型不同的变量进行计算式应该使用强制类型转换。否则导致虽然编译不会报错，但最后的计算结果会出错。</li>
+</ul>
+<h2 id="Caesar"><a href="#Caesar" class="headerlink" title="Caesar"></a>Caesar</h2><p>根据以下内容，实现一个使用 Caesar 密码对消息进行加密的程序。</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">$ ./caesar <span class="hljs-number">13</span><br><span class="hljs-symbol">plaintext:</span>  HELLO<br><span class="hljs-symbol">ciphertext:</span> URYYB<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822122019.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-08-21_19-09-57"></p>
+<p>Caesar的算法（即密码）通过将每个字母 “旋转”  <em>k</em> 个位置来加密消息。更正式地，如果 <em>pi</em> 是一些明文（即，未加密的消息），那么每个字母 <em>ci</em> 在密文中计算为：</p>
+<p><em><strong>ci &#x3D; (pi + k) % 26</strong></em></p>
+<p>其中的 <code>% 26</code> 意思是“除以26时的余数”。这个公式可能使密码看起来比实际更复杂，但这实际上只是精确表达算法的一种简洁方法。实际上，为了讨论起见，将A（或a）视为0，将B（或b）视为1，…，将H（或h）视为7，将I（或i）视为8，…，以及Z（或z）的值为25。</p>
+<h3 id="Puprose-1"><a href="#Puprose-1" class="headerlink" title="Puprose"></a>Puprose</h3><p>设计并实现一个程序，该程序 <code>caesar</code> 使用 Caesar 的密码对消息进行加密。</p>
+<ul>
+<li>在一个名为文件实现程序 <code>caesar.c</code>的 <code>~/pset2/caesar</code> 目录。</li>
+<li>您的程序必须接受一个命令行参数，一个非负整数。为了讨论起见，我们将其称为 <em>k</em>。</li>
+<li>如果您的程序在执行时没有任何命令行参数或带有多个命令行参数，则您的程序应打印您选择的错误消息（带有 <code>printf</code>），并立即从 <code>main</code> 值 <code>1</code>（通常表示错误）返回。</li>
+<li>如果命令行参数的任何字符都不是十进制数字，则程序应打印该消息 <code>Usage: ./caesar key</code> 并从 <code>main</code> 值返回 <code>1</code>。</li>
+<li>您的程序必须输出 <code>plaintext:</code>（没有换行符），然后提示用户输入 <code>string</code> 纯文本（使用<code>get_string</code>）。</li>
+<li>您的程序必须输出 <code>ciphertext:</code>（没有换行符），再输出明文的相应密文，明文中的每个字母字符都“旋转”了<em>k个</em>位置；非字母字符应原样输出。</li>
+<li>您的程序必须保留大小写：大写字母尽管可以旋转，但必须保持大写字母；小写字母尽管旋转，但必须保持小写字母。</li>
+<li>输出密文后，应打印换行符。然后，您的程序应通过 <code>0</code> 从返回，退出 <code>main</code>。</li>
+</ul>
+<h3 id="Method-1"><a href="#Method-1" class="headerlink" title="Method"></a>Method</h3><ul>
+<li>获取密钥</li>
+<li>判断是否是有效的密钥；</li>
+<li>用户输入明文</li>
+<li>进行加密</li>
+<li>输出密文</li>
+</ul>
+<p>伪代码如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822132445.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-08-21_19-16-13"></p>
+<p><strong>argc &amp; argv</strong></p>
+<p>argc: argument count </p>
+<p>argv: argument vector</p>
+<p>两者用于接受参数和记录参数信息。</p>
+<p>我们经常用的 main 函数都是不带参数的。因此 main 后的括号都是空括号。实际上，main 函数可以带参数，这个参数可以认为是 main 函数的形式参数。Ｃ语言规定 main 函数的参数只能有两个，习惯上这两个参数写为 argc和 argv。因此，main 函数的函数头可写为： main (argc,argv)。Ｃ语言还规定 argc (第一个形参) 必须是整型变量, argv ( 第二个形参) 必须是指向字符串的指针数组。</p>
+<p>由于 main 函数不能被其它函数调用，因此不可能在程序内部取得实际值。那么，在何处把实参值赋予 main 函数的形参呢? 实际上,main 函数的参数值是从操作系统命令行上获得的。当我们要运行一个可执行文件时，在DOS提示符下键入文件名，再输入实际参数即可把这些实参传送到main的形参中去。 DOS提示符下命令行的一般形式为： C:&#x2F;&gt;可执行文件名 参数 参数……</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822132741.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-08-21_19-10-49"></p>
+<p>例如：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008221349876785646.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-08-21_19-12-08"></p>
+<p>在本题中 main 里面的两个参数满足以下条件：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822133532.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-08-21_19-11-40"></p>
+<p>例如：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822133632.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-08-21_18-12-45"></p>
+<p><strong>Key</strong></p>
+<p>对输入的密钥进行检查，查看是否满足条件，否则输出相应提示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822133956.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-08-21_23-04-58"></p>
+<p><strong>Encipher</strong></p>
+<ul>
+<li><p>符合密钥条件之后，对明文进行加密；</p>
+</li>
+<li><p>只对大小写字母进行转换，不对其他符合或者数字进行转换；</p>
+</li>
+<li><p>其中用到了 <code>isupper</code> 和 <code>islower</code> 函数，对数组中的大写和小写字母进行判断并转换。</p>
+</li>
+<li><p>使用 <code>atoi</code> 函数对 <code>argv[1]</code> 中的数取整。</p>
+<p><code>atoi()</code> 函数会扫描参数 str 字符串，跳过前面的空白字符（例如空格，tab缩进等，可以通过 isspace() 函数来检测），直到遇上数字或正负符号才开始做转换，而再遇到非数字或字符串结束时(‘\0’)才结束转换，并将结果返回。【返回值】返回转换后的整型数；如果 str 不能转换成 int 或者 str 为空字符串，那么将返回 0。</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822134309.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-08-21_23-05-18"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822134124.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-08-21_18-31-30"></p>
+<p>先将 ASCII 码转化为字母表的顺序：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/202008221927524.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-08-21_19-26-18"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822134551.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-08-21_19-19-20"></p>
+<p>再使用密文计算公式求出密文对应的字母表值，最后再加上 ASCII 码对应值转换为 ASCII 码的密文。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/PicGo/img/20200822134610.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2020-08-21_19-19-37"></p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-comment">/***********************************************************</span><br><span class="hljs-comment">*   This is a simple C program that encrypts messages      *</span><br><span class="hljs-comment">*   using Caesar’s cipher. Your program must accept a      *</span><br><span class="hljs-comment">*   single command-line argument: a non-negative integer.  * </span><br><span class="hljs-comment">*   Let’s call it k for the sake of discussion. If your    * </span><br><span class="hljs-comment">*   program is executed without any command-line arguments * </span><br><span class="hljs-comment">*   or with more than one command-line argument, your      *</span><br><span class="hljs-comment">*   program should yell at the user and return a value of  *</span><br><span class="hljs-comment">*   1.                                                     *</span><br><span class="hljs-comment">*                                                          *</span><br><span class="hljs-comment">*   Eren Lu                                                *</span><br><span class="hljs-comment">*   Fall 2020 CS50  pSet2 Caesar                           *</span><br><span class="hljs-comment">***********************************************************/</span><br><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cs50.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;ctype.h&gt;</span></span><br><br><span class="hljs-comment">//argc: argument count; argv: argument vector。两者用于接受参数和记录参数信息。</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, string argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(argc != <span class="hljs-number">2</span>)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Usage: ./caesar key\n&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>；<br>    &#125;<br>    <br>    <span class="hljs-type">int</span> k = <span class="hljs-built_in">atoi</span>(argv[<span class="hljs-number">1</span>]);<br>    <br>    <span class="hljs-keyword">if</span>(k &lt; <span class="hljs-number">0</span>)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Usage: ./caesar key\n&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">else</span> <br>    &#123;<br>        string text = <span class="hljs-built_in">get_string</span>(<span class="hljs-string">&quot;plain text: &quot;</span>);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;ciphertext: &quot;</span>);<br>        <span class="hljs-type">int</span> i;<br>        <br>        <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">strlen</span>(text); i++)<br>        &#123;<br>          <br>            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">isupper</span>(text[i]))<br>            &#123;<br>                <span class="hljs-comment">//加密公式 c = （p + k）% 26</span><br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>, (text[i] - <span class="hljs-number">65</span> + k) % <span class="hljs-number">26</span> + <span class="hljs-number">65</span>);<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-built_in">islower</span>(text[i]))<br>            &#123;<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>, (text[i] - <span class="hljs-number">97</span> + k) % <span class="hljs-number">26</span> + <span class="hljs-number">97</span>);<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>, text[i]);<br>            &#125;<br>            <br>        &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);  <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="Summary-1"><a href="#Summary-1" class="headerlink" title="Summary"></a>Summary</h3><ul>
+<li>了解到 <code>main</code> 函数也是可以带参数的形式，一般都为 <code>main（argc, argv[]）</code>的参数形式。</li>
+<li>学习了<code>isupper</code> <code>islower</code> <code>atoi</code> 三个函数的使用。</li>
+<li>对 ASCII 码有了进一步的理解。</li>
+</ul>
+<h2 id="Substitution-To-be-continued"><a href="#Substitution-To-be-continued" class="headerlink" title="Substitution (To be continued)"></a>Substitution (To be continued)</h2><p>根据以下内容，实现一个实现替代密码的程序。</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">$ ./substitution JTREKYAVOGDXPSNCUIZLFBMWHQ<br><span class="hljs-symbol">plaintext:</span>  HELLO<br><span class="hljs-symbol">ciphertext:</span> VKXXN<br></code></pre></td></tr></table></figure>
+
+<p>在替换密码中，我们通过将每个字母替换为另一个字母来“加密”（即，以可逆方式隐藏）一条消息。为此，我们使用一个<em>密钥</em>：在这种情况下，加密时，字母表中每个字母到它应该对应的字母的映射。要“解密”消息，消息的接收者需要知道密钥，以便他们可以逆转该过程：将加密文本（通常称为<em>ciphertext</em>）转换回原始消息（通常称为<em>明文</em>）。</p>
+<p>例如，键可能是字符串 <code>NQXPOMAFTRHLZGECYJIUWSKDVB</code>。此26个字符的键表示 <code>A</code>（字母的第一个字母）应转换为 <code>N</code>（键的第一个字符），<code>B</code>（字母的第二个字母）应转换为 <code>Q</code>（键的第二个字符），并且等等。</p>
+<p><code>HELLO</code> 然后，像这样的消息将被加密为 <code>FOLLE</code>，根据由密钥确定的映射替换每个字母。</p>
+<h3 id="Puprose-2"><a href="#Puprose-2" class="headerlink" title="Puprose"></a>Puprose</h3><p>设计并实现一个程序，该程序 <code>substitution</code> 使用替换密码对消息进行加密。</p>
+<ul>
+<li>在一个名为文件实现程序 <code>substitution.c</code> 的 <code>~/pset2/substitution</code> 目录。</li>
+<li>您的程序必须接受一个命令行参数，即用于替换的键。<strong>键本身应该不区分大小写，因此键中的任何字符都是大写还是小写都不会影响程序的行为</strong>。</li>
+<li>如果您的程序在执行时没有任何命令行参数或带有多个命令行参数，则您的程序应打印您选择的错误消息（带有 <code>printf</code>），并立即从 <code>main</code> 值 <code>1</code>（通常表示错误）返回。</li>
+<li>如果键无效（例如，不包含26个字符，包含不是字母字符的任何字符或不完全包含每个字母一次），则程序应打印您选择的错误消息（带有 <code>printf</code>）并从 <code>main</code> 值返回的<code>1</code>马上。</li>
+<li>您的程序必须输出 <code>plaintext:</code>（没有换行符），然后提示用户输入 <code>string</code> 纯文本（使用 <code>get_string</code>）。</li>
+<li>您的程序必须输出 <code>ciphertext:</code>（没有换行符），后跟明文的相应密文，并用明文中的每个字母字符替换密文中的相应字符；非字母字符应原样输出。</li>
+<li><strong>您的程序必须保留大小写：大写字母必须保持为大写字母；小写字母必须保留为小写字母。</strong></li>
+<li>输出密文后，应打印换行符。然后，您的程序应通过 <code>0</code> 从返回，退出 <code>main</code> 。</li>
+</ul>
+<h3 id="Method-2"><a href="#Method-2" class="headerlink" title="Method"></a>Method</h3><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ab21bfe6a5b2">int main(int argc, const char * argv[])</a></li>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/CraigRodrigues/100ab759b6b6722ba3ad8acf12e26371">My solution to CS50 pset2 - “Hail, Caesar!”</a></li>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/teeschorle/cc998f1ef47e270282d3d4fa3d217d31">CS50 Problem Set 2 (Fall 2019) - Substitution</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E6%B4%BE/" class="category-chain-item">学习派</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>CS50 | pset 2</div>
+      <div>https://erenship.com/posts/bea6.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Eren</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年7月22日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/e005.html" title="关于房事的一些思考">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">关于房事的一些思考</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/3291.html" title="CS50 | Week 2 Arrays &amp; Sorts">
+                        <span class="hidden-mobile">CS50 | Week 2 Arrays &amp; Sorts</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.14.1/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.14.1/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://waline-8z7beifxu-erenlu.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+    <div class="text-center py-1">   
+    <div>
+      <span>Copyright © 2020-2023</span></a>
+      <a href="https://erenship.com/" target="_blank" rel="nofollow noopener">
+       <span>Eren の 宇宙船 </span></a>  <br>
+    </div>
+
+
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/css/iconfont_500px/iconfont.css.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

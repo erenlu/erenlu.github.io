@@ -1,0 +1,784 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" 
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
+  <link rel="icon" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="author" content="Eren">
+  <meta name="keywords" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具/资源,教程,分享,推荐,娱乐,摄影,文学">
+  
+    <meta name="description" content="本文笔记主要整理摘自《Xtensa® Instruction Set Architecture (ISA)》。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DSP 学习笔记 |（四）Xtensa ISA 笔记">
+<meta property="og:url" content="https://erenship.com/posts/6ba9.html">
+<meta property="og:site_name" content="Eren の 宇宙船">
+<meta property="og:description" content="本文笔记主要整理摘自《Xtensa® Instruction Set Architecture (ISA)》。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220723234215.png">
+<meta property="article:published_time" content="2022-07-24T01:40:18.000Z">
+<meta property="article:modified_time" content="2022-07-23T11:55:06.000Z">
+<meta property="article:author" content="Eren">
+<meta property="article:tag" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具&#x2F;资源,教程,分享,推荐,娱乐,摄影,文学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220723234215.png">
+  
+  
+  
+  <title>DSP 学习笔记 |（四）Xtensa ISA 笔记 - Eren の 宇宙船</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"erenship.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":"UA-176568792-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"jauMdl8cvkseHUDG81ucNoej-MdYXbMMI","app_key":"T7zcEHNEYGyPVNB8BW5A16TH","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('https://www.google-analytics.com/analytics.js', function() {
+          window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) };
+          ga.l = +new Date;
+          ga('create', 'UA-176568792-1', 'auto');
+          ga('send', 'pageview');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Eren の 宇宙船</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>朋友</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.jsdelivr.net/gh/erenlu/picgo/img/微信图片_20220723234215.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="DSP 学习笔记 |（四）Xtensa ISA 笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-24 09:40" pubdate>
+          2022年7月24日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          4 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">DSP 学习笔记 |（四）Xtensa ISA 笔记</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年7月23日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <div class="note note-success">
+            <p>本文笔记主要整理摘自《Xtensa® Instruction Set Architecture (ISA)》。</p>
+          </div>
+
+<h2 id="一、-XCC-编译器"><a href="#一、-XCC-编译器" class="headerlink" title="一、 XCC 编译器"></a>一、 XCC 编译器</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724094306520.png" srcset="/img/loading.gif" lazyload alt="image-20220724094306520"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093233735.png" srcset="/img/loading.gif" lazyload alt="image-20220724093233735"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093243706.png" srcset="/img/loading.gif" lazyload alt="image-20220724093243706"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093252702.png" srcset="/img/loading.gif" lazyload alt="image-20220724093252702"></p>
+<h2 id="二、-Candence-处理器"><a href="#二、-Candence-处理器" class="headerlink" title="二、 Candence 处理器"></a>二、 Candence 处理器</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093310661.png" srcset="/img/loading.gif" lazyload alt="image-20220724093310661"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093416020.png" srcset="/img/loading.gif" lazyload alt="image-20220724093416020"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093322357.png" srcset="/img/loading.gif" lazyload alt="image-20220724093322357"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093348993.png" srcset="/img/loading.gif" lazyload alt="image-20220724093348993"></p>
+<h2 id="三、-语法"><a href="#三、-语法" class="headerlink" title="三、 语法"></a>三、 语法</h2><h3 id="3-1-数据类型"><a href="#3-1-数据类型" class="headerlink" title="3.1 数据类型"></a>3.1 数据类型</h3><ol>
+<li><p><code>ae_int32x2</code><br>由两个 32 位的数据类型组成一个 64 位的数据，8 字节对齐。如果使用 int 类型强制转换，那么在内存分布上，将是两个相同的 32 位数据，举例如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> mem1 = <span class="hljs-number">0x1234</span>;<br>    <span class="hljs-type">int</span> mem2 = <span class="hljs-number">0x5678</span>;<br>    ae_int32x2 p = mem1;<br><br>    <span class="hljs-type">int</span> *p1 = (<span class="hljs-type">int</span> *)&amp;p;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;(int)p = 0x%0x\n&quot;</span>,(<span class="hljs-type">int</span>)p);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*(p1) = 0x%0x\n&quot;</span>,*(p1));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*(p1+1) = 0x%0x\n&quot;</span>,*(p1+<span class="hljs-number">1</span>));<br><br>    ae_int32x2 p2 = <span class="hljs-built_in">AE_MOVDA32X2</span>(mem1, mem2);<br>    <span class="hljs-type">int</span> *p3 = (<span class="hljs-type">int</span> *)&amp;p2;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;p3=0x%0x,*(p3) = 0x%0x\n&quot;</span>,p3,*(p3));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;p3+1=0x%0x,*(p3+1) = 0x%0x\n&quot;</span>,p3+<span class="hljs-number">1</span>,*(p3+<span class="hljs-number">1</span>));<br>&#125;<br><br>输出：<br>    <br>(<span class="hljs-type">int</span>)p = <span class="hljs-number">0x1234</span><br>*(p1) = <span class="hljs-number">0x1234</span><br>*(p1+<span class="hljs-number">1</span>) = <span class="hljs-number">0x1234</span><br>p3=<span class="hljs-number">0x2ffffeb8</span>,*(p3) = <span class="hljs-number">0x1234</span><br>p3+<span class="hljs-number">1</span>=<span class="hljs-number">0x2ffffebc</span>,*(p3+<span class="hljs-number">1</span>) = <span class="hljs-number">0x5678</span><br>    <br>分析：AE_MOVDA32X2作用是将两个<span class="hljs-number">32</span>位数拼成一个<span class="hljs-number">64</span>位数。<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="四、-基础的-SIMD-编程"><a href="#四、-基础的-SIMD-编程" class="headerlink" title="四、 基础的 SIMD 编程"></a>四、 基础的 SIMD 编程</h2><p><strong>SIMD</strong> ：Single Instruction Multiple Data，<strong>单指令流多数据流</strong>，是一种采用一个控制器来控制多个处理器，<strong>同时对一组数据（又称“数据向量”）中的每一个分别执行相同的操作从而实现空间上的并行性的技术。</strong>在 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8">微处理器</a> 中，单指令流多数据流技术则是一个 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%8E%A7%E5%88%B6%E5%99%A8">控制器 </a>控制多个平行的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%A4%84%E7%90%86%E5%BE%AE%E5%85%83&action=edit&redlink=1">处理微元</a>.</p>
+<p>由于单指令流多数据流处理效率高的原因，常被用于在多媒体应用中的 3D 图像和音视频处理。</p>
+<img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093442891.png" srcset="/img/loading.gif" lazyload alt="image-20220724093442891" style="zoom:200%;" />
+
+<p>基本的 SIMD 操作概念：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093451811.png" srcset="/img/loading.gif" lazyload alt="image-20220724093451811"></p>
+<p>SIMD 操纵不能以不同的形式处理多数据，如下图所示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093500823.png" srcset="/img/loading.gif" lazyload alt="image-20220724093500823"></p>
+<h3 id="4-1-矢量类型"><a href="#4-1-矢量类型" class="headerlink" title="4.1 矢量类型"></a>4.1 矢量类型</h3><p>C 语言常用的数据类型例如 <code>char</code> 、<code>float</code> 被称为标量类型。在 SIMD 运算中的数据类型被称作矢量类型。每个矢量类型都有其相应的标量类型。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220711144041063.png" srcset="/img/loading.gif" lazyload alt="image-20220724093512219"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093522749.png" srcset="/img/loading.gif" lazyload alt="image-20220724093522749"></p>
+<p>在 SIMD 编程中，经常需要将特定的向量元素称为标量或将标量块称为单个向量。本节介绍了满足这一需求的引用方法，例如，只输出向量的第三个元素或将标量数组输入数据捆绑成适合 SIMD 处理的向量成为可能。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093533040.png" srcset="/img/loading.gif" lazyload alt="image-20220724093533040"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093550883.png" srcset="/img/loading.gif" lazyload alt="image-20220724093550883"></p>
+<h3 id="4-2-基础的-SIMD-运算"><a href="#4-2-基础的-SIMD-运算" class="headerlink" title="4.2 基础的 SIMD 运算"></a>4.2 基础的 SIMD 运算</h3><ol>
+<li><p><strong>以加法为例，介绍标量运算与 SIMD 运算</strong></p>
+<p>a. <strong>标量运算</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093601622.png" srcset="/img/loading.gif" lazyload alt="image-20220724093601622"></p>
+<p>b. <strong>SIMD 运算</strong></p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093628087.png" srcset="/img/loading.gif" lazyload alt="image-20220724093628087"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093639289.png" srcset="/img/loading.gif" lazyload alt="image-20220724093639289"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093702759.png" srcset="/img/loading.gif" lazyload alt="image-20220724093702759"></p>
+<p>​		c. 完整的加法例程			<img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093714182.png" srcset="/img/loading.gif" lazyload alt="image-20220724093714182"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093727381.png" srcset="/img/loading.gif" lazyload alt="image-20220724093727381"></p>
+<div class="note note-info">
+            <p>运算几乎都是以标量矩阵作为输入数据。</p>
+          </div>
+
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093743600.png" srcset="/img/loading.gif" lazyload alt="image-20220724093743600"></p>
+<ol start="2">
+<li><strong>条件运算</strong></li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093752699.png" srcset="/img/loading.gif" lazyload alt="image-20220724093752699"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093802584.png" srcset="/img/loading.gif" lazyload alt="image-20220724093802584"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093810499.png" srcset="/img/loading.gif" lazyload alt="image-20220724093810499"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093821334.png" srcset="/img/loading.gif" lazyload alt="image-20220724093821334"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093828937.png" srcset="/img/loading.gif" lazyload alt="image-20220724093828937"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093836377.png" srcset="/img/loading.gif" lazyload alt="image-20220724093836377"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093847048.png" srcset="/img/loading.gif" lazyload alt="image-20220724093847048"></p>
+<h2 id="五、寄存器"><a href="#五、寄存器" class="headerlink" title="五、寄存器"></a>五、寄存器</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093859234.png" srcset="/img/loading.gif" lazyload alt="image-20220724093859234"></p>
+<h3 id="5-1-通用（AR）-寄存器"><a href="#5-1-通用（AR）-寄存器" class="headerlink" title="5.1 通用（AR） 寄存器"></a>5.1 通用（AR） 寄存器</h3><p>地址寄存器（Address Registers, AR）。每条指令最多包含三个 4 位的通用寄存器（AR）指令，每个指令可以选择 16 个 32 位寄存器中的一个。这些通用寄存器被命名为地址寄存器，以区别于协处理器寄存器，后者在许多系统中可能作为 “数据 “寄存器使用。然而，AR 寄存器并不限于保存地址，它们也可以保存数据。</p>
+<p>如果配置了窗口寄存器选项，地址寄存器文件将被扩展，并使用从虚拟到物理寄存器的映射。</p>
+<p>地址寄存器文件的内容在复位后是未定义的。</p>
+<h3 id="5-2-移位和移位量寄存器（SAR）寄存器"><a href="#5-2-移位和移位量寄存器（SAR）寄存器" class="headerlink" title="5.2 移位和移位量寄存器（SAR）寄存器"></a>5.2 移位和移位量寄存器（SAR）寄存器</h3><p>移位和移位量寄存器（Shifts and the Shift Amount Register，SAR)。ISA 提供了传统的即时移位（逻辑左移、逻辑右移和算术右移），但是它没有提供单指令移位，其中移位量是一个寄存器操作数。从一个普通的寄存器中获取移位量会产生一个关键的时序路径。另外，简单的移位不能有效地扩展到更大的宽度。漏斗式移位（两个数据值在输入移位器的时候被 catenated）解决了这个问题，但是需要太多的操作数。ISA 通过提供一个漏斗移位来解决这两个问题，其中移位量是从 SAR 寄存器中获取的。可变移位由编译器合成，使用指令从一般寄存器中的移位量计算 SAR，然后再进行漏斗移位。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E6%B4%BE/" class="category-chain-item">学习派</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>DSP 学习笔记 |（四）Xtensa ISA 笔记</div>
+      <div>https://erenship.com/posts/6ba9.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Eren</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/9860.html" title="DSP 学习笔记 |（五）HiFi 4 User&#39;s Guide 笔记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">DSP 学习笔记 |（五）HiFi 4 User&#39;s Guide 笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/af34.html" title="DSP 学习笔记 |（三）C &amp; DSP 基础概念">
+                        <span class="hidden-mobile">DSP 学习笔记 |（三）C &amp; DSP 基础概念</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.14.1/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.14.1/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://waline-8z7beifxu-erenlu.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+
+    <div class="text-center py-1">   
+    <div>
+      <span>Copyright © 2020-2023</span></a>
+      <a href="https://erenship.com/" target="_blank" rel="nofollow noopener">
+       <span>Eren の 宇宙船 </span></a>  <br>
+    </div>
+
+
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/css/iconfont_500px/iconfont.css.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
