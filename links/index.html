@@ -207,7 +207,7 @@
 <div id="banner" class="banner" parallax=true
      style="background: url('https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202204111029355.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.5)">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.4)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
@@ -369,6 +369,43 @@
 </div>
 
 
+  <!-- Custom -->
+  <div class="custom mx-auto">
+    <hr><p>🐼 请留下你此刻的想法叭！🐼</li></ul>
+  </div>
+
+
+
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.14.1/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.14.1/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://waline-8z7beifxu-erenlu.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":400,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
 
 
 
@@ -414,14 +451,6 @@
 
   <footer>
     <div class="footer-inner">
-  
-    <div class="footer-content">
-        
-    </div>
-  
-  
-  
-  
 
   <div class="text-center py-1">
   <div class="img-circle">
@@ -430,8 +459,43 @@
     <br>
     <span># 行动就是意义</span>
     </div>
+
+<br>
+
+  
+    <div class="footer-content">
+        
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        访问量
+        <span id="leancloud-site-pv"></span>
+        次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        访客数
+        <span id="leancloud-site-uv"></span>
+        人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+
   <div>
-    <br>
     <span>Copyright © 2020-2023</span>
     <br>
     <a href="https://erenship.com/" target="_blank" rel="nofollow noopener">
@@ -439,6 +503,7 @@
       <br>
     </a>
 </div>
+
 
 </div>
 
