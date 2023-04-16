@@ -1,0 +1,817 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" 
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
+  <link rel="icon" href="/img/sys/%E9%A3%9E%E8%88%B9.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="author" content="Eren">
+  <meta name="keywords" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具/资源,教程,分享,推荐,娱乐,摄影,文学">
+  
+    <meta name="description" content="本文将简要分析 x264 中运动估计 ME 模块。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="音视频笔记｜运动估计 ME 源码简要分析（上）">
+<meta property="og:url" content="https://erenship.com/posts/49d0.html">
+<meta property="og:site_name" content="Eren の 宇宙船">
+<meta property="og:description" content="本文将简要分析 x264 中运动估计 ME 模块。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202304161337445.jpg">
+<meta property="article:published_time" content="2023-04-16T05:26:42.000Z">
+<meta property="article:modified_time" content="2023-04-16T05:38:05.905Z">
+<meta property="article:author" content="Eren">
+<meta property="article:tag" content="x264">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202304161337445.jpg">
+  
+  
+  
+  <title>音视频笔记｜运动估计 ME 源码简要分析（上） - Eren の 宇宙船</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/iconfont_500px/iconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"erenship.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":"UA-176568792-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"jauMdl8cvkseHUDG81ucNoej-MdYXbMMI","app_key":"T7zcEHNEYGyPVNB8BW5A16TH","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('https://www.google-analytics.com/analytics.js', function() {
+          window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) };
+          ga.l = +new Date;
+          ga('create', 'UA-176568792-1', 'auto');
+          ga('send', 'pageview');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Eren の 宇宙船</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>朋友</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202304161337445.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.5)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="音视频笔记｜运动估计 ME 源码简要分析（上）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-16 13:26" pubdate>
+          2023年4月16日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          4 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">音视频笔记｜运动估计 ME 源码简要分析（上）</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2023年4月16日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>运动估计在分别会在 lookahead 阶段和后续编码阶段被使用，但两者使用的方法并不相同。本文将介绍编码阶段的 ME 进行讨论，下文将对 lookahead 阶段的 ME 进行介绍。</p>
+</blockquote>
+<p>运动估计是帧间预测阶段的核心部分，它通过比较当前帧与先前帧之间的相似性，来确定宏块（Macroblock）或子宏块（Sub-macroblock）之间的运动矢量。运动估计可以有效地消除时间冗余，从而降低编码后的比特率，提高编码效率。x264中的运动估计算法有很多种，包括钻石搜索（Diamond Search），六边形搜索（Hexagon Search）和不对称交叉多六边形搜索（Uneven Multi-Hexagon Search）等。</p>
+<h2 id="ME-相关知识"><a href="#ME-相关知识" class="headerlink" title="ME 相关知识"></a>ME 相关知识</h2><h3 id="宏块的运动补偿"><a href="#宏块的运动补偿" class="headerlink" title="宏块的运动补偿"></a>宏块的运动补偿</h3><p>宏块（Macroblock）是帧中 16x16 大小的区域，它是包括 MPEG-1、MPEG-2、MPEG-4 Visual、H.261、H.262、H,264 在内的很多视频编码标准的运动补偿预测的基本单元。</p>
+<p>在常见的 YUV 4:2:0 图像编码格式中，一个宏块由：</p>
+<ol>
+<li><p>64 个红色色差采样构成，这些采样组成 1 个 8x8 的采样块；</p>
+</li>
+<li><p>64 个红色色差采样构成，这些采样组成 1 个 8x8 的采样块；</p>
+</li>
+<li><p>64 个蓝色色差采样构成，这些采样组成 1 个 8x8 的采样块；</p>
+</li>
+</ol>
+<p>即一共 6 个采样块，示意图如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202304092038902.png" srcset="/img/loading.gif" lazyload></p>
+<p>宏块的运动估计，主要是寻找参考帧中和当前宏块匹配的 16x16 采样区域。参考帧是先前就编码好的一个帧，在时间维上，参考帧可以在过去或者未来。参考帧中以当前宏块为中心的区域被搜索，寻找最佳匹配。</p>
+<p>最佳匹配的照度、色差采样，被从当前宏块中减去，这样就产生了一个残余宏块。残余宏块与标示了最佳匹配区域和当前宏块的相对位移的 <strong>移动向量</strong> 一起编码并传输。</p>
+<p>在上述基本的运动估计、运动补偿的基础上，有很多变体的算法：</p>
+<ol>
+<li>如果使用了未来的帧作为参考帧，则未来的帧必须在当前帧之前编码，也就是帧的编码必须是乱序的；</li>
+<li>当参考帧和当前帧的差异非常大时，不使用运动补偿可能更加高效，编码器可能选择使用帧内预测；</li>
+<li>视频中的移动物体很少能恰恰匹配16x16的边缘，因此使用可变大小的块往往更加高效；</li>
+<li>物体移动的距离可能不是整像素，例如物体可能在水平方向移动3.83像素的距离。因此一个好的预测算法会在搜索最佳匹配之前在参考帧中，在次像素级别进行插值。</li>
+</ol>
+<h2 id="Preset-与-ME"><a href="#Preset-与-ME" class="headerlink" title="Preset 与 ME"></a>Preset 与 ME</h2><p>笔者本以为在 ultrafast 等较快的 Preset 模式下 ME 是不会开启的，但后来翻看源码发现：在所有 Preset 模式下都会启用，同时会根据 Preset 档次来选择对应的 ME 算法（diamon，haxgon，umh 等）</p>
+<p>AQ（Adopt Quatinazation, 自适应量化） 在除 ultrafast （禁用 AQ 降低复杂度） 以外的所有 Preset 下都会开启。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202304092039639.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="源码中调用位置"><a href="#源码中调用位置" class="headerlink" title="源码中调用位置"></a>源码中调用位置</h2><aside> 💡 ME 在源码中代码调用顺序（真正的编码阶段） encode_frame() → x264_encoder_encode() → slices_write() → slice_write() → x264_macroblock_analyse() → mb_analyse_inter_p16x16() → x264_me_search_ref()
+
+</aside>
+
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202304092041548.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202304092041568.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><strong>slices_write()</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202304092042242.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>**slice_write()**（主要是slice，不是复数）</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202304092042266.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><strong>x264_macroblock_analyse() - 【slice_write() &#x2F; analyse.c】</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202304092042280.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><strong>mb_analyse_inter_p16x16()【P 帧为例】</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202304092042294.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><strong>x264_me_search_ref【mb_analyse_inter_b16x16】</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202304092042306.png" srcset="/img/loading.gif" lazyload></p>
+<p>以上便是ME在源码中的函数调用位置。</p>
+<p>由于笔者在此阶段也只是简略进行分析，如有疏漏请欢迎指正！</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E6%B4%BE/" class="category-chain-item">学习派</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/x264/">#x264</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>音视频笔记｜运动估计 ME 源码简要分析（上）</div>
+      <div>https://erenship.com/posts/49d0.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Eren</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/1db7.html" title="音视频笔记｜H264 基础原理介绍">
+                        <span class="hidden-mobile">音视频笔记｜H264 基础原理介绍</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.14.1/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.14.1/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://waline-8z7beifxu-erenlu.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+        
+    </div>
+  
+  
+  
+  
+
+  <div class="text-center py-1">
+  <div class="img-circle">
+    <img src="/img/sys/about.jpg" srcset="/img/loading.gif" lazyload alt="Eren">
+  </div>
+    <br>
+    <span># 行动就是意义</span>
+    </div>
+  <div>
+    <br>
+    <span>Copyright © 2020-2023</span>
+    <br>
+    <a href="https://erenship.com/" target="_blank" rel="nofollow noopener">
+      <span>Eren の 宇宙船 </span>
+      <br>
+    </a>
+</div>
+
+</div>
+
+<head>
+  <style>
+    .img-circle {
+      display: block;
+      margin: 0 auto;
+      border-radius: 50%;
+      overflow: hidden;
+      width: 150px;
+      height: 150px;
+    }
+    .img-circle img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .py-1 {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    div {
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
