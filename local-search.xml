@@ -13,12 +13,14 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>H264</tag>
       
       <tag>x264</tag>
       
@@ -38,7 +40,7 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
@@ -46,6 +48,8 @@
     <tags>
       
       <tag>H264</tag>
+      
+      <tag>x264</tag>
       
     </tags>
     
@@ -63,14 +67,16 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>HiFi DSP</tag>
+      <tag>DSP</tag>
+      
+      <tag>HiFi</tag>
       
     </tags>
     
@@ -88,7 +94,7 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
@@ -113,7 +119,7 @@
     
     <categories>
       
-      <category>折腾派</category>
+      <category>DIY Pie</category>
       
     </categories>
     
@@ -138,14 +144,16 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>HiFi DSP</tag>
+      <tag>DSP</tag>
+      
+      <tag>HiFi</tag>
       
     </tags>
     
@@ -163,14 +171,16 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>HiFi DSP</tag>
+      <tag>DSP</tag>
+      
+      <tag>HiFi</tag>
       
     </tags>
     
@@ -188,12 +198,14 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>C language</tag>
       
       <tag>DSP</tag>
       
@@ -213,7 +225,7 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
@@ -221,6 +233,8 @@
     <tags>
       
       <tag>DSP</tag>
+      
+      <tag>ISA</tag>
       
     </tags>
     
@@ -238,7 +252,7 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
@@ -263,12 +277,14 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>Tools</tag>
       
       <tag>Origin</tag>
       
@@ -288,7 +304,7 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
@@ -296,6 +312,8 @@
     <tags>
       
       <tag>MATLAB</tag>
+      
+      <tag>Tools</tag>
       
     </tags>
     
@@ -313,14 +331,16 @@
     
     <categories>
       
-      <category>生活派</category>
+      <category>Life Pie</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>摄影</tag>
+      <tag>Photography</tag>
+      
+      <tag>Travel</tag>
       
     </tags>
     
@@ -338,7 +358,7 @@
     
     <categories>
       
-      <category>生活派</category>
+      <category>Life Pie</category>
       
     </categories>
     
@@ -357,7 +377,7 @@
     
     <categories>
       
-      <category>生活派</category>
+      <category>Life Pie</category>
       
     </categories>
     
@@ -376,7 +396,7 @@
     
     <categories>
       
-      <category>生活派</category>
+      <category>Life Pie</category>
       
     </categories>
     
@@ -398,6 +418,8 @@
       
       <tag>Hexo</tag>
       
+      <tag>Blog</tag>
+      
     </tags>
     
   </entry>
@@ -414,7 +436,7 @@
     
     <categories>
       
-      <category>生活派</category>
+      <category>literature Pie</category>
       
     </categories>
     
@@ -433,7 +455,7 @@
     
     <categories>
       
-      <category>人文派</category>
+      <category>literature Pie</category>
       
     </categories>
     
@@ -452,14 +474,14 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>低功耗蓝牙</tag>
+      <tag>BLE</tag>
       
     </tags>
     
@@ -477,7 +499,7 @@
     
     <categories>
       
-      <category>生活派</category>
+      <category>Life Pie</category>
       
     </categories>
     
@@ -496,7 +518,7 @@
     
     <categories>
       
-      <category>生活派</category>
+      <category>Life Pie</category>
       
     </categories>
     
@@ -515,14 +537,14 @@
     
     <categories>
       
-      <category>折腾派</category>
+      <category>DIY Pie</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>博客</tag>
+      <tag>Blog</tag>
       
     </tags>
     
@@ -540,7 +562,7 @@
     
     <categories>
       
-      <category>人文派</category>
+      <category>literature Pie</category>
       
     </categories>
     
@@ -559,7 +581,7 @@
     
     <categories>
       
-      <category>人文派</category>
+      <category>literature Pie</category>
       
     </categories>
     
@@ -578,7 +600,7 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
@@ -597,7 +619,7 @@
     
     <categories>
       
-      <category>折腾派</category>
+      <category>DIY Pie</category>
       
     </categories>
     
@@ -622,7 +644,7 @@
     
     <categories>
       
-      <category>折腾派</category>
+      <category>DIY Pie</category>
       
     </categories>
     
@@ -630,6 +652,8 @@
     <tags>
       
       <tag>Hexo</tag>
+      
+      <tag>Blog</tag>
       
     </tags>
     
@@ -647,7 +671,7 @@
     
     <categories>
       
-      <category>折腾派</category>
+      <category>DIY Pie</category>
       
     </categories>
     
@@ -655,6 +679,10 @@
     <tags>
       
       <tag>Hexo</tag>
+      
+      <tag>Fluid</tag>
+      
+      <tag>Blog</tag>
       
     </tags>
     
@@ -672,7 +700,7 @@
     
     <categories>
       
-      <category>生活派</category>
+      <category>Life Pie</category>
       
     </categories>
     
@@ -691,7 +719,7 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
@@ -699,6 +727,8 @@
     <tags>
       
       <tag>CS50</tag>
+      
+      <tag>C language</tag>
       
     </tags>
     
@@ -716,7 +746,7 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
@@ -724,6 +754,8 @@
     <tags>
       
       <tag>CS50</tag>
+      
+      <tag>C language</tag>
       
     </tags>
     
@@ -741,7 +773,7 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
@@ -749,6 +781,8 @@
     <tags>
       
       <tag>CS50</tag>
+      
+      <tag>C language</tag>
       
     </tags>
     
@@ -766,7 +800,7 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
@@ -774,6 +808,8 @@
     <tags>
       
       <tag>CS50</tag>
+      
+      <tag>C language</tag>
       
     </tags>
     
@@ -791,14 +827,16 @@
     
     <categories>
       
-      <category>学习派</category>
+      <category>Study Pie</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>嵌入式操作系统</tag>
+      <tag>RTOS</tag>
+      
+      <tag>Embedded Operating System</tag>
       
     </tags>
     
@@ -816,7 +854,7 @@
     
     <categories>
       
-      <category>人文派</category>
+      <category>literature Pie</category>
       
     </categories>
     
@@ -835,16 +873,10 @@
     
     <categories>
       
-      <category>生活派</category>
+      <category>Life Pie</category>
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>生活</tag>
-      
-    </tags>
     
   </entry>
   
