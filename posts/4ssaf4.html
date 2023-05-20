@@ -19,25 +19,25 @@
   <meta name="author" content="Eren">
   <meta name="keywords" content="life,technology,播客,极简主义,Minimalism,学习,生活,科技,编程,嵌入式,蓝牙,室内定位,博客,Hexo,工具/资源,教程,分享,推荐,娱乐,摄影,文学">
   
-    <meta name="description" content="本文笔记主要整理摘自《Xtensa® Instruction Set Architecture (ISA)》。">
+    <meta name="description" content="本文将简要介绍如何在 ARM_DS 创建并成功运行一个工程。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DSP 学习笔记 |（四）Xtensa ISA 笔记">
-<meta property="og:url" content="https://erenship.com/posts/6ba9.html">
+<meta property="og:title" content="ARM_DS 工程创建教程">
+<meta property="og:url" content="https://erenship.com/posts/4ssaf4.html">
 <meta property="og:site_name" content="Eren の 宇宙船">
-<meta property="og:description" content="本文笔记主要整理摘自《Xtensa® Instruction Set Architecture (ISA)》。">
+<meta property="og:description" content="本文将简要介绍如何在 ARM_DS 创建并成功运行一个工程。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220723234215.png">
-<meta property="article:published_time" content="2022-07-24T01:40:18.000Z">
-<meta property="article:modified_time" content="2023-05-20T14:37:16.859Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202159867.png">
+<meta property="article:published_time" content="2023-05-20T13:53:07.000Z">
+<meta property="article:modified_time" content="2023-05-20T14:38:07.842Z">
 <meta property="article:author" content="Eren">
-<meta property="article:tag" content="DSP">
-<meta property="article:tag" content="HiFi">
+<meta property="article:tag" content="ARM_DS">
+<meta property="article:tag" content="IDE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220723234215.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202159867.png">
   
   
   
-  <title>DSP 学习笔记 |（四）Xtensa ISA 笔记 - Eren の 宇宙船</title>
+  <title>ARM_DS 工程创建教程 - Eren の 宇宙船</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -223,13 +223,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://cdn.jsdelivr.net/gh/erenlu/picgo/img/微信图片_20220723234215.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202159867.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.5)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="DSP 学习笔记 |（四）Xtensa ISA 笔记"></span>
+            <span id="subtitle" data-typed-text="ARM_DS 工程创建教程"></span>
           
         </div>
 
@@ -240,8 +240,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-24 09:40" pubdate>
-          July 24, 2022 am
+        <time datetime="2023-05-20 21:53" pubdate>
+          May 20, 2023 pm
         </time>
       </span>
     
@@ -252,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k words
+          3.6k words
         
       </span>
     
@@ -263,7 +263,7 @@
         
         
         
-          4 mins
+          8 mins
         
       </span>
     
@@ -309,7 +309,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">DSP 学习笔记 |（四）Xtensa ISA 笔记</h1>
+            <h1 style="display: none">ARM_DS 工程创建教程</h1>
             
               <p class="note note-info">
                 
@@ -323,67 +323,157 @@
               <div class="markdown-body">
                 
                 <div class="note note-success">
-            <p>本文笔记主要整理摘自《Xtensa® Instruction Set Architecture (ISA)》。</p>
+            <p><em>注：本文主要内容参考了 “Arm® Development Studio Getting Started Guide” chapter 9，如有疏漏欢迎指正。</em></p>
           </div>
 
-<h2 id="一、-XCC-编译器"><a href="#一、-XCC-编译器" class="headerlink" title="一、 XCC 编译器"></a>一、 XCC 编译器</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724094306520.png" srcset="/img/loading.gif" lazyload alt="image-20220724094306520"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093233735.png" srcset="/img/loading.gif" lazyload alt="image-20220724093233735"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093243706.png" srcset="/img/loading.gif" lazyload alt="image-20220724093243706"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093252702.png" srcset="/img/loading.gif" lazyload alt="image-20220724093252702"></p>
-<h2 id="二、-Candence-处理器"><a href="#二、-Candence-处理器" class="headerlink" title="二、 Candence 处理器"></a>二、 Candence 处理器</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093310661.png" srcset="/img/loading.gif" lazyload alt="image-20220724093310661"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093416020.png" srcset="/img/loading.gif" lazyload alt="image-20220724093416020"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093322357.png" srcset="/img/loading.gif" lazyload alt="image-20220724093322357"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093348993.png" srcset="/img/loading.gif" lazyload alt="image-20220724093348993"></p>
-<h2 id="三、-语法"><a href="#三、-语法" class="headerlink" title="三、 语法"></a>三、 语法</h2><h3 id="3-1-数据类型"><a href="#3-1-数据类型" class="headerlink" title="3.1 数据类型"></a>3.1 数据类型</h3><ol>
-<li><p><code>ae_int32x2</code><br>由两个 32 位的数据类型组成一个 64 位的数据，8 字节对齐。如果使用 int 类型强制转换，那么在内存分布上，将是两个相同的 32 位数据，举例如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> mem1 = <span class="hljs-number">0x1234</span>;<br>    <span class="hljs-type">int</span> mem2 = <span class="hljs-number">0x5678</span>;<br>    ae_int32x2 p = mem1;<br><br>    <span class="hljs-type">int</span> *p1 = (<span class="hljs-type">int</span> *)&amp;p;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;(int)p = 0x%0x\n&quot;</span>,(<span class="hljs-type">int</span>)p);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*(p1) = 0x%0x\n&quot;</span>,*(p1));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*(p1+1) = 0x%0x\n&quot;</span>,*(p1+<span class="hljs-number">1</span>));<br><br>    ae_int32x2 p2 = <span class="hljs-built_in">AE_MOVDA32X2</span>(mem1, mem2);<br>    <span class="hljs-type">int</span> *p3 = (<span class="hljs-type">int</span> *)&amp;p2;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;p3=0x%0x,*(p3) = 0x%0x\n&quot;</span>,p3,*(p3));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;p3+1=0x%0x,*(p3+1) = 0x%0x\n&quot;</span>,p3+<span class="hljs-number">1</span>,*(p3+<span class="hljs-number">1</span>));<br>&#125;<br><br>输出：<br>    <br>(<span class="hljs-type">int</span>)p = <span class="hljs-number">0x1234</span><br>*(p1) = <span class="hljs-number">0x1234</span><br>*(p1+<span class="hljs-number">1</span>) = <span class="hljs-number">0x1234</span><br>p3=<span class="hljs-number">0x2ffffeb8</span>,*(p3) = <span class="hljs-number">0x1234</span><br>p3+<span class="hljs-number">1</span>=<span class="hljs-number">0x2ffffebc</span>,*(p3+<span class="hljs-number">1</span>) = <span class="hljs-number">0x5678</span><br>    <br>分析：AE_MOVDA32X2作用是将两个<span class="hljs-number">32</span>位数拼成一个<span class="hljs-number">64</span>位数。<br></code></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="四、-基础的-SIMD-编程"><a href="#四、-基础的-SIMD-编程" class="headerlink" title="四、 基础的 SIMD 编程"></a>四、 基础的 SIMD 编程</h2><p><strong>SIMD</strong> ：Single Instruction Multiple Data，<strong>单指令流多数据流</strong>，是一种采用一个控制器来控制多个处理器，<strong>同时对一组数据（又称“数据向量”）中的每一个分别执行相同的操作从而实现空间上的并行性的技术。</strong>在 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8">微处理器</a> 中，单指令流多数据流技术则是一个 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%8E%A7%E5%88%B6%E5%99%A8">控制器 </a>控制多个平行的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%A4%84%E7%90%86%E5%BE%AE%E5%85%83&action=edit&redlink=1">处理微元</a>.</p>
-<p>由于单指令流多数据流处理效率高的原因，常被用于在多媒体应用中的 3D 图像和音视频处理。</p>
-<img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093442891.png" srcset="/img/loading.gif" lazyload alt="image-20220724093442891" style="zoom:200%;" />
-
-<p>基本的 SIMD 操作概念：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093451811.png" srcset="/img/loading.gif" lazyload alt="image-20220724093451811"></p>
-<p>SIMD 操纵不能以不同的形式处理多数据，如下图所示。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093500823.png" srcset="/img/loading.gif" lazyload alt="image-20220724093500823"></p>
-<h3 id="4-1-矢量类型"><a href="#4-1-矢量类型" class="headerlink" title="4.1 矢量类型"></a>4.1 矢量类型</h3><p>C 语言常用的数据类型例如 <code>char</code> 、<code>float</code> 被称为标量类型。在 SIMD 运算中的数据类型被称作矢量类型。每个矢量类型都有其相应的标量类型。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220711144041063.png" srcset="/img/loading.gif" lazyload alt="image-20220724093512219"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093522749.png" srcset="/img/loading.gif" lazyload alt="image-20220724093522749"></p>
-<p>在 SIMD 编程中，经常需要将特定的向量元素称为标量或将标量块称为单个向量。本节介绍了满足这一需求的引用方法，例如，只输出向量的第三个元素或将标量数组输入数据捆绑成适合 SIMD 处理的向量成为可能。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093533040.png" srcset="/img/loading.gif" lazyload alt="image-20220724093533040"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093550883.png" srcset="/img/loading.gif" lazyload alt="image-20220724093550883"></p>
-<h3 id="4-2-基础的-SIMD-运算"><a href="#4-2-基础的-SIMD-运算" class="headerlink" title="4.2 基础的 SIMD 运算"></a>4.2 基础的 SIMD 运算</h3><ol>
-<li><p><strong>以加法为例，介绍标量运算与 SIMD 运算</strong></p>
-<p>a. <strong>标量运算</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093601622.png" srcset="/img/loading.gif" lazyload alt="image-20220724093601622"></p>
-<p>b. <strong>SIMD 运算</strong></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>首先来看官方手册对 ARM_DS 是定义：</p>
+<blockquote>
+<p>Arm® Development Studio是一种专业的软件开发解决方案，适用于裸机嵌入式系统和基于Linux的系统。它涵盖了从引导代码和内核移植到应用程序和裸机调试的所有开发阶段，包括性能分析。</p>
+</blockquote>
+<p>它包括以下内容：</p>
+<ul>
+<li><p>Arm Compiler for Embedded 6 工具链。</p>
+<p>构建嵌入式和裸机嵌入式应用程序。</p>
+</li>
+<li><p>Arm Debugger</p>
+<p>一款支持Arm处理器和Fixed Virtual Platform (FVP)目标上的软件开发的图形化调试器。</p>
+</li>
+<li><p>Fixed Virtual Platform (FVP)目标</p>
+<p>针对Armv6-M、Armv7-A&#x2F;R&#x2F;M和Armv8-A&#x2F;R&#x2F;M架构的单核和多核模拟模型。这些模型使您能够在没有任何硬件的情况下开发软件。</p>
+</li>
+<li><p>Arm Streamline</p>
+<p>一款图形化性能分析工具，可以将抽样数据和系统跟踪转换为报告，以可视化和统计的形式呈现数据。</p>
+</li>
+<li><p>Graphics Analyzer</p>
+<p>Graphics Analyzer允许图形开发人员跟踪其应用程序中的OpenGL ES、Vulkan和OpenCL API调用。</p>
+</li>
+</ul>
+<p>简单来说 ARM_DS 就是 ARM 自己推出的 IDE 工具，和 CCS &#x2F; IAR 类似，同样也是基于 Eclipse 所开发。</p>
+<h1 id="工程创建"><a href="#工程创建" class="headerlink" title="工程创建"></a>工程创建</h1><p>环境： Windows 版本：ADS IDE 2022.1</p>
+<p>以创建 C&#x2F;C++ 工程为例，建议工程先在 Visual Studio 中测试代码是否能正常运行。</p>
+<h2 id="导入源码"><a href="#导入源码" class="headerlink" title="导入源码"></a>导入源码</h2><ol>
+<li><p>File &gt; Import &gt; Project from Folder or Archive</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202204662.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>Directory &gt; select your C project archived file	</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202204691.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>导入 VS 源码之后，便可以在左侧边框栏看到你刚刚导入的 VS 工程文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202204703.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093628087.png" srcset="/img/loading.gif" lazyload alt="image-20220724093628087"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093639289.png" srcset="/img/loading.gif" lazyload alt="image-20220724093639289"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093702759.png" srcset="/img/loading.gif" lazyload alt="image-20220724093702759"></p>
-<p>​		c. 完整的加法例程			<img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093714182.png" srcset="/img/loading.gif" lazyload alt="image-20220724093714182"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093727381.png" srcset="/img/loading.gif" lazyload alt="image-20220724093727381"></p>
-<div class="note note-info">
-            <p>运算几乎都是以标量矩阵作为输入数据。</p>
-          </div>
-
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093743600.png" srcset="/img/loading.gif" lazyload alt="image-20220724093743600"></p>
-<ol start="2">
-<li><strong>条件运算</strong></li>
+<h2 id="工程配置"><a href="#工程配置" class="headerlink" title="工程配置"></a>工程配置</h2><p>导入代码之后，我们需要对项目进行相关设置，将 VS 工程设置为 ADS 工程，这样才能使工程跑起来。</p>
+<p>右键创建的工程 &gt; <strong>Properties</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202204578.png" srcset="/img/loading.gif" lazyload></p>
+<p>里面的所有设置根据你的需求设置即可。</p>
+<p>如果设置完成之后，最后编译不通过，那可能是你没有对头文件进行设置（如果你的 VS 工程使用的是绝对路径）。那么这时你需要在 “Includes” 中修改相应的头文件路径，注意“Arm C Compiler 6” 和 “ARM Assembler 6”  都需进行修改。</p>
+<h2 id="Debug-session-配置"><a href="#Debug-session-配置" class="headerlink" title="Debug session 配置"></a>Debug session 配置</h2><blockquote>
+<p><em>In Arm® Development Studio, you confifigure a debug session with the <strong>New Debug Connection</strong> wizard. This wizard enables you to connect to your target.</em></p>
+</blockquote>
+<p>在编译通过之后，我们还需配置链接模型（Model Connection）。这一步是最关键的一部， Fixed Virtual Platform (FVP）</p>
+<p>下文将引导配置一个裸机模型连接，连接到一个 Cortex®-A35 固定虚拟平台 (FVP)，前面创建的项目。这一步的目的是在 Arm Development Studio 中配置连接到 FVP 的调试会话，以便进行裸机应用程序调试。</p>
+<ol>
+<li>创建一个 .ds 脚本文件，让 Fixed Virtual Platform (FVP) 处理半主机（semihosting），而不是让 Arm Debugger 处理。在 Arm Development Studio 中，可以使用以下步骤创建这样一个脚本文件：<ul>
+<li>从主菜单中选择 “File &gt; New &gt; Other…”；</li>
+<li>在 “New” 对话框中，选择 “Arm Debugger &gt; Arm Debugger Script”，然后点击 “Next”；</li>
+<li>点击 “Workspace…”，选择 “HelloWorld” 项目作为这个脚本文件的位置，然后点击 “OK”；</li>
+<li>在 “File Name” 字段中，命名这个脚本文件为 “use_model_semihosting”，然后点击 “Finish” 按钮。这将打开一个空的编辑器窗口。</li>
+<li>在编辑器窗口中添加以下代码，并按 “Ctrl + S” 保存：</li>
+</ul>
+</li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093752699.png" srcset="/img/loading.gif" lazyload alt="image-20220724093752699"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093802584.png" srcset="/img/loading.gif" lazyload alt="image-20220724093802584"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093810499.png" srcset="/img/loading.gif" lazyload alt="image-20220724093810499"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093821334.png" srcset="/img/loading.gif" lazyload alt="image-20220724093821334"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093828937.png" srcset="/img/loading.gif" lazyload alt="image-20220724093828937"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093836377.png" srcset="/img/loading.gif" lazyload alt="image-20220724093836377"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093847048.png" srcset="/img/loading.gif" lazyload alt="image-20220724093847048"></p>
-<h2 id="五、寄存器"><a href="#五、寄存器" class="headerlink" title="五、寄存器"></a>五、寄存器</h2><p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/image-20220724093859234.png" srcset="/img/loading.gif" lazyload alt="image-20220724093859234"></p>
-<h3 id="5-1-通用（AR）-寄存器"><a href="#5-1-通用（AR）-寄存器" class="headerlink" title="5.1 通用（AR） 寄存器"></a>5.1 通用（AR） 寄存器</h3><p>地址寄存器（Address Registers, AR）。每条指令最多包含三个 4 位的通用寄存器（AR）指令，每个指令可以选择 16 个 32 位寄存器中的一个。这些通用寄存器被命名为地址寄存器，以区别于协处理器寄存器，后者在许多系统中可能作为 “数据 “寄存器使用。然而，AR 寄存器并不限于保存地址，它们也可以保存数据。</p>
-<p>如果配置了窗口寄存器选项，地址寄存器文件将被扩展，并使用从虚拟到物理寄存器的映射。</p>
-<p>地址寄存器文件的内容在复位后是未定义的。</p>
-<h3 id="5-2-移位和移位量寄存器（SAR）寄存器"><a href="#5-2-移位和移位量寄存器（SAR）寄存器" class="headerlink" title="5.2 移位和移位量寄存器（SAR）寄存器"></a>5.2 移位和移位量寄存器（SAR）寄存器</h3><p>移位和移位量寄存器（Shifts and the Shift Amount Register，SAR)。ISA 提供了传统的即时移位（逻辑左移、逻辑右移和算术右移），但是它没有提供单指令移位，其中移位量是一个寄存器操作数。从一个普通的寄存器中获取移位量会产生一个关键的时序路径。另外，简单的移位不能有效地扩展到更大的宽度。漏斗式移位（两个数据值在输入移位器的时候被 catenated）解决了这个问题，但是需要太多的操作数。ISA 通过提供一个漏斗移位来解决这两个问题，其中移位量是从 SAR 寄存器中获取的。可变移位由编译器合成，使用指令从一般寄存器中的移位量计算 SAR，然后再进行漏斗移位。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">set</span> semihosting enabled off<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202212806.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="2">
+<li><p>从主菜单，select <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Model Connection</strong></p>
+</li>
+<li><p>在 “Model Connection” 对话框中，指定连接的详细信息：</p>
+<ul>
+<li><p>为调试连接输入一个名称，例如 “HelloWorld_FVP”；</p>
+</li>
+<li><p>选择 “Associate debug connection with an existing project”，并选择在上一节 “Build your project” 中创建和构建的项目。</p>
+</li>
+<li><p>点击 “Next” 按钮。</p>
+</li>
+</ul>
+</li>
+<li><p>在 “Target Selection” 对话窗口中，指定 tagert</p>
+<ul>
+<li><p>选择 <strong>Arm FVP (Installed with Arm DS)</strong> &gt; <strong>Base_A53x1；</strong></p>
+</li>
+<li><p>点击 <strong>“Finish”</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202212884.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="5">
+<li>在 “Edit Configuration” 对话框中，确保选择了正确的目标设备，指定了适当的应用程序文件，并且调试器知道从哪里开始进行调试：<ul>
+<li>在 “Connection” 选项卡下，确保选择了 “Arm FVP (Installed with Arm DS) &gt; Base_A53x1 &gt; Bare Metal Debug &gt; Cortex-A53”；</li>
+<li>在 “Bare Metal Debug” 中，在 “Model parameters” 字段中添加以下参数：</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">-C bp.<span class="hljs-attribute">secure_memory</span>=<span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+
+<aside> 🪲 注：不同内核需要配置不同的参数
+
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202212897.png" srcset="/img/loading.gif" lazyload></p>
+</aside>
+
+<p>这个参数的作用是禁用安全内存保护，以便在调试过程中能够访问内存。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202212910.png" srcset="/img/loading.gif" lazyload></p>
+<p>​		选择“Target Configuration &gt; Application on host to download &gt; Workspace”;    </p>
+<p>​		点击并展开“HelloWorld”项目，在“Debug”文件夹中选择“HelloWorld.axf”，然后点击“OK”按钮;</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202212922.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202212934.png" srcset="/img/loading.gif" lazyload></p>
+<p>​		选择 “Debug from symbol”;</p>
+<p>​		启用 “Run target initialization debugger script (.ds&#x2F;.py)” 选项，并点击 “Workspace…”按钮。;</p>
+<p>​		选择 “use_model_semihosting.ds” 脚本文件，然后点击“OK”按钮。</p>
+<p>这些操作将指定在开始调试会话时运行的脚本文件，并确保 FVP 处理半主机操作。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202212947.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="6">
+<li>点击“Debug”按钮，将应用程序加载到目标设备上，并将调试信息加载到调试器中。这将启动调试会话，并将您带入调试器的界面中。在调试器中，可以通过设置断点、单步执行和查看变量等操作来调试应用程序。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202212960.png" srcset="/img/loading.gif" lazyload><aside> 🪲 至此，我们所 ADS 工程的目前已经能正常运行。</p>
+</aside>
+
+<p>以下是调试器的相关说明：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202212971.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Trace-调式工具"><a href="#Trace-调式工具" class="headerlink" title="Trace 调式工具"></a>Trace 调式工具</h2><p>在 ADS 中，同样有相当丰富的调试工具供我们使用。在 debug session 中可以通过 Trace 查看所有被执行的指令情况。</p>
+<p>在使用 Trace 跟踪程序之前，我们需要先进行相关配置以开启 Trace。</p>
+<p>开启过程如下图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202220419.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202220493.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202220505.png" srcset="/img/loading.gif" lazyload></p>
+<p>至此，我们边成功开启了 Trace，愉快地 debug 吧。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202220517.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="套壳创建工程"><a href="#套壳创建工程" class="headerlink" title="套壳创建工程"></a>套壳创建工程</h1><p>在 ADS 工程配置过程中，稍有不慎都会导致整个工程无法正常编译运行。如果在排除所有配置之后工程仍然无法正常运行，那么我们可以采取套壳的方法进行工程创建。</p>
+<p>所谓套壳，这里的壳就是 ADS 中的例程工程。例程毋庸置疑是能够正常运行，所有我们需要做的就是将壳内的程序替换为我们的代码即可。</p>
+<p>套壳的原则：选择我们需要的内核例程，不要例程中的删除启动文件。</p>
+<p>以下是一个套壳的流程：</p>
+<ol>
+<li>Import 例程；</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202223028.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="2">
+<li><p>导入例程之后，删除例程中不需要的应用层源码（也可以不删除，注释掉程序入口函数就行）；</p>
+</li>
+<li><p>导入我们的工程源码；</p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202223050.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="4">
+<li>上述操作完毕后，请进行编译测试。</li>
+</ol>
+<h3 id="建立工程间的代码连接"><a href="#建立工程间的代码连接" class="headerlink" title="建立工程间的代码连接"></a>建立工程间的代码连接</h3><p>对于一份源码，我们常常需要建立 VS 工程（验证程序正确性），IAR工程（看 Profile）和 ADS（对 arm有更好的支持）工程。在这种情况下，如果对于工程源码很大的情况下，拷贝相同的代码来创建工程这就会变得十分冗余，且各工程间的修改并不同步。</p>
+<p>所以在 ADS 中，我们就需要使用下面的方法来避免上述情况。</p>
+<p>这一步是发生在导入文件的过程中，在导入源码文件时我们需要点击下方的 “Create links in workspace”，以此来建立 ADS 工程对源码的链接。如此之后，ADS 共在其 workspace 中创建与源码相同的源码文件目录，但其中并无文件。因为 “Create links in workspace” 已将代码连接到我们原始代码文件夹中。</p>
+<p>这样我们既减小了由于创建多个工程造成的代码冗余，又避免了多个工程中的代码不同步的情况。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202223065.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到下图中的目录为，源码工程文件夹下的目录文件。同时其中包含了 IAR、VS、ADS 等工程文件。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/erenlu/picgo/img/202305202223079.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -417,9 +507,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/DSP/">#DSP</a>
+        <a href="/tags/ARM-DS/">#ARM_DS</a>
       
-        <a href="/tags/HiFi/">#HiFi</a>
+        <a href="/tags/IDE/">#IDE</a>
       
     </div>
   
@@ -431,8 +521,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>DSP 学习笔记 |（四）Xtensa ISA 笔记</div>
-      <div>https://erenship.com/posts/6ba9.html</div>
+      <div>ARM_DS 工程创建教程</div>
+      <div>https://erenship.com/posts/4ssaf4.html</div>
     </div>
     <div class="license-meta">
       
@@ -444,7 +534,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>July 24, 2022</div>
+          <div>May 20, 2023</div>
         </div>
       
       
@@ -488,18 +578,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/9860.html" title="DSP 学习笔记 |（五）HiFi 4 User&#39;s Guide 笔记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">DSP 学习笔记 |（五）HiFi 4 User&#39;s Guide 笔记</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/af34.html" title="DSP 学习笔记 |（三）C &amp; DSP 基础概念">
-                        <span class="hidden-mobile">DSP 学习笔记 |（三）C &amp; DSP 基础概念</span>
+                      <a href="/posts/49d0.html" title="音视频笔记｜运动估计 ME 源码简要分析（上）">
+                        <span class="hidden-mobile">音视频笔记｜运动估计 ME 源码简要分析（上）</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
